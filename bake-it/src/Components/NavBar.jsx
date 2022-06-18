@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Stack } from "@mui/material"
+import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material"
 
 
 
@@ -10,11 +10,10 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
                 Bake It Till You Make It
             </Typography>
-                <Stack direction='row' spacing={2}>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/signup">Sign up</Link></li>
-                    </ul>
+                <Stack direction='row' spacing={1}>
+                    <Button variant='text'><Link to="/">HOME</Link></Button>
+                    <Button variant='text'><Link to="/signup">SIGN UP</Link></Button>
+                    <Button variant='text'><Link to="/addrecipe">NEW RECIPE</Link></Button>
                 </Stack>
         </Toolbar>
     </AppBar>
