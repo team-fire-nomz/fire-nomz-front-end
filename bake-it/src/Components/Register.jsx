@@ -1,4 +1,8 @@
-import { Box, TextField, Button, Container } from "@mui/material";
+import Container from "@mui/material/Container";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 
 
 function Register (){
@@ -8,43 +12,46 @@ function Register (){
     <Box
      component="form"
      sx={{
-         '& .MuiTextField-root': {m:1, width:'25ch'},
+         '& .MuiTextField-root': {m:2, width:'25ch'},
      }}
      noValidate
      autocomplete="off"
     >
     <div>
+    
     <TextField
     required
     size="small"
     id="outlined-required"
-    label="Required"
+    label="Name"
     defaultValue="Name"
     />
+
     <TextField
     required
     size="small"
     id="outlined-required"
-    label="Required"
+    label="Email"
     defaultValue="Email"
     />
     <TextField
     required
     size="small"
     id="outlined-required"
-    label="Required"
+    label="Location"
     defaultValue="Location"
     />
     <TextField
     size="small"
-    id="outlined-required"
+    id="outlined"
+    label="Business Name"
     defaultValue="Business Name"
     />
     <TextField
     required
     size="small"
     id="outlined-required"
-    label="Required"
+    label="Username"
     defaultValue="Username"
     
     />
@@ -63,7 +70,7 @@ function Register (){
     size="small"
     variant="contained" 
     rounded="50%"
-
+    elevation="8dp"
     >Send</Button>
   </Container>
 </Box>
