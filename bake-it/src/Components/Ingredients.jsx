@@ -1,24 +1,20 @@
-import { Button } from "@mui/material";
+import { Container, Box } from "@mui/material";
 
 function Ingredients(){
 
 return (
-<form >
-    <div>
+<Container>
+<Box 
+component="form" >
+    <Box>
         <label htmlFor="description">Ingredients</label>
             <textarea
             id="description"
-            required rows='6'
+            required rows='10'
             ></textarea>
-    </div>
-    <div>
-        <Button
-            variant="contained"
-            type="submit"
-            size="small"
-            >Add Ingredients</Button>
-    </div>
-</form>
+    </Box>
+</Box>
+</Container>
 
 );
 }
