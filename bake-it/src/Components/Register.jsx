@@ -1,9 +1,10 @@
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Container } from "@mui/material";
 
 
 function Register (){
 
   return (
+    <Container>
     <Box
      component="form"
      sx={{
@@ -15,30 +16,33 @@ function Register (){
     <div>
     <TextField
     required
+    size="small"
     id="outlined-required"
     label="Required"
     defaultValue="Name"
     />
     <TextField
     required
+    size="small"
     id="outlined-required"
     label="Required"
     defaultValue="Email"
     />
     <TextField
     required
+    size="small"
     id="outlined-required"
     label="Required"
     defaultValue="Location"
     />
     <TextField
-    required
+    size="small"
     id="outlined-required"
-    label="Required"
     defaultValue="Business Name"
     />
     <TextField
     required
+    size="small"
     id="outlined-required"
     label="Required"
     defaultValue="Username"
@@ -46,21 +50,24 @@ function Register (){
     />
     <TextField
     required
+    size="small"
     id="outlined-required"
     label="Password"
     defaultValue="Password"
    
     />
   </div>
-  <div>
+  <Container>
     <Button 
     type="submit" 
     size="small"
     variant="contained" 
-    endIcon="material-icons-round"
+    rounded="50%"
+
     >Send</Button>
-  </div>
+  </Container>
 </Box>
+</Container>
 );
 }
 
