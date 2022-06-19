@@ -1,8 +1,8 @@
 import { Box, Container, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
     
     const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
       const [username, setUsername] = useState("");
@@ -18,7 +18,7 @@ import axios from "axios";
         console.log("making post");
         e.preventDefault();
         setError("");
-        console.log(username, password);
+        console.log(username, password, name, email, location, business);
     
         axios
           .post(
