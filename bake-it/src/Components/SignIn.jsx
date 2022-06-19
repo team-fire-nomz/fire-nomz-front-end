@@ -80,7 +80,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				</Alert>
 				</Snackbar>
 			)}
-			<Box component="form" onSubmit={handleLogin}>
+			<Box component="form" onSubmit={handleLogin} align="center">
 				<Box>
 					<TextField
 						label="username"
@@ -94,9 +94,6 @@ export default function SignIn({ setAuth, isLoggedIn }) {
                 		type="password"
                 		value={password}
                 		onChange={(e) => setPassword(e.target.value)} />
-            	</Box>
-            	<Box textAlign="center">
-                	<Button size="large" component={Link} to="/join">Create account</Button>
             	</Box>
             	<Box textAlign="center">
                 	<Button size="large" variant="outlined" type="submit">Sign in</Button>
