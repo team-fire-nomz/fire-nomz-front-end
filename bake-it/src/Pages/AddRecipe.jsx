@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Container, Button, Box } from "@mui/material";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState } from "react";
+import classes from './AddRecipe.module.css';
 
     
     function AddRecipe (props){
@@ -28,7 +30,6 @@ import { useState } from "react";
             )
             .then((res) => {
             console.log(res);
-              
             });
         }
         const handleChange = (inputType, event) => {
@@ -43,10 +44,11 @@ import { useState } from "react";
         }
         }
 
-return (
+return props.isLoggedIn? (
 
     <Container>
         <Box 
+            className={classes.form}
             component="form"
             onSubmit={submitHandler} >
         <Box>
@@ -86,7 +88,16 @@ return (
             Add Recipe
         </Button>
     </Container>
-)
+) : ( <Button 
+        variant="text" 
+        component={Link} 
+        className={classes.action} 
+        margin="normal"
+        to="/signup"
+        >
+        Want to join other bakers near you? Please create an account.
+        </Button>) 
 }
+
 
 export default AddRecipe;

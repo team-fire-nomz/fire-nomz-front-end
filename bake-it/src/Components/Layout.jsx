@@ -12,6 +12,8 @@ function Layout(props) {
       />
       <main><Outlet /></main>
     </div>
+
+
   );
 }
 export default Layout;

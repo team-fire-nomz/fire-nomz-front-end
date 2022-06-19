@@ -75,6 +75,7 @@ import { Navigate } from "react-router-dom";
     required
     size="small"
     id="outlined-location"
+    
     label="Location"
     onChange={(e) => setLocation(e.target.value)}
     />
