@@ -6,14 +6,13 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
 
 
 export default function SignIn({ setAuth, isLoggedIn }) {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
-	const [open, setOpen] = React.useState(false)
+	const [open, setOpen] = React.useState('false')
 
 	const handleClose = (reason) => {
 		if (reason === 'clickaway') {
@@ -29,7 +28,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 		setError('')
 		axios
 			.post(
-				'https://bake-it-till-you-make-it.herokuapp.com/api/',
+				'https://bake-it-till-you-make-it.herokuapp.com/auth/token/login',
 				{
 					username: username,
 					password: password,
@@ -81,14 +80,14 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				</Snackbar>
 			)}
 			<Box component="form" onSubmit={handleLogin} align="center">
-				<Box>
+				<Box textAlign="center">
 					<TextField
 						label="username"
 						value={username}
 						margin="normal"
 						onChange={(e) => setUsername(e.target.value)} />
 				</Box>
-				<Box>
+				<Box textAlign="center">
             		<TextField
                 		label="password"
                 		type="password"

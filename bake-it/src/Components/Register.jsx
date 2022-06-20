@@ -47,7 +47,8 @@ import { Navigate } from "react-router-dom";
     return (
     <Container> 
     {error && <div className="error">{error}</div>}
-        <Box
+    <Box 
+		textAlign="center"
         component="form"
         onSubmit={handleRegistration}
         sx={{'& .MuiTextField-root': {m:2, width:'30ch'},}}
@@ -65,48 +66,48 @@ import { Navigate } from "react-router-dom";
     />
 
     <TextField
-    required
-    size="small"
-    id="outlined-email"
-    label="Email"
-    onChange={(e) => setEmail(e.target.value)}
+		required
+		size="small"
+		id="outlined-email"
+		label="Email"
+		onChange={(e) => setEmail(e.target.value)}
     />
     <TextField
-    required
-    size="small"
-    id="outlined-location"
-    
-    label="Location"
-    onChange={(e) => setLocation(e.target.value)}
+		required
+		size="small"
+		id="outlined-location"
+		
+		label="Location"
+		onChange={(e) => setLocation(e.target.value)}
     />
     <TextField
-    size="small"
-    id="outlined-business"
-    label="Business Name"
-    onChange={(e) => setBusiness(e.target.value)}
+		size="small"
+		id="outlined-business"
+		label="Business Name"
+		onChange={(e) => setBusiness(e.target.value)}
     />
     <TextField
-    required
-    size="small"
-    id="outlined-username"
-    label="Username"
-    onChange={(e) => setUsername(e.target.value)}
+		required
+		size="small"
+		id="outlined-username"
+		label="Username"
+		onChange={(e) => setUsername(e.target.value)}
     />
     <TextField
-    required
-    size="small"
-    id="outlined-password"
-    type='password'
-    label="Password"
-    onChange={(e) => setPassword(e.target.value)}
+		required
+		size="small"
+		id="outlined-password"
+		type='password'
+		label="Password"
+		onChange={(e) => setPassword(e.target.value)}
     />
     </Box>
     <Container>
     <Button 
-    type="submit" 
-    size="small"
-    variant="contained" 
-    endIcon={<SendIcon />}
+		type="submit" 
+		size="small"
+		variant="contained" 
+		endIcon={<SendIcon />}
     >Send</Button>
     </Container>
 	</Box>
