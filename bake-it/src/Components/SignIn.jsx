@@ -35,7 +35,8 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				}
 			)
 			.then((res) => {
-				console.log(res.data)
+				console.log(res.data);
+				console.log("setAuth", setAuth);
 				setAuth(username, res.data.auth_token)
 			})
 			.catch((e) => {
@@ -57,7 +58,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 	return (
 		<Box>
 			<Typography variant="h4" align="center">
-				Welcome!
+				Welcome fellow baker!
 			</Typography>
 			<Typography align="center">
 				Please sign in to continue.
@@ -88,15 +89,15 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 						onChange={(e) => setUsername(e.target.value)} />
 				</Box>
 				<Box textAlign="center">
-            		<TextField
-                		label="password"
-                		type="password"
-                		value={password}
-                		onChange={(e) => setPassword(e.target.value)} />
-            	</Box>
-            	<Box textAlign="center">
-                	<Button size="large" variant="outlined" type="submit">Sign in</Button>
-            	</Box>
+                    <TextField
+                        label="password"
+						type="password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)} />
+				</Box>
+				<Box textAlign="center">
+					<Button size="large" variant="outlined" type="submit">Sign in</Button>
+				</Box>
 			</Box>
 		</Box>
 	)

@@ -3,11 +3,9 @@ import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material"
 
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
-<<<<<<< HEAD
+
   return (
-=======
-    return (
->>>>>>> d35fdce582fbcf4fe4036e2d295bbd8edfd4ee70
+
     <AppBar position='static'>
         <Toolbar>
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>

@@ -3,7 +3,7 @@ import { Container, Button, Box } from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import classes from './AddRecipe.module.css';
+
 
     
     function AddRecipe (props){
@@ -48,7 +48,6 @@ return props.isLoggedIn? (
 
     <Container>
         <Box 
-            className={classes.form}
             component="form"
             onSubmit={submitHandler} >
         <Box>
@@ -90,8 +89,7 @@ return props.isLoggedIn? (
     </Container>
 ) : ( <Button 
         variant="text" 
-        component={Link} 
-        className={classes.action} 
+        component={Link}  
         margin="normal"
         to="/signup"
         >
