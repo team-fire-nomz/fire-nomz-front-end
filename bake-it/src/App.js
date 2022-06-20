@@ -10,9 +10,9 @@ import axios from 'axios';
 
 
 function App() {
-  const [token, setToken] = useLocalStorageState('reactQuestionboxToken', '')
+  const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
   const [username, setUsername] = useLocalStorageState(
-    'reactQuestionboxUsername',
+    'reactLibraryUsername',
     ''
   )
 
@@ -26,7 +26,7 @@ function App() {
   const handleLogout = () => {
     axios
       .post(
-        'https://questionbox-team-lightning.herokuapp.com/auth/token/logout',
+        'https://bake-it-till-you-make-it.herokuapp.com/auth/token/logout/',
         {},
         {
           headers: { Authorization: `token ${token}` },
@@ -34,13 +34,13 @@ function App() {
       )
       .then((res) => {
         setAuth('', '')
-      })
+      });
   }
   return (
     <BrowserRouter>
 
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
             <Route index element={<Homepage />} />
             <Route
               path="/signin"
@@ -53,7 +53,7 @@ function App() {
               }
             ></Route>
             <Route path="/signup" element={<Register />} />
-            <Route path="/addrecipe" element={<AddRecipe />} />
+            <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
           </Route>
         </Routes>
 

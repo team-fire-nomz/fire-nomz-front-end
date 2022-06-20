@@ -7,7 +7,8 @@ import { Navigate } from "react-router-dom";
     const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
-        const [name, setName] = useState("");
+        const [firstName, setFirstName] = useState("");
+        const [lastName, setLastName] = useState("");
         const [email, setEmail] = useState("");
         const [location, setLocation] = useState("");
         const [business, setBusiness] = useState("");
@@ -18,12 +19,17 @@ import { Navigate } from "react-router-dom";
         console.log("making post");
         e.preventDefault();
         setError("");
-        console.log(username, password, name, email, location, business);
+        console.log(username, password, email, location, business);
     
         axios
             .post(
             "https://bake-it-till-you-make-it.herokuapp.com/api/auth/users/",
             {
+                firstname: firstName,
+                lastname: lastName,
+                email: email,
+                location: location,
+                business: business,
                 username: username,
                 password: password,
             }
@@ -60,9 +66,17 @@ import { Navigate } from "react-router-dom";
         required
         size="small"
         id="outlined-name"
-        label="Full Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        label="First Name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+    />
+    <TextField
+        required
+        size="small"
+        id="outlined-name"
+        label="Last Name"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
     />
 
     <TextField
