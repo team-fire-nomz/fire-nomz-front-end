@@ -59,8 +59,8 @@ return props.isLoggedIn? (
             rows='10'
             onChange={(e) => handleChange('ingredients', e)}
             ></textarea>
-       </Box>
-       </Box>
+        </Box>
+        </Box>
         <Box 
         variant="form">
         <label htmlFor="title">Recipe Name </label>
