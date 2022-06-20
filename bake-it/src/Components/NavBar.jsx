@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material"
-
+import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material";
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
@@ -19,6 +18,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                 </Stack>
         </Toolbar>
     </AppBar>
-);
+	);
 };
+
 export default NavBar;

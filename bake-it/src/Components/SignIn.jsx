@@ -1,12 +1,13 @@
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import { Alert, Snackbar, TextField } from '@mui/material';
+import { Snackbar, TextField, Typography, Button, Box } from '@mui/material';
+import MuiAlert from '@mui/material/Alert';
 import { useState } from 'react';
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+})
 
 export default function SignIn({ setAuth, isLoggedIn }) {
 	const [username, setUsername] = useState('')
@@ -28,7 +29,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 		setError('')
 		axios
 			.post(
-				'https://bake-it-till-you-make-it.herokuapp.com/auth/token/login',
+				'https://bake-it-till-you-make-it.herokuapp.com/auth/token/login/',
 				{
 					username: username,
 					password: password,
