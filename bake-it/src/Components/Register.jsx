@@ -5,49 +5,50 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
     
     const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
-      const [username, setUsername] = useState("");
-      const [password, setPassword] = useState("");
-      const [name, setName] = useState("");
-      const [email, setEmail] = useState("");
-      const [location, setLocation] = useState("");
-      const [business, setBusiness] = useState("");
-      const [error, setError] = useState("");
-      const [isRegistered, setIsRegistered] = useState(false);
+        const [username, setUsername] = useState("");
+        const [password, setPassword] = useState("");
+        const [name, setName] = useState("");
+        const [email, setEmail] = useState("");
+        const [location, setLocation] = useState("");
+        const [business, setBusiness] = useState("");
+        const [error, setError] = useState("");
+        const [isRegistered, setIsRegistered] = useState(false);
     
-      const handleRegistration = (e) => {
+        const handleRegistration = (e) => {
         console.log("making post");
         e.preventDefault();
         setError("");
         console.log(username, password, name, email, location, business);
     
         axios
-          .post(
+            .post(
             "https://bake-it-till-you-make-it.herokuapp.com/api/auth/users/",
             {
-              username: username,
-              password: password,
+                username: username,
+                password: password,
             }
-          )
-          .then((res) => {
+            )
+            .then((res) => {
             console.log(res.data);
             setIsRegistered(true);
             setRegisterSuccess(true);
             console.log(isRegistered);
-          })
-          .catch((e) => {
+            })
+            .catch((e) => {
             setError(e.response.data.password[0]);
-          });
-      };
+            });
+        };
     
-      if (isRegistered) {
+        if (isRegistered) {
         console.log("Registered!");
         return <Navigate to="/login" />;
-      }
+        }
 
-  return (
+    return (
     <Container> 
     {error && <div className="error">{error}</div>}
-        <Box
+    <Box 
+		textAlign="center"
         component="form"
         onSubmit={handleRegistration}
         sx={{'& .MuiTextField-root': {m:2, width:'30ch'},}}
@@ -65,52 +66,52 @@ import { Navigate } from "react-router-dom";
     />
 
     <TextField
-    required
-    size="small"
-    id="outlined-email"
-    label="Email"
-    onChange={(e) => setEmail(e.target.value)}
+		required
+		size="small"
+		id="outlined-email"
+		label="Email"
+		onChange={(e) => setEmail(e.target.value)}
     />
     <TextField
-    required
-    size="small"
-    id="outlined-location"
-    
-    label="Location"
-    onChange={(e) => setLocation(e.target.value)}
+		required
+		size="small"
+		id="outlined-location"
+		
+		label="Location"
+		onChange={(e) => setLocation(e.target.value)}
     />
     <TextField
-    size="small"
-    id="outlined-business"
-    label="Business Name"
-    onChange={(e) => setBusiness(e.target.value)}
+		size="small"
+		id="outlined-business"
+		label="Business Name"
+		onChange={(e) => setBusiness(e.target.value)}
     />
     <TextField
-    required
-    size="small"
-    id="outlined-username"
-    label="Username"
-    onChange={(e) => setUsername(e.target.value)}
+		required
+		size="small"
+		id="outlined-username"
+		label="Username"
+		onChange={(e) => setUsername(e.target.value)}
     />
     <TextField
-    required
-    size="small"
-    id="outlined-password"
-    type='password'
-    label="Password"
-    onChange={(e) => setPassword(e.target.value)}
+		required
+		size="small"
+		id="outlined-password"
+		type='password'
+		label="Password"
+		onChange={(e) => setPassword(e.target.value)}
     />
-  </Box>
-  <Container>
+    </Box>
+    <Container>
     <Button 
-    type="submit" 
-    size="small"
-    variant="contained" 
-    endIcon={<SendIcon />}
+		type="submit" 
+		size="small"
+		variant="contained" 
+		endIcon={<SendIcon />}
     >Send</Button>
-  </Container>
-</Box>
-</Container>
+    </Container>
+	</Box>
+	</Container>
 );
 }
 
