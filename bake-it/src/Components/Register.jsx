@@ -60,7 +60,7 @@ import { Navigate } from "react-router-dom";
         required
         size="small"
         id="outlined-name"
-        label="Name"
+        label="Full Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
     />

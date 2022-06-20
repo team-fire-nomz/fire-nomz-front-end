@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material";
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
-    return (
+
+  return (
+
     <AppBar position='static'>
         <Toolbar>
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
