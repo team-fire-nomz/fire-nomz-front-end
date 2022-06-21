@@ -1,21 +1,12 @@
 import React from 'react';
-import { ButtonGroup, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import RecipeList from "../Components/RecipeList";
 
 function Homepage (){
 
 
 return (
 
-    <ButtonGroup>
-        <Button 
-        variant='text'
-        to="/signup"
-        component={Link}
-        >
-        SIGN UP
-        </Button>
-    </ButtonGroup>
+   <RecipeList />
     
     
 )
