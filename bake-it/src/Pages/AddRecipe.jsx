@@ -28,10 +28,10 @@ function AddRecipe(props) {
       recipeData,
        {
         headers: { Authorization: `Token ${props.token}` },
-       }
+       })
       .then((res) => {
         console.log(res);
-      }))
+      })
   }
   const handleChange = (inputType, event) => {
     if (inputType === "title") {
@@ -79,13 +79,14 @@ function AddRecipe(props) {
           ></textarea>
         </div>
         <div>
-          <label spacing={0} htmlFor="recipe"></label>
+          <label spacing={0} htmlFor="recipe">Recipe Steps</label>
           <textarea
             id="description"
             required
             placeholder="Recipe"
             rows="12"
             value={props.recipe}
+            onChange={(e) => handleChange("recipe", e)}
           ></textarea>
         </div>
         <div>

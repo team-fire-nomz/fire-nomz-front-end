@@ -102,7 +102,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				<Box textAlign="center">
 					<Button
 					component={Link}
-					to= "/register"
+					to= "/signup"
 					size="small"
 					variant="contained"
 					>
