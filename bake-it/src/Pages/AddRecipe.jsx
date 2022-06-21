@@ -1,17 +1,19 @@
 import React from "react";
 import { Container, Button, Box } from "@mui/material";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
-import classes from './AddRecipe.module.css';
+
 
     
     function AddRecipe (props){
         const [enteredIngredients, setEnteredIngredients] = useState('')
         const [enteredRecipe, setEnteredRecipe] = useState('')
         const [enteredTitle, setEnteredTitle] = useState('')
-        console.log("Ask",props)
-    
+        
+        if (!props.isLoggedIn) {
+            return <Navigate to="/signin" replace={true} />
+        }
         function submitHandler(event){
             event.preventDefault();
     
@@ -44,11 +46,10 @@ import classes from './AddRecipe.module.css';
         }
         }
 
-return props.isLoggedIn? (
+return (
 
     <Container>
         <Box 
-            className={classes.form}
             component="form"
             onSubmit={submitHandler} >
         <Box>
@@ -83,20 +84,11 @@ return props.isLoggedIn? (
             variant="contained"
             type="submit"
             size="small"
-            disabled={!props.isLoggedIn}
             >
             Add Recipe
         </Button>
     </Container>
-) : ( <Button 
-        variant="text" 
-        component={Link} 
-        className={classes.action} 
-        margin="normal"
-        to="/signup"
-        >
-        Want to join other bakers near you? Please create an account.
-        </Button>) 
+) 
 }
 
 
