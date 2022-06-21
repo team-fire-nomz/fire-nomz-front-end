@@ -1,9 +1,7 @@
 import {Card } from "@mui/material";
 
 
-
 const RecipeDetail = (props) => {
-
 
     return (
         <Card>
