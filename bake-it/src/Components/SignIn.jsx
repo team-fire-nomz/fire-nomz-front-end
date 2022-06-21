@@ -3,7 +3,7 @@ import { Snackbar, TextField, Typography, Button, Box } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { useState } from 'react';
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -99,6 +99,16 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				<Box textAlign="center">
 					<Button size="large" variant="outlined" type="submit">Sign in</Button>
 				</Box>
+				<Box textAlign="center">
+					<Button
+					component={Link}
+					to= "/register"
+					size="small"
+					variant="contained"
+					>
+					WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
+					</Button>
+			</Box>
 			</Box>
 		</Box>
 	)

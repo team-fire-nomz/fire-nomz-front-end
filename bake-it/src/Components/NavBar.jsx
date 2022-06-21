@@ -12,14 +12,11 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
             </Typography>
                 <Stack direction='row' spacing={1}>
                     <Button variant='text'><Link to="/">HOME</Link></Button>
-                    <Button variant='text'><Link to="/signup">SIGN UP</Link></Button>
-
                 {!isLoggedIn ? (
-					<Button variant='text'><Link to="/signin">SIGN IN</Link></Button>
+					<Button variant='text'><Link to="/signin">SIGN IN/SIGN UP</Link></Button>
                 ) : (
                     <Button variant='text'><Link to="/" onClick={handleLogout}>SIGN OUT</Link></Button>
                 )}
-
                     <Button variant='text'><Link to="/addrecipe">NEW RECIPE</Link></Button>
                 </Stack>
         </Toolbar>

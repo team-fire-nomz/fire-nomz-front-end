@@ -2,7 +2,7 @@ import { Box, Grid, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   const [username, setUsername] = useState("");
@@ -53,13 +53,11 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
       })
       .catch((e) => {
         setError(e.response);
-        console.log(e)
       });
   };
 
   if (isRegistered) {
-    console.log("Registered!");
-    return <Navigate to="/" />;
+    return <Navigate to="/signin" />;
   }
 
   return (
@@ -154,6 +152,16 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
           endIcon={<SendIcon />}
         >
           Send
+        </Button>
+      </Box>
+      <Box>
+        <Button
+          component={Link}
+          to= "/signin"
+          size="small"
+          variant="contained"
+        >
+          HAVE AN ACCOUNT? PLEASE SIGN IN.
         </Button>
       </Box>
       </Box>
