@@ -24,7 +24,7 @@ function App() {
   const handleLogout = () => {
     axios
       .post(
-        'https://questionbox-team-lightning.herokuapp.com/auth/token/logout',
+        'https://bake-it-till-you-make-it.herokuapp.com/auth/token/logout/',
         {},
         {
           headers: { Authorization: `token ${token}` },
