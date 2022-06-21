@@ -31,7 +31,7 @@ function RecipeList(props) {
           />
         ))
       :
-      <h3>No results found</h3>
+      <h3>NO RESULTS FOUND</h3>
       }
 
       <Link to="/addrecipe">ADD YOUR NEW RECIPE</Link>
