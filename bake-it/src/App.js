@@ -9,7 +9,6 @@ import RecipeDetail from "./Components/RecipeDetail";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 
-
 function App() {
   const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
   const [username, setUsername] = useLocalStorageState(
@@ -37,6 +36,7 @@ function App() {
         setAuth('', '')
       });
   }
+
   return (
     <BrowserRouter>
 
