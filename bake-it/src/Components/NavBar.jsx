@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Stack, Button } from "@mui/material";
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
-  return (
+    return (
 
     <AppBar position='static'>
         <Toolbar>
@@ -18,6 +18,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                     <Button variant='text'><Link to="/" onClick={handleLogout}>SIGN OUT</Link></Button>
                 )}
                     <Button variant='text'><Link to="/addrecipe">NEW RECIPE</Link></Button>
+                    <Button variant='text'><Link to="/tracking">RECIPE TRACKING</Link></Button>
                 </Stack>
         </Toolbar>
     </AppBar>
