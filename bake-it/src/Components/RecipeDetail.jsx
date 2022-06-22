@@ -1,42 +1,47 @@
-import {Card, Box, Button } from "@mui/material";
+import { Card, Box, Button } from "@mui/material";
+import axios from "axios";
 import Recipe from "./Recipe";
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const RecipeDetail = (props) => {
+  // console.log (props)
+  const [recipe, setRecipe] = useState(null);
+  let params = useParams();
+  console.log(params);
 
+  useEffect(() => {
+    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}`;
+    console.log(requestUrl);
+    axios.get(requestUrl).then((res) => {
+      console.log(res);
+      setRecipe(res.data);
+    });
+  }, []);
 
-
-    return (
-        <Card>
-        <Recipe />
-        <div>
-        <h3>Title: {props.title}</h3>
-        <p>{props.ingredients}</p>
-        <h4>RECIPE: {props.recipe}</h4>
-        <h5>BAKED ON: {props.created_at}</h5>
-        </div>
+  return (
+    <Card>
+      {recipe && <Recipe {...recipe} />}
+      <Box>
+        <h3>Title: {recipe.title}</h3>
+        <p>{recipe.ingredients}</p>
+        <h4>RECIPE: {recipe.recipe}</h4>
+        <h5>BAKED ON: {recipe.created_at}</h5>
+      </Box>
+      <Box>
         <Box>
-            <Box>
-                <Button
-                size="small"
-                variant="contained"
-                >
-                EDIT
-                </Button> 
-            </Box>
-            <Box>
-                <Button
-                to= "/signin"
-                size="small"
-                variant="contained"
-                >
-                DELETE
-                </Button>
-            </Box>
+          <Button size="small" variant="contained">
+            EDIT
+          </Button>
         </Box>
-        </Card>
-    )
-}
+        <Box>
+          <Button to="/signin" size="small" variant="contained">
+            DELETE
+          </Button>
+        </Box>
+      </Box>
+    </Card>
+  );
+};
 
 export default RecipeDetail;
-

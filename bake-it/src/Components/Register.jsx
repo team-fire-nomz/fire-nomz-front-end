@@ -44,7 +44,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
     axios
       .post(
         "https://bake-it-till-you-make-it.herokuapp.com/api/users/",
-        registerData
+        registerData,
       )
       .then((res) => {
         console.log(res.data);
