@@ -12,7 +12,10 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [business, setBusiness] = useState("");
-  const [error, setError] = useState("");
+  // const tempError = {
+  //   password: ["The password is too similar to the username."],
+  // };
+  const [error, setError] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegistration = (e) => {
@@ -26,7 +29,8 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
       lastName,
       email,
       location,
-      business
+      business,
+      error
     );
 
     const registerData = {
@@ -44,7 +48,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
     axios
       .post(
         "https://bake-it-till-you-make-it.herokuapp.com/api/users/",
-        registerData,
+        registerData
       )
       .then((res) => {
         console.log(res.data);
@@ -52,26 +56,35 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         console.log(isRegistered);
       })
       .catch((e) => {
-        setError(e.response);
+        console.log(e.response.data);
+        setError(e.response.data);
       });
   };
 
   if (isRegistered) {
-    
     return <Navigate to="/signin" />;
   }
 
   return (
     <Grid
-    container
-    spacing={0}
-    direction="column"
-    alignItems="center"
-    justifyContent="Center"
-    style={{ minHeight: '75vh' }}
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="Center"
+      style={{ minHeight: "75vh" }}
     >
-      {error && <div className="error">{error}</div>}
-  
+      {error && (
+        <div
+          className="error"
+          style={{ backgroundColor: "red", color: "white", padding:'1rem',}}
+        >
+          {Object.entries(error).map(
+            ([errorField, errorMessage]) => `${errorField}: ${errorMessage}`
+          )}
+        </div>
+      )}
+
       <Box
         textAlign="center"
         component="form"
@@ -80,91 +93,91 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         noValidate
         autocomplete="off"
       >
-      <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-firstname"
-          label="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
+        <Box>
+          <TextField
+            required
+            size="small"
+            id="outlined-firstname"
+            label="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-lastname"
-          label="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
+          <TextField
+            required
+            size="small"
+            id="outlined-lastname"
+            label="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-email"
-          label="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <TextField
+            required
+            size="small"
+            id="outlined-email"
+            label="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-location"
-          label="Location"
-          onChange={(e) => setLocation(e.target.value)}
-        />
+          <TextField
+            required
+            size="small"
+            id="outlined-location"
+            label="Location"
+            onChange={(e) => setLocation(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          size="small"
-          id="outlined-business"
-          label="Business Name"
-          onChange={(e) => setBusiness(e.target.value)}
-        />
+          <TextField
+            size="small"
+            id="outlined-business"
+            label="Business Name"
+            onChange={(e) => setBusiness(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-username"
-          label="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
+          <TextField
+            required
+            size="small"
+            id="outlined-username"
+            label="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-password"
-          type="password"
-          label="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <TextField
+            required
+            size="small"
+            id="outlined-password"
+            type="password"
+            label="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Box>
-      <Box>
-        <Button
-          type="submit"
-          size="small"
-          variant="contained"
-          endIcon={<SendIcon />}
-        >
-          Send
-        </Button>
-      </Box>
-      <Box>
-        <Button
-          component={Link}
-          to= "/signin"
-          size="small"
-          variant="contained"
-        >
-          HAVE AN ACCOUNT? PLEASE SIGN IN.
-        </Button>
-      </Box>
+        <Box>
+          <Button
+            type="submit"
+            size="small"
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
+            Send
+          </Button>
+        </Box>
+        <Box>
+          <Button
+            component={Link}
+            to="/signin"
+            size="small"
+            variant="contained"
+          >
+            HAVE AN ACCOUNT? PLEASE SIGN IN.
+          </Button>
+        </Box>
       </Box>
     </Grid>
   );
