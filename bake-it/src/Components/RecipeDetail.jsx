@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const RecipeDetail = (props) => {
-  // console.log (props)
+  // console.log ()
   const [recipe, setRecipe] = useState(null);
   let params = useParams();
   console.log(params);
+  console.log(recipe);
 
   useEffect(() => {
     const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}`;
@@ -16,18 +17,20 @@ const RecipeDetail = (props) => {
     axios.get(requestUrl).then((res) => {
       console.log(res);
       setRecipe(res.data);
+    }).catch((err) => {
+      console.log(err);
     });
   }, []);
 
   return (
     <Card>
       {recipe && <Recipe {...recipe} />}
-      <Box>
+      {recipe && <Box>
         <h3>Title: {recipe.title}</h3>
         <p>{recipe.ingredients}</p>
         <h4>RECIPE: {recipe.recipe}</h4>
         <h5>BAKED ON: {recipe.created_at}</h5>
-      </Box>
+      </Box>}
       <Box>
         <Box>
           <Button size="small" variant="contained">

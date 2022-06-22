@@ -57,6 +57,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   };
 
   if (isRegistered) {
+    
     return <Navigate to="/signin" />;
   }
 
