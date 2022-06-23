@@ -17,6 +17,9 @@ function App() {
     'reactLibraryUsername',
     ''
   )
+  const deleteRecipe = (id) => {
+    console.log('delete', id )
+  }
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -57,7 +60,7 @@ function App() {
               }
             ></Route>
             <Route path="/signup" element={<Register />} />
-            <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/addrecipe" element={<AddRecipe recipe={recipe} onDelete={deleteRecipe} isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             
           </Route>
