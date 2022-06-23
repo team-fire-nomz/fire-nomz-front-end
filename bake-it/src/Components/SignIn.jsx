@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Snackbar, TextField, Typography, Button, Box } from '@mui/material';
+import { Grid, Snackbar, TextField, Typography, Button, Box } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { useState } from 'react';
 import React from 'react';
@@ -57,11 +57,16 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 	}
 
 	return (
-		<Box>
-			<Typography variant="h4" align="center">
+		<Grid>
+		<Box
+		sx={{
+            backgroundColor: '#987581',
+            overflow: 'scroll',
+        }}>
+			<Typography sx={{color: 'white'}} variant="h4" align="center">
 				Welcome fellow baker!
 			</Typography>
-			<Typography align="center">
+			<Typography sx={{color: 'white'}} align="center">
 				Please sign in to continue.
 			</Typography>
 			{error && (
@@ -84,6 +89,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 			<Box component="form" onSubmit={handleLogin} align="center">
 				<Box textAlign="center">
 					<TextField
+					    style={{ backgroundColor: 'white'}} 
 						label="username"
 						value={username}
 						margin="normal"
@@ -91,16 +97,24 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				</Box>
 				<Box textAlign="center">
                     <TextField
+					    style={{ backgroundColor: 'white'}} 
                         label="password"
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)} />
 				</Box>
 				<Box textAlign="center">
-					<Button size="large" variant="outlined" type="submit">Sign in</Button>
+					<Button 
+					style={{color:'Pink', backgroundColor: 'Teal'}} 
+					size="large" 
+					variant="outlined" 
+					type="submit"
+					>Sign in
+					</Button>
 				</Box>
 				<Box textAlign="center">
 					<Button
+					style={{color:'Teal', backgroundColor: 'Pink'}} 
 					component={Link}
 					to= "/signup"
 					size="small"
@@ -111,5 +125,6 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 			</Box>
 			</Box>
 		</Box>
+		</Grid>
 	)
 }

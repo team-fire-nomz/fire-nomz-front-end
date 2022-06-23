@@ -5,9 +5,9 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
 
     return (
 
-    <AppBar position='static'>
-        <Toolbar>
-            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+    <AppBar  style={{backgroundColor: 'teal'}}position='static'>
+        <Toolbar >
+            <Typography style={{color:'Pink'}} variant='h6' component='div' sx={{ flexGrow: 1 }}>
                 Bake It Till You Make It
             </Typography>
                 <Stack direction='row' spacing={1}>

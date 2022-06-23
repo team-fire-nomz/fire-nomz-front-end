@@ -2,6 +2,7 @@ import Recipe from "./Recipe";
 import { Link, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {Container} from "@mui/material";
 
 function RecipeList(props) {
   const [recipes, setRecipes] = useState([]);
@@ -17,7 +18,14 @@ function RecipeList(props) {
   }, [searchParams]);
 
   return (
-    <div>
+    <Container
+    sx={{
+      backgroundColor:'pink',
+      margin:'2px',
+      
+    }}>
+    <div> 
+    
       {recipes.length > 0 ?
         recipes.map((recipe) => (
           <Recipe
@@ -33,9 +41,8 @@ function RecipeList(props) {
       :
       <h3>NO RESULTS FOUND</h3>
       }
-
-      <Link to="/addrecipe">ADD YOUR NEW RECIPE</Link>
     </div>
+    </Container>
   );
 }
 

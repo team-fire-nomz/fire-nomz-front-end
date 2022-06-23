@@ -8,6 +8,7 @@ function AddRecipe(props) {
     const [enteredIngredients, setEnteredIngredients] = useState("");
     const [enteredRecipe, setEnteredRecipe] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
+    const [isEntered, setIsEntered] = useState(false);
 
     if (!props.isLoggedIn) {
     return <Navigate to="/signin" replace={true} />;
@@ -31,6 +32,8 @@ function AddRecipe(props) {
         })
         .then((res) => {
         console.log(res);
+        setIsEntered(true);
+
         })
     }
     const handleChange = (inputType, event) => {
@@ -43,11 +46,18 @@ function AddRecipe(props) {
     if (inputType === "recipe") {
         setEnteredRecipe(event.target.value);
     }
+    if (isEntered) {
+        return <Navigate to="/signin" />;
+      }
     };
 
     return (
     <Grid
         container
+        sx={{
+            backgroundColor: '#e9d79e',
+            overflow: 'scroll',
+        }}
         spacing={0}
         padding={0.5}
         direction="column"
@@ -55,9 +65,12 @@ function AddRecipe(props) {
         justifyContent="Center"
         style={{ minHeight: "75vh" }}
     >
-        <Box className="HERE!" component="form" onSubmit={submitHandler}>
+        <Box
+         className="HERE!" 
+         component="form" 
+         onSubmit={submitHandler}>
         <div>
-            <label htmlFor="title"> </label>
+            <label htmlFor="title"/>
             <input
             type="text"
             required
@@ -68,7 +81,7 @@ function AddRecipe(props) {
             />
         </div>
         <div>
-            <label htmlFor="ingredients"></label>
+            <label htmlFor="ingredients"/>
             <textarea
             id="description"
             required
@@ -79,7 +92,7 @@ function AddRecipe(props) {
             ></textarea>
         </div>
         <div>
-            <label spacing={0} htmlFor="recipe">Recipe Steps</label>
+            <label spacing={0} htmlFor="recipe"/>
             <textarea
             id="description"
             required
@@ -90,7 +103,11 @@ function AddRecipe(props) {
             ></textarea>
         </div>
         <div>
-            <Button variant="contained" type="submit" size="small">
+            <Button 
+            style={{color:'Teal', backgroundColor: 'Pink'}}
+            variant="contained" 
+            type="submit" 
+            size="small">
             Add Recipe
             </Button>
         </div>
