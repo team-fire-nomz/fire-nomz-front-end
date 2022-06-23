@@ -3,10 +3,11 @@ import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 
 
+
 function Layout(props) {
 
     return (
-    <div>
+    <div style={{ backgroundImage:`url(${Image})`}}>
         <NavBar
         	isLoggedIn={props.isLoggedIn}
         	handleLogout={props.handleLogout}

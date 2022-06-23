@@ -65,6 +65,10 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
 
   return (
     <Grid
+    sx={{
+            backgroundColor: '#e9d79e',
+            overflow: 'scroll',
+        }}
       container
       spacing={0}
       direction="column"
@@ -87,12 +91,13 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         textAlign="center"
         component="form"
         onSubmit={handleRegistration}
-        sx={{ "& .MuiTextField-root": { m: 2, width: "30ch" } }}
+        sx={{ "& .MuiTextField-root": { m: 1, width: "30ch" } }}
         noValidate
         autocomplete="off"
       >
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             required
             size="small"
             id="outlined-firstname"
@@ -103,6 +108,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             required
             size="small"
             id="outlined-lastname"
@@ -113,6 +119,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             required
             size="small"
             id="outlined-email"
@@ -123,6 +130,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             required
             size="small"
             id="outlined-location"
@@ -133,6 +141,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             size="small"
             id="outlined-business"
             label="Business Name"
@@ -142,6 +151,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             required
             size="small"
             id="outlined-username"
@@ -152,6 +162,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <TextField
+            style={{ backgroundColor: 'white'}} 
             required
             size="small"
             id="outlined-password"
@@ -163,6 +174,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <Button
+            style={{color:'Pink', backgroundColor: 'Teal'}}
             type="submit"
             size="small"
             variant="contained"
@@ -173,6 +185,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <Button
+            style={{color:'Teal', backgroundColor: 'Pink'}} 
             component={Link}
             to="/signin"
             size="small"

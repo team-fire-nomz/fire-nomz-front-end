@@ -59,7 +59,7 @@ function App() {
             <Route path="/signup" element={<Register />} />
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
-            <Route path="/about" element={<Footer />} />
+            
           </Route>
         </Routes>
       
