@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 
+
 const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,9 +13,6 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [business, setBusiness] = useState("");
-  // const tempError = {
-  //   password: ["The password is too similar to the username."],
-  // };
   const [error, setError] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
 
@@ -119,6 +117,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             size="small"
             id="outlined-email"
             label="Email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </Box>
@@ -128,6 +127,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             size="small"
             id="outlined-location"
             label="Location"
+            value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
         </Box>
@@ -136,6 +136,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             size="small"
             id="outlined-business"
             label="Business Name"
+            value={business}
             onChange={(e) => setBusiness(e.target.value)}
           />
         </Box>
@@ -145,6 +146,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             size="small"
             id="outlined-username"
             label="Username"
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </Box>
@@ -155,6 +157,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             id="outlined-password"
             type="password"
             label="Password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Box>
