@@ -1,9 +1,44 @@
 import {Card, Box, Button } from "@mui/material";
+import { useEffect } from "react";
 import Recipe from "./Recipe";
+import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 
-const RecipeDetail = (props) => {
+export const RecipeDetail = (props) => {
 
+    if (!props.isLoggedIn) {
+        return <Navigate to="/signin" replace={true} />;
+    }
+    const submitHandler = (event) => {
+        console.log("deleting recipe");
+        event.preventDefault();
+
+    
+    function handleRecipeDelete({ id }) {
+            axios
+                .patch(
+                    `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${id}/tests/${id}/`,
+                    {
+                        headers: { Authorization: `token ${props.token}` },
+                    }
+                )
+                .then((res) => {
+                    console.log(res.status)
+                })
+                .catch((e) => {
+                })
+        }
+    
+        useEffect(() => {
+
+            fetch(`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${id}/tests/${id}/`, {
+                method: 'DELETE'
+            .then(() => setStatus('Recipe Deleted'))
+            }
+            )
+        })
+    };
 
 
     return (
@@ -26,6 +61,7 @@ const RecipeDetail = (props) => {
             </Box>
             <Box>
                 <Button
+                onClick={() => handleRecipeDelete ()}
                 to= "/signin"
                 size="small"
                 variant="contained"
@@ -37,6 +73,3 @@ const RecipeDetail = (props) => {
         </Card>
     )
 }
-
-export default RecipeDetail;
-
