@@ -5,98 +5,115 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function AddRecipe(props) {
-  const [enteredIngredients, setEnteredIngredients] = useState("");
-  const [enteredRecipe, setEnteredRecipe] = useState("");
-  const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredIngredients, setEnteredIngredients] = useState("");
+    const [enteredRecipe, setEnteredRecipe] = useState("");
+    const [enteredTitle, setEnteredTitle] = useState("");
+    const [isEntered, setIsEntered] = useState(false);
 
-  if (!props.isLoggedIn) {
+    if (!props.isLoggedIn) {
     return <Navigate to="/signin" replace={true} />;
-  }
-  const submitHandler = (event) => {
-      console.log("adding recipe");
+    }
+    const submitHandler = (event) => {
+        console.log("adding recipe");
     event.preventDefault();
     
     const recipeData ={
         title: enteredTitle,
         ingredients: enteredIngredients,
         recipe: enteredRecipe,
-      }
-     console.log("recipeData", recipeData)
+        }
+        console.log("recipeData", recipeData)
     axios
-      .post(
+        .post(
         "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
-      recipeData,
-       {
+        recipeData,
+        {
         headers: { Authorization: `Token ${props.token}` },
-       })
-      .then((res) => {
+        })
+        .then((res) => {
         console.log(res);
-      })
-  }
-  const handleChange = (inputType, event) => {
+        setIsEntered(true);
+
+        })
+    }
+    const handleChange = (inputType, event) => {
     if (inputType === "title") {
-      setEnteredTitle(event.target.value);
+        setEnteredTitle(event.target.value);
     }
     if (inputType === "ingredients") {
-      setEnteredIngredients(event.target.value);
+        setEnteredIngredients(event.target.value);
     }
     if (inputType === "recipe") {
-      setEnteredRecipe(event.target.value);
+        setEnteredRecipe(event.target.value);
     }
-  };
+    if (isEntered) {
+        return <Navigate to="/signin" />;
+      }
+    };
 
-  return (
+    return (
     <Grid
-      container
-      spacing={0}
-      padding={0.5}
-      direction="column"
-      alignItems="center"
-      justifyContent="Center"
-      style={{ minHeight: "75vh" }}
+        container
+        sx={{
+            backgroundColor: '#e9d79e',
+            overflow: 'scroll',
+        }}
+        spacing={0}
+        padding={0.5}
+        direction="column"
+        alignItems="center"
+        justifyContent="Center"
+        style={{ minHeight: "75vh" }}
     >
-      <Box className="HERE!" component="form" onSubmit={submitHandler}>
+        <Box
+         className="HERE!" 
+         component="form" 
+         onSubmit={submitHandler}>
         <div>
-          <label htmlFor="title"> </label>
-          <input
+            <label htmlFor="title"/>
+            <input
             type="text"
             required
             placeholder="TITLE:"
             id="title"
-            value={props.value}
+            value={props.title}
             onChange={(e) => handleChange("title", e)}
-          />
+            />
         </div>
         <div>
-          <label htmlFor="ingredients"></label>
-          <textarea
+            <label htmlFor="ingredients"/>
+            <textarea
             id="description"
             required
             placeholder="Ingredients"
             rows="12"
             value={props.ingredients}
             onChange={(e) => handleChange("ingredients", e)}
-          ></textarea>
+            ></textarea>
         </div>
         <div>
-          <label spacing={0} htmlFor="recipe">Recipe Steps</label>
-          <textarea
+            <label spacing={0} htmlFor="recipe"/>
+            <textarea
             id="description"
             required
             placeholder="Recipe"
             rows="12"
             value={props.recipe}
             onChange={(e) => handleChange("recipe", e)}
-          ></textarea>
+            ></textarea>
         </div>
         <div>
-          <Button variant="contained" type="submit" size="small">
+            <Button 
+            style={{color:'Teal', backgroundColor: 'Pink'}}
+            variant="contained" 
+            type="submit" 
+            size="small">
             Add Recipe
-          </Button>
+            </Button>
         </div>
-      </Box>
+        </Box>
     </Grid>
-  );
+    );
 }
 
 export default AddRecipe;

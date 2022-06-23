@@ -1,13 +1,15 @@
-
 import SignIn from './Components/SignIn';
 import Layout from './Components/Layout';
 import Register from './Components/Register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from "./Pages/Homepage";
+import Footer from "./Components/Footer";
 import AddRecipe from "./Pages/AddRecipe";
 import RecipeDetail from "./Components/RecipeDetail";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
+
+
 
 function App() {
   const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
@@ -41,8 +43,9 @@ function App() {
   }
 
   return (
+    
     <BrowserRouter>
-
+      
         <Routes>
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
             <Route index element={<Homepage />} />
@@ -59,10 +62,12 @@ function App() {
             <Route path="/signup" element={<Register />} />
             <Route path="/addrecipe" element={<AddRecipe recipe={recipe} onDelete={deleteRecipe} isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
+            
           </Route>
         </Routes>
-
+      
     </BrowserRouter>
+
   );
 }
 

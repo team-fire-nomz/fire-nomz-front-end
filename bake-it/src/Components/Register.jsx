@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 
+
 const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +13,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [business, setBusiness] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegistration = (e) => {
@@ -26,7 +27,8 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
       lastName,
       email,
       location,
-      business
+      business,
+      error
     );
 
     const registerData = {
@@ -52,7 +54,8 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         console.log(isRegistered);
       })
       .catch((e) => {
-        setError(e.response);
+        console.log(e.response.data);
+        setError(e.response.data);
       });
   };
 
@@ -62,108 +65,135 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
 
   return (
     <Grid
-    container
-    spacing={0}
-    direction="column"
-    alignItems="center"
-    justifyContent="Center"
-    style={{ minHeight: '75vh' }}
+    sx={{
+            backgroundColor: '#e9d79e',
+            overflow: 'scroll',
+        }}
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="Center"
+      style={{ minHeight: "75vh" }}
     >
-      {error && <div className="error">{error}</div>}
-  
+      {error && (
+        <div
+          className="error"
+          style={{ backgroundColor: "red", color: "white", padding:'1rem',}}
+        >
+          {Object.entries(error).map(
+            ([errorField, errorMessage]) => `${errorField}: ${errorMessage}`
+          )}
+        </div>
+      )}
+
       <Box
         textAlign="center"
         component="form"
         onSubmit={handleRegistration}
-        sx={{ "& .MuiTextField-root": { m: 2, width: "30ch" } }}
+        sx={{ "& .MuiTextField-root": { m: 1, width: "30ch" } }}
         noValidate
         autocomplete="off"
       >
-      <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-firstname"
-          label="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
+        <Box>
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            required
+            size="small"
+            id="outlined-firstname"
+            label="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-lastname"
-          label="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            required
+            size="small"
+            id="outlined-lastname"
+            label="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-email"
-          label="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            required
+            size="small"
+            id="outlined-email"
+            label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-location"
-          label="Location"
-          onChange={(e) => setLocation(e.target.value)}
-        />
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            required
+            size="small"
+            id="outlined-location"
+            label="Location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          size="small"
-          id="outlined-business"
-          label="Business Name"
-          onChange={(e) => setBusiness(e.target.value)}
-        />
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            size="small"
+            id="outlined-business"
+            label="Business Name"
+            value={business}
+            onChange={(e) => setBusiness(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-username"
-          label="Username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            required
+            size="small"
+            id="outlined-username"
+            label="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </Box>
         <Box>
-        <TextField
-          required
-          size="small"
-          id="outlined-password"
-          type="password"
-          label="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <TextField
+            style={{ backgroundColor: 'white'}} 
+            required
+            size="small"
+            id="outlined-password"
+            type="password"
+            label="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Box>
-      <Box>
-        <Button
-          type="submit"
-          size="small"
-          variant="contained"
-          endIcon={<SendIcon />}
-        >
-          Send
-        </Button>
-      </Box>
-      <Box>
-        <Button
-          component={Link}
-          to= "/signin"
-          size="small"
-          variant="contained"
-        >
-          HAVE AN ACCOUNT? PLEASE SIGN IN.
-        </Button>
-      </Box>
+        <Box>
+          <Button
+            style={{color:'Pink', backgroundColor: 'Teal'}}
+            type="submit"
+            size="small"
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
+            Send
+          </Button>
+        </Box>
+        <Box>
+          <Button
+            style={{color:'Teal', backgroundColor: 'Pink'}} 
+            component={Link}
+            to="/signin"
+            size="small"
+            variant="contained"
+          >
+            HAVE AN ACCOUNT? PLEASE SIGN IN.
+          </Button>
+        </Box>
       </Box>
     </Grid>
   );

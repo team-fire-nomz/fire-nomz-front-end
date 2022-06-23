@@ -5,7 +5,11 @@ import { Card } from "@mui/material";
 const Recipe = (props) => {
 
     return (
-        <Card>
+        <Card
+        sx={{
+            backgroundColor: '#e9d79e',
+            overflow: 'scroll',
+        }}>
         <div>
         <Link to={`/recipe/${props.id}`}>{props.title}</Link>
         <p>Chef: {props.chef}</p>
