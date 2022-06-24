@@ -1,56 +1,4 @@
-
-import Recipe from "./Recipe";
-
-const Recipes = ({ recipes, onDelete }) => {
-    return (
-        <>
-            {recipes.map((recipe) => (
-                <Recipe key={recipe.id} recipe={recipe} onDelete={onDelete} />
-            )
-            )}
-        </>
-    )
-    }
-
-// export default function RecipeDetail (props) {
-
-//     if (!props.isLoggedIn) {
-//         return <Navigate to="/signin" replace={true} />;
-//     }
-
-//     return (
-//         <Card>
-//         <Recipe key ={recipe.id} recipe={recipe} />
-//         <div>
-//         <h3>Title: {props.title}</h3>
-//         <p>{props.ingredients}</p>
-//         <h4>RECIPE: {props.recipe}</h4>
-//         <h5>BAKED ON: {props.created_at}</h5>
-//         </div>
-//         <Box>
-//             <Box>
-//                 <Button
-//                 size="small"
-//                 variant="contained"
-//                 >
-//                 EDIT
-//                 </Button> 
-//             </Box>
-//             <Box>
-//                 <Button
-//                 to= "/signin"
-//                 size="small"
-//                 variant="contained"
-//                 >
-//                 DELETE
-//                 </Button>
-//             </Box>
-//         </Box>
-//         </Card>
-//     )
-// }
-
-import { Card, Box, Button } from "@mui/material";
+import { Card, Box, Button, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import axios from "axios";
 import Recipe from "./Recipe";
 import { useEffect, useState } from "react";
@@ -58,10 +6,31 @@ import { useParams } from "react-router-dom";
 
 const RecipeDetail = (props) => {
   // console.log ()
+  const [recipes, setRecipes] = useState([]);
   const [recipe, setRecipe] = useState(null);
+  const [newRecipe, setNewRecipe] = useState(null);
+
   let params = useParams();
   console.log(params);
   console.log(recipe);
+
+  const handleEdit = (event) => {
+    console.log('Handle Recipe Called');
+    event.preventDefault();
+    axios
+    .patch(`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}/`,
+    {
+      recipe: recipe,
+    },
+    {
+      headers: { Authorization: `Token ${props.token}`},
+    }
+    )
+    .then((res) => {
+      console.log('Successful Submit');
+      console.log(res);
+    });
+  };
 
   useEffect(() => {
     const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}`;
@@ -74,7 +43,8 @@ const RecipeDetail = (props) => {
     });
   }, []);
 
-  return (
+ 
+    return (
     <Card>
       {recipe && <Recipe {...recipe} />}
       {recipe && <Box>
@@ -83,20 +53,12 @@ const RecipeDetail = (props) => {
         <h4>RECIPE: {recipe.recipe}</h4>
         <h5>BAKED ON: {recipe.created_at}</h5>
       </Box>}
-      <Box>
-        <Box>
-          <Button size="small" variant="contained">
-            EDIT
-          </Button>
-        </Box>
-        <Box>
-          <Button to="/signin" size="small" variant="contained">
-            DELETE
-          </Button>
-        </Box>
-      </Box>
     </Card>
   );
+
 };
 
+
+
 export default RecipeDetail;
+

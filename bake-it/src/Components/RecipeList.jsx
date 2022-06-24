@@ -24,7 +24,6 @@ function RecipeList(props) {
       margin:'2px',
       
     }}>
-    <div> 
     
       {recipes.length > 0 ?
         recipes.map((recipe) => (
@@ -38,10 +37,12 @@ function RecipeList(props) {
             key={recipe.id}
           />
         ))
+      
       :
       <h3>NO RESULTS FOUND</h3>
       }
-    </div>
+    
+    
     </Container>
   );
 }
