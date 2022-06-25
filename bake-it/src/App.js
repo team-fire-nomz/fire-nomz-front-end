@@ -8,7 +8,7 @@ import AddRecipe from "./Pages/AddRecipe";
 import RecipeDetail from "./Components/RecipeDetail";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
-
+import Feedback from "./Pages/Feedback";
 
 
 function App() {
@@ -17,9 +17,6 @@ function App() {
     'reactLibraryUsername',
     ''
   )
-  const deleteRecipe = (id) => {
-    console.log('delete', id )
-  }
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -49,20 +46,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
             <Route index element={<Homepage />} />
-            <Route
-              path="/signin"
-              element={
+            <Route path="/signin" element={
                 <SignIn
                   setAuth={setAuth}
                   isLoggedIn={isLoggedIn}
-                  handleLogout={handleLogout}
-                />
-              }
-            ></Route>
+                  handleLogout={handleLogout} />} ></Route>
             <Route path="/signup" element={<Register />} />
-            <Route path="/addrecipe" element={<AddRecipe recipe={recipe} onDelete={deleteRecipe} isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/addrecipe" element={<AddRecipe />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
-            
+            <Route path="/feedback" element={<Feedback />} />
           </Route>
         </Routes>
       
