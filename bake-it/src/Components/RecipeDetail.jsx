@@ -4,6 +4,7 @@ import Recipe from "./Recipe";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+
 const Recipes = ({ recipes, onDelete }) => {
     return (
         <>
@@ -53,9 +54,13 @@ const Recipes = ({ recipes, onDelete }) => {
 //     )
 // }
 
+
 const RecipeDetail = (props) => {
   // console.log ()
+
   const [recipe, setRecipe] = useState(null);
+  
+
   let params = useParams();
   console.log(params);
   console.log(recipe);
@@ -71,7 +76,8 @@ const RecipeDetail = (props) => {
     });
   }, []);
 
-  return (
+ 
+    return (
     <Card>
       {recipe && <Recipe {...recipe} />}
       {recipe && <Box>
@@ -80,20 +86,12 @@ const RecipeDetail = (props) => {
         <h4>RECIPE: {recipe.recipe}</h4>
         <h5>BAKED ON: {recipe.created_at}</h5>
       </Box>}
-      <Box>
-        <Box>
-          <Button size="small" variant="contained">
-            EDIT
-          </Button>
-        </Box>
-        <Box>
-          <Button to="/signin" size="small" variant="contained">
-            DELETE
-          </Button>
-        </Box>
-      </Box>
     </Card>
   );
+
 };
 
+
+
 export default RecipeDetail;
+

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { BottomNavigation, BottomNavigationAction} from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';

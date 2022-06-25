@@ -1,5 +1,5 @@
 import Recipe from "./Recipe";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Container} from "@mui/material";
@@ -9,7 +9,7 @@ function RecipeList(props) {
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/?${searchParams}`;
+    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${searchParams}`;
     console.log(requestUrl);
     axios.get(requestUrl).then((res) => {
       console.log(res);
@@ -24,7 +24,6 @@ function RecipeList(props) {
       margin:'2px',
       
     }}>
-    <div> 
     
       {recipes.length > 0 ?
         recipes.map((recipe) => (
@@ -38,10 +37,12 @@ function RecipeList(props) {
             key={recipe.id}
           />
         ))
+      
       :
       <h3>NO RESULTS FOUND</h3>
       }
-    </div>
+    
+    
     </Container>
   );
 }

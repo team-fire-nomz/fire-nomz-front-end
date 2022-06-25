@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Card } from "@mui/material";
+
 
 
 const Recipe = (props) => {
 
     return (
-        <Card
+        <div
         sx={{
             backgroundColor: '#e9d79e',
             overflow: 'scroll',
@@ -15,7 +15,7 @@ const Recipe = (props) => {
         <p>Chef: {props.chef}</p>
         <h5>Baked on: {props.created_at}</h5>
         </div>
-        </Card>
+        </div>
     )
 }
 

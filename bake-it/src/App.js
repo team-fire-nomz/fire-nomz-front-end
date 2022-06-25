@@ -3,13 +3,12 @@ import Layout from './Components/Layout';
 import Register from './Components/Register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from "./Pages/Homepage";
-import Footer from "./Components/Footer";
 import AddRecipe from "./Pages/AddRecipe";
-import RecipeDetail from "./Components/RecipeDetail";
+import Tracking from "./Pages/Tracking";
+import Notes from "./Components/Notes";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 import Feedback from "./Pages/Feedback";
-
 
 function App() {
   const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
@@ -52,9 +51,14 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   handleLogout={handleLogout} />} ></Route>
             <Route path="/signup" element={<Register />} />
+
+            <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/recipe/:id" element={<Tracking />} />
+            <Route path="/recipe/:id/notes" element={<Notes />} />
             <Route path="/addrecipe" element={<AddRecipe />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             <Route path="/feedback" element={<Feedback />} />
+
           </Route>
         </Routes>
       
