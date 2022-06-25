@@ -1,5 +1,8 @@
-
+import { Card, Box, Button } from "@mui/material";
+import axios from "axios";
 import Recipe from "./Recipe";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Recipes = ({ recipes, onDelete }) => {
     return (
@@ -49,12 +52,6 @@ const Recipes = ({ recipes, onDelete }) => {
 //         </Card>
 //     )
 // }
-
-import { Card, Box, Button } from "@mui/material";
-import axios from "axios";
-import Recipe from "./Recipe";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 const RecipeDetail = (props) => {
   // console.log ()

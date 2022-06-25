@@ -1,8 +1,5 @@
-import Ingredients from "bake-it/src/Components/Ingredients.jsx";
-
-export default function Tracking () {
-
-	return (
-		<Ingredients />
-	)
-};
+//recipe tracking page
+//be able to view ingredients and recipe
+//notes form to add changes they'd like to make to the next recipe
+//add successful recipe button
+//figure out tags
