@@ -4,7 +4,8 @@ import Register from './Components/Register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from "./Pages/Homepage";
 import AddRecipe from "./Pages/AddRecipe";
-import RecipeDetail from "./Components/RecipeDetail";
+import Tracking from "./Pages/Tracking";
+import Notes from "./Components/Notes";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 
@@ -56,7 +57,8 @@ function App() {
             ></Route>
             <Route path="/signup" element={<Register />} />
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
-            <Route path="/recipe/:id" element={<RecipeDetail />} />
+            <Route path="/recipe/:id" element={<Tracking />} />
+            <Route path="/recipe/:id/notes" element={<Notes />} />
             
           </Route>
         </Routes>

@@ -5,8 +5,7 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function Notes(props) {
-    const [enteredIngredients, setEnteredIngredients] = useState("");
-    const [enteredRecipe, setEnteredRecipe] = useState("");
+    const [enteredNote, setEnteredNote] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
     const [isEntered, setIsEntered] = useState(false);
 
@@ -24,8 +23,8 @@ function Notes(props) {
         console.log("notesData", notesData)
     axios
         .post(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${id}/tests/`,
-        recipeData,
+        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.id}/notes/`,
+        notesData,
         {
         headers: { Authorization: `Token ${props.token}` },
         })
@@ -46,7 +45,6 @@ function Notes(props) {
     if (isEntered) {
         return <Navigate to="/" />;
       }
-    };
 
     return (
     <Grid
@@ -82,7 +80,7 @@ function Notes(props) {
             <textarea
             id="description"
             required
-            placeholder="Ingredients"
+            placeholder="Create your note"
             rows="12"
             value={props.ingredients}
             onChange={(e) => handleChange("ingredients", e)}
@@ -100,6 +98,6 @@ function Notes(props) {
         </Box>
     </Grid>
     );
-    }
+    };
 
 export default Notes;

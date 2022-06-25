@@ -1,4 +1,4 @@
-import { Card, Box, Button, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Card, Box } from "@mui/material";
 import axios from "axios";
 import Recipe from "./Recipe";
 import { useEffect, useState } from "react";
@@ -6,31 +6,13 @@ import { useParams } from "react-router-dom";
 
 const RecipeDetail = (props) => {
   // console.log ()
-  const [recipes, setRecipes] = useState([]);
+
   const [recipe, setRecipe] = useState(null);
-  const [newRecipe, setNewRecipe] = useState(null);
+  
 
   let params = useParams();
   console.log(params);
   console.log(recipe);
-
-  const handleEdit = (event) => {
-    console.log('Handle Recipe Called');
-    event.preventDefault();
-    axios
-    .patch(`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}/`,
-    {
-      recipe: recipe,
-    },
-    {
-      headers: { Authorization: `Token ${props.token}`},
-    }
-    )
-    .then((res) => {
-      console.log('Successful Submit');
-      console.log(res);
-    });
-  };
 
   useEffect(() => {
     const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}`;
