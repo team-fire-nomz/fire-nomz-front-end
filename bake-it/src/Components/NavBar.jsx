@@ -20,7 +20,12 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                     <Button variant='text'><Link to="/" onClick={handleLogout}>SIGN OUT</Link></Button>
                 )}
                     <Button variant='text'><Link to="/addrecipe">NEW RECIPE</Link></Button>
+
                     <Button variant='text'><Link to="/recipe/:id">RECIPE TRACKING</Link></Button>
+
+                    <Button variant='text'><Link to="/tracking">RECIPE TRACKING</Link></Button>
+                    <Button variant='text'><Link to="/feedback">FEEDBACK</Link></Button>
+
                 </Stack>
                 
                     <MenuItem></MenuItem>

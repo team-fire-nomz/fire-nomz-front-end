@@ -2,11 +2,7 @@ import React from 'react';
 import RecipeList from "../Components/RecipeList";
 import { Container } from "@mui/material";
 
-
-
 function Homepage (){
-
-
 
 return (
    
@@ -14,15 +10,9 @@ return (
    sx={{
       backgroundColor: '#86b29b',
       overflow: 'scroll',
-
    }}>
-  
-   <RecipeList /> 
+      <RecipeList /> 
    </Container>
-   
-)
-}
-
-
+   )}
 
 export default Homepage;
