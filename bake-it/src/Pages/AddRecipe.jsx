@@ -48,7 +48,7 @@ function AddRecipe(props) {
     }
     if (isEntered) {
         return <Navigate to="/signin" />;
-      }
+    }
     };
 
     return (
@@ -66,9 +66,9 @@ function AddRecipe(props) {
         style={{ minHeight: "75vh" }}
     >
         <Box
-         className="HERE!" 
-         component="form" 
-         onSubmit={submitHandler}>
+            className="HERE!" 
+            component="form" 
+            onSubmit={submitHandler}>
         <div>
             <label htmlFor="title"/>
             <input
@@ -98,7 +98,7 @@ function AddRecipe(props) {
             required
             placeholder="Recipe"
             rows="12"
-            value={props.recipe}
+            value={props.recipe_steps}
             onChange={(e) => handleChange("recipe", e)}
             ></textarea>
         </div>

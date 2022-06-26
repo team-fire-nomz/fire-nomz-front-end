@@ -44,7 +44,7 @@ function App() {
       
         <Routes>
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
-            <Route index element={<Homepage />} />
+            <Route index element={<Homepage token={token}/>} />
             <Route path="/signin" element={
                 <SignIn
                   setAuth={setAuth}
@@ -53,11 +53,9 @@ function App() {
             <Route path="/signup" element={<Register />} />
 
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
-            <Route path="/recipe/:id" element={<Tracking />} />
-            <Route path="/recipe/:id/notes" element={<Notes />} />
-            <Route path="/addrecipe" element={<AddRecipe />} />
-            <Route path="/recipe/:id" element={<RecipeDetail />} />
-            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/recipe/:id" element={<Tracking isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/recipe/:id/notes" element={<Notes isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
 
           </Route>
         </Routes>

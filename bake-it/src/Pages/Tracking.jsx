@@ -3,6 +3,7 @@ import axios from "axios";
 import Recipe from "../Components/Recipe";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Notes from "../Components/Notes";
 
 const Tracking = (props) => {
   // console.log ()
@@ -51,10 +52,21 @@ useEffect(() => {
 	{recipe && <Box>
 		<h3>Title: {recipe.title}</h3>
 		<p>{recipe.ingredients}</p>
-		<h4>RECIPE: {recipe.recipe}</h4>
+		<h4>RECIPE: {recipe.recipe_steps}</h4>
 		<h5>BAKED ON: {recipe.created_at}</h5>
 	</Box>}
+	<div>
+	<Notes />
+	</div>
+	<Button 
+		style={{color:'white', backgroundColor: 'teal'}}
+		variant="contained" 
+		type="submit" 
+		size="small">
+		ADD NOTES
+	</Button>
 	</Box>
+
 );
 
 };
