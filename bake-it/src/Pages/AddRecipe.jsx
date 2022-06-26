@@ -5,9 +5,11 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function AddRecipe(props) {
+    console.log(props)
     const [enteredIngredients, setEnteredIngredients] = useState("");
     const [enteredRecipe, setEnteredRecipe] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredVersion, setEnteredVersion] = useState("");
     const [isEntered, setIsEntered] = useState(false);
 
     if (!props.isLoggedIn) {
@@ -19,8 +21,9 @@ function AddRecipe(props) {
     
     const recipeData ={
         title: enteredTitle,
+        version_number: enteredVersion,
         ingredients: enteredIngredients,
-        recipe: enteredRecipe,
+        recipe_steps: enteredRecipe,
         }
         console.log("recipeData", recipeData)
     axios
@@ -40,6 +43,9 @@ function AddRecipe(props) {
     if (inputType === "title") {
         setEnteredTitle(event.target.value);
     }
+    if (inputType === "version_number") {
+        setEnteredVersion(event.target.value);
+    }
     if (inputType === "ingredients") {
         setEnteredIngredients(event.target.value);
     }
@@ -48,7 +54,7 @@ function AddRecipe(props) {
     }
     if (isEntered) {
         return <Navigate to="/signin" />;
-      }
+    }
     };
 
     return (
@@ -66,11 +72,11 @@ function AddRecipe(props) {
         style={{ minHeight: "75vh" }}
     >
         <Box
-         className="HERE!" 
-         component="form" 
-         onSubmit={submitHandler}>
+            className="HERE!" 
+            component="form" 
+            onSubmit={submitHandler}>
         <div>
-            <label htmlFor="title"/>
+            <label htmlFor="title"></label>
             <input
             type="text"
             required
@@ -81,7 +87,18 @@ function AddRecipe(props) {
             />
         </div>
         <div>
-            <label htmlFor="ingredients"/>
+            <label htmlFor="version"></label>
+            <input
+            type="text"
+            required
+            placeholder="VERSION:"
+            id="version"
+            value={props.version_number}
+            onChange={(e) => handleChange("version_number", e)}
+            />
+        </div>
+        <div>
+            <label htmlFor="ingredients"></label>
             <textarea
             id="description"
             required
@@ -92,13 +109,13 @@ function AddRecipe(props) {
             ></textarea>
         </div>
         <div>
-            <label spacing={0} htmlFor="recipe"/>
+            <label spacing={0} htmlFor="recipe"></label>
             <textarea
             id="description"
             required
             placeholder="Recipe"
             rows="12"
-            value={props.recipe}
+            value={props.recipe_steps}
             onChange={(e) => handleChange("recipe", e)}
             ></textarea>
         </div>

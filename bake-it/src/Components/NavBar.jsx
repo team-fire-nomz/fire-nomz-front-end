@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Stack, Button, Menu, MenuItem } from "@mui/material";
-import LoginIcon from '@mui/icons-material/Login';
-import { useState } from 'react';
+
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
@@ -21,9 +20,8 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                 )}
                     <Button variant='text'><Link to="/addrecipe">NEW RECIPE</Link></Button>
 
-                    <Button variant='text'><Link to="/recipe/:id">RECIPE TRACKING</Link></Button>
+                    <Button variant='text'><Link to="/recipes">RECIPE TRACKING</Link></Button>
 
-                    <Button variant='text'><Link to="/tracking">RECIPE TRACKING</Link></Button>
                     <Button variant='text'><Link to="/feedback">FEEDBACK</Link></Button>
 
                 </Stack>

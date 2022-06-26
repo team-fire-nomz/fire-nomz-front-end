@@ -1,4 +1,5 @@
 import Recipe from "./Recipe";
+import Search from "./Search";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -9,14 +10,19 @@ function RecipeList(props) {
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${searchParams}`;
+    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes/${searchParams}`;
     console.log(requestUrl);
-    axios.get(requestUrl).then((res) => {
+    axios.get(requestUrl,
+    {
+      headers: { Authorization: `Token ${props.token}` }
+    })
+    .then((res) => {
       console.log(res);
       setRecipes(res.data);
-    });
-  }, [searchParams]);
+    })
+  }, [searchParams, props.token]);
 
+ 
   return (
     <Container
     sx={{
@@ -24,14 +30,14 @@ function RecipeList(props) {
       margin:'2px',
       
     }}>
-    
+    <Search />
       {recipes.length > 0 ?
         recipes.map((recipe) => (
           <Recipe
             id={recipe.id}
             title={recipe.title}
             ingredients={recipe.ingredients}
-            recipe={recipe.recipe}
+            recipe={recipe.recipe_steps}
             chef={recipe.chef}
             created_at={recipe.created_at}
             key={recipe.id}
