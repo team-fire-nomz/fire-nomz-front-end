@@ -49,14 +49,12 @@ function App() {
                 <SignIn
                   setAuth={setAuth}
                   isLoggedIn={isLoggedIn}
-                  handleLogout={handleLogout} />} ></Route>
+                  handleLogout={handleLogout} />} />
             <Route path="/signup" element={<Register />} />
-
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<Tracking />} />
             <Route path="/recipe/:id/notes" element={<Notes />} />
-            <Route path="/feedback" element={<Feedback />} />
-
+            <Route path="/recipe/:id/feedback" element={<Feedback />} />
           </Route>
         </Routes>
       

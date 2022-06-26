@@ -5,13 +5,9 @@ import { Container } from "@mui/material";
 function Homepage (){
 
 return (
-   
    <Container
-   sx={{
-      backgroundColor: '#86b29b',
-      overflow: 'scroll',
-   }}>
-      <RecipeList /> 
+   sx={{overflow: 'scroll'}}>
+      <RecipeList />
    </Container>
    )}
 

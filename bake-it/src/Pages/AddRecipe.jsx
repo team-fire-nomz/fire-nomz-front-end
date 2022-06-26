@@ -48,14 +48,13 @@ function AddRecipe(props) {
     }
     if (isEntered) {
         return <Navigate to="/signin" />;
-      }
+    }
     };
 
     return (
     <Grid
         container
         sx={{
-            backgroundColor: '#e9d79e',
             overflow: 'scroll',
         }}
         spacing={0}
@@ -63,12 +62,12 @@ function AddRecipe(props) {
         direction="column"
         alignItems="center"
         justifyContent="Center"
-        style={{ minHeight: "75vh" }}
-    >
+        style={{ minHeight: "75vh" }}>
         <Box
-         className="HERE!" 
-         component="form" 
-         onSubmit={submitHandler}>
+            boxShadow={5}
+            className="HERE!" 
+            component="form" 
+            onSubmit={submitHandler}>
         <div>
             <label htmlFor="title"/>
             <input
@@ -77,8 +76,7 @@ function AddRecipe(props) {
             placeholder="TITLE:"
             id="title"
             value={props.title}
-            onChange={(e) => handleChange("title", e)}
-            />
+            onChange={(e) => handleChange("title", e)}/>
         </div>
         <div>
             <label htmlFor="ingredients"/>
@@ -103,8 +101,7 @@ function AddRecipe(props) {
             ></textarea>
         </div>
         <div>
-            <Button 
-            style={{color:'Teal', backgroundColor: 'Pink'}}
+            <Button
             variant="contained" 
             type="submit" 
             size="small">

@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom";
 import { Box, Button, Typography } from '@mui/material';
 
 
-
 export const Logout = ({ setAuth, setToken, setUsername, isLoggedIn }) => {
   const setLogout = () => {
     setUsername("");
@@ -11,8 +10,7 @@ export const Logout = ({ setAuth, setToken, setUsername, isLoggedIn }) => {
   };
 
   if (!isLoggedIn) {
-    return <Navigate to="/" />; 
-     
+    return <Navigate to="/" />;
   }
 
   return (
