@@ -8,7 +8,7 @@ import Tracking from "./Pages/Tracking";
 import Notes from "./Components/Notes";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
-import Feedback from "./Pages/Feedback";
+import  Feedback from "./Pages/Feedback";
 
 function App() {
   const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
@@ -54,7 +54,7 @@ function App() {
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<Tracking />} />
             <Route path="/recipe/:id/notes" element={<Notes />} />
-            <Route path="/recipe/:id/feedback" element={<Feedback />} />
+            <Route path="/recipes/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
           </Route>
         </Routes>
       

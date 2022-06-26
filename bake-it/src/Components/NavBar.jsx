@@ -6,7 +6,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddchartIcon from '@mui/icons-material/Addchart';
 import RateReviewIcon from '@mui/icons-material/RateReview';
-import { useState } from 'react';
+import React from 'react';
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
@@ -37,7 +37,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                         <Button variant='contained' color='secondary'><Link to="/tracking"><AddchartIcon /></Link></Button>
                     </Tooltip>
                     <Tooltip title="Provide Recipe Feedback">
-                        <Button variant='contained' color='secondary'><Link to="/feedback"><RateReviewIcon /></Link></Button>
+                        <Button variant='contained' color='secondary'><Link to="/recipes/id/feedback"><RateReviewIcon /></Link></Button>
                     </Tooltip>
                 </Stack>
                     <MenuItem></MenuItem>
