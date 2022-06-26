@@ -11,7 +11,7 @@ const Recipe = (props) => {
             overflow: 'scroll',
         }}>
         <div>
-        <Link to={`/recipe/${props.id}`}>{props.title}</Link>
+        <Link to={`/recipe/:${props.id}`}>{props.title}</Link>
         <p>Chef: {props.chef}</p>
         <h5>Baked on: {props.created_at}</h5>
         </div>

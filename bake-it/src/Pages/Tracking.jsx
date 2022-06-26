@@ -1,45 +1,35 @@
-import { Card, Box, Button, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import axios from "axios";
 import Recipe from "../Components/Recipe";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Notes from "../Components/Notes";
+import RecipeList from '../Components/RecipeList';
 
 const Tracking = (props) => {
   // console.log ()
-const [recipes, setRecipes] = useState([]);
 const [recipe, setRecipe] = useState(null);
-const [newRecipe, setNewRecipe] = useState(null);
+
 
 let params = useParams();
 console.log(params);
 console.log(recipe);
 
-const handleEdit = (event) => {
-	console.log('Handle Recipe Called');
-	event.preventDefault();
-
-	axios
-	.patch(`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}/`,
-	{
-	recipe: recipe,
-	},
-	{
-	headers: { Authorization: `Token ${props.token}`},
-	}
-	)
-	.then((res) => {
-	console.log('Successful Submit');
-	console.log(res);
-	});
-};
 
 useEffect(() => {
-	const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${params.id}`;
+	const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes?search=<search_term>";
 	console.log(requestUrl);
-	axios.get(requestUrl).then((res) => {
+	axios.get(requestUrl,
+    {
+		headers: { Authorization: `Token ${props.token}` }
+	})
+	
+	.then((res) => {
 	console.log(res);
 	setRecipe(res.data);
+
+
+
 	}).catch((err) => {
 	console.log(err);
 	});
@@ -48,15 +38,17 @@ useEffect(() => {
 
 	return (
 	<Box>
-	{recipe && <Recipe {...recipe} />}
+	{recipe && <Recipe {...props} />}
+	<RecipeList {...props} />
 	{recipe && <Box>
 		<h3>Title: {recipe.title}</h3>
+		<h3>Version: {recipe.version_number}</h3>
 		<p>{recipe.ingredients}</p>
 		<h4>RECIPE: {recipe.recipe_steps}</h4>
 		<h5>BAKED ON: {recipe.created_at}</h5>
 	</Box>}
 	<div>
-	<Notes />
+	<Notes {...props} />
 	</div>
 	<Button 
 		style={{color:'white', backgroundColor: 'teal'}}
@@ -68,7 +60,6 @@ useEffect(() => {
 	</Box>
 
 );
-
 };
 export default Tracking;
 

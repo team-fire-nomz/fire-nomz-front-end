@@ -5,13 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from "./Pages/Homepage";
 import AddRecipe from "./Pages/AddRecipe";
 import Tracking from "./Pages/Tracking";
-import Notes from "./Components/Notes";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 import Feedback from "./Pages/Feedback";
 
 function App() {
-  const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
+  const [token, setToken] = useLocalStorageState ('reactLibraryToken', '')
   const [username, setUsername] = useLocalStorageState(
     'reactLibraryUsername',
     ''
@@ -53,8 +52,7 @@ function App() {
             <Route path="/signup" element={<Register />} />
 
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
-            <Route path="/recipe/:id" element={<Tracking isLoggedIn={isLoggedIn} token={token}/>} />
-            <Route path="/recipe/:id/notes" element={<Notes isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/recipes" element={<Tracking isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
 
           </Route>

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button } from "@mui/material";
 
 function Homepage (props){
@@ -36,7 +35,6 @@ return (
       WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
       </Button>
 			</Box>
-      <RecipeList {...props}/> 
    </Container>
    )}
 

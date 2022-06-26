@@ -5,9 +5,11 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function AddRecipe(props) {
+    console.log(props)
     const [enteredIngredients, setEnteredIngredients] = useState("");
     const [enteredRecipe, setEnteredRecipe] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredVersion, setEnteredVersion] = useState("");
     const [isEntered, setIsEntered] = useState(false);
 
     if (!props.isLoggedIn) {
@@ -19,8 +21,9 @@ function AddRecipe(props) {
     
     const recipeData ={
         title: enteredTitle,
+        version_number: enteredVersion,
         ingredients: enteredIngredients,
-        recipe: enteredRecipe,
+        recipe_steps: enteredRecipe,
         }
         console.log("recipeData", recipeData)
     axios
@@ -39,6 +42,9 @@ function AddRecipe(props) {
     const handleChange = (inputType, event) => {
     if (inputType === "title") {
         setEnteredTitle(event.target.value);
+    }
+    if (inputType === "version_number") {
+        setEnteredVersion(event.target.value);
     }
     if (inputType === "ingredients") {
         setEnteredIngredients(event.target.value);
@@ -70,7 +76,7 @@ function AddRecipe(props) {
             component="form" 
             onSubmit={submitHandler}>
         <div>
-            <label htmlFor="title"/>
+            <label htmlFor="title"></label>
             <input
             type="text"
             required
@@ -81,7 +87,18 @@ function AddRecipe(props) {
             />
         </div>
         <div>
-            <label htmlFor="ingredients"/>
+            <label htmlFor="version"></label>
+            <input
+            type="text"
+            required
+            placeholder="VERSION:"
+            id="version"
+            value={props.version_number}
+            onChange={(e) => handleChange("version_number", e)}
+            />
+        </div>
+        <div>
+            <label htmlFor="ingredients"></label>
             <textarea
             id="description"
             required
@@ -92,7 +109,7 @@ function AddRecipe(props) {
             ></textarea>
         </div>
         <div>
-            <label spacing={0} htmlFor="recipe"/>
+            <label spacing={0} htmlFor="recipe"></label>
             <textarea
             id="description"
             required

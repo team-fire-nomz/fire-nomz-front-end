@@ -17,4 +17,4 @@ function Feedback () {
 	)
 }
 
-export default Feedback ();
+export default Feedback;

@@ -1,6 +1,5 @@
-import { Navigate, useSearchParams } from 'react-router-dom'
-import axios from 'axios'
-import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useSearchParams()
