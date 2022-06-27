@@ -5,13 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from "./Pages/Homepage";
 import AddRecipe from "./Pages/AddRecipe";
 import Tracking from "./Pages/Tracking";
-import Notes from "./Components/Notes";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 import  Feedback from "./Pages/Feedback";
 
 function App() {
-  const [token, setToken] = useLocalStorageState('reactLibraryToken', '')
+  const [token, setToken] = useLocalStorageState ('reactLibraryToken', '')
   const [username, setUsername] = useLocalStorageState(
     'reactLibraryUsername',
     ''
@@ -44,7 +43,7 @@ function App() {
       
         <Routes>
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
-            <Route index element={<Homepage />} />
+            <Route index element={<Homepage token={token}/>} />
             <Route path="/signin" element={
                 <SignIn
                   setAuth={setAuth}

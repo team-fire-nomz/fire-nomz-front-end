@@ -76,13 +76,24 @@ function Notes(props) {
             />
         </div>
         <div>
+            <label htmlFor="title"/>
+            <input
+            type="text"
+            required
+            placeholder="VERSION:"
+            id="version"
+            value={props.version_number}
+            onChange={(e) => handleChange("title", e)}
+            />
+        </div>
+        <div>
             <label htmlFor="ingredients"/>
             <textarea
             id="description"
             required
             placeholder="Create your note"
             rows="12"
-            value={props.ingredients}
+            value={props.note}
             onChange={(e) => handleChange("ingredients", e)}
             ></textarea>
         </div>
