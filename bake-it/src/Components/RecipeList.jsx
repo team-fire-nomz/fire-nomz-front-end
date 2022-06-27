@@ -28,6 +28,7 @@ function RecipeList(props) {
       {recipes.length > 0 ?
         recipes.map((recipe) => (
           <Recipe
+            setSelected={props.setSelected}
             id={recipe.id}
             title={recipe.title}
             ingredients={recipe.ingredients}

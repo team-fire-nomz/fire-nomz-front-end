@@ -121,7 +121,7 @@ console.log(id)
 							control={<Radio />} 
 							label="Too Much" />
 						</RadioGroup>
-						<Button onClick={handleSubmit}>Submit Feedback</Button>
+						<Button variant="contained" onClick={handleSubmit}>Submit Feedback</Button>
 				</FormControl>
 			</Box>
 			<Typography variant="h5">Thank you for your feedback!</Typography>

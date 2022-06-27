@@ -1,133 +1,100 @@
-import React from "react";
-import { Grid, Button, Box } from "@mui/material";
-import axios from "axios";
-import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
-function AddRecipe(props) {
-    console.log(props)
-    const [enteredIngredients, setEnteredIngredients] = useState("");
-    const [enteredRecipe, setEnteredRecipe] = useState("");
-    const [enteredTitle, setEnteredTitle] = useState("");
-    const [enteredVersion, setEnteredVersion] = useState("");
-    const [isEntered, setIsEntered] = useState(false);
 
-    if (!props.isLoggedIn) {
-    return <Navigate to="/signin" replace={true} />;
+export default function AddRecipe(props) {
+const inputArr = [
+    {
+    type: "text",
+    id: 1,
+    value: ""
     }
-    const submitHandler = (event) => {
-        console.log("adding recipe");
-    event.preventDefault();
-    
-    const recipeData ={
-        title: enteredTitle,
-        version_number: enteredVersion,
-        ingredients: enteredIngredients,
-        recipe_steps: enteredRecipe,
-        }
-        console.log("recipeData", recipeData)
-    axios
-        .post(
-        "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
-        recipeData,
-        {
-        headers: { Authorization: `Token ${props.token}` },
-        })
-        .then((res) => {
-        console.log(res);
-        setIsEntered(true);
+];
+const [recipe, setRecipe] = useState("");
+const [title, setTitle] = useState("");
+const [inputs, setInputs] = useState(inputArr);
 
-        })
-    }
-    const handleChange = (inputType, event) => {
-    if (inputType === "title") {
-        setEnteredTitle(event.target.value);
-    }
-    if (inputType === "version_number") {
-        setEnteredVersion(event.target.value);
-    }
-    if (inputType === "ingredients") {
-        setEnteredIngredients(event.target.value);
-    }
-    if (inputType === "recipe") {
-        setEnteredRecipe(event.target.value);
-    }
-    if (isEntered) {
-        return <Navigate to="/signin" />;
-    }
-    };
-
-    return (
-    <Grid
-        container
-        sx={{
-            overflow: 'scroll',
-        }}
-        spacing={0}
-        padding={0.5}
-        direction="column"
-        alignItems="center"
-        justifyContent="Center"
-        style={{ minHeight: "75vh" }}>
-        <Box
-            boxShadow={5}
-            className="HERE!" 
-            component="form" 
-            onSubmit={submitHandler}>
-        <div>
-            <label htmlFor="title"></label>
-            <input
-            type="text"
-            required
-            placeholder="TITLE:"
-            id="title"
-            value={props.title}
-            onChange={(e) => handleChange("title", e)}/>
-        </div>
-        <div>
-            <label htmlFor="version"></label>
-            <input
-            type="text"
-            required
-            placeholder="VERSION:"
-            id="version"
-            value={props.version_number}
-            onChange={(e) => handleChange("version_number", e)}
-            />
-        </div>
-        <div>
-            <label htmlFor="ingredients"></label>
-            <textarea
-            id="description"
-            required
-            placeholder="Ingredients"
-            rows="12"
-            value={props.ingredients}
-            onChange={(e) => handleChange("ingredients", e)}
-            ></textarea>
-        </div>
-        <div>
-            <label spacing={0} htmlFor="recipe"></label>
-            <textarea
-            id="description"
-            required
-            placeholder="Recipe"
-            rows="12"
-            value={props.recipe_steps}
-            onChange={(e) => handleChange("recipe", e)}
-            ></textarea>
-        </div>
-        <div>
-            <Button
-            variant="contained" 
-            type="submit" 
-            size="small">
-            Add Recipe
-            </Button>
-        </div>
-        </Box>
-    </Grid>
+const handleSubmit = (e) => {
+    axios.post(
+    "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
+    {
+        title: title,
+        ingredients: inputs.map((item) => item.value),
+        recipe_steps: recipe,
+    },
+    { headers: { Authorization: `Token ${props.token}` } }
     );
+};
+
+const addInput = () => {
+    setInputs((s) => {
+    return [
+        ...s,
+        {
+        type: "text",
+        value: ""
+        }
+    ];
+    });
+};
+
+const handleInputChange = (e) => {
+    e.preventDefault();
+
+    const index = e.target.id;
+    setInputs((s) => {
+    const newArr = s.slice();
+    newArr[index].value = e.target.value;
+
+    return newArr;
+    });
+};
+
+
+const ingredients = "";
+inputs.map((item) => ingredients.concat(item.value));
+console.log(ingredients);
+
+return (
+    <div>
+
+    <label htmlFor="title"/>
+        <input
+        type="text"
+        required
+        placeholder="TITLE:"
+        id="title"
+        value={title}
+        key="uniqueTitle"
+        onChange={(e) => setTitle(e.target.value)}
+        />
+    
+    <button onClick={addInput}>Add Ingredient</button>
+    {inputs.map((item, i) => {
+        return (
+        <input
+            onChange={handleInputChange}
+            placeholder="INGREDIENTS:"
+            value={item.value}
+            id={i}
+            type={item.type}
+            size="40"
+        />
+        );
+    })}
+    <textarea
+        id="recipe"
+        placeholder="add instructions here"
+        value={recipe}
+        key="uniqueRecipe"
+        onChange={(e) => setRecipe(e.target.value)}
+    />
+    <button type="submit" onClick={handleSubmit}>
+        CREATE RECIPE
+    </button>
+    </div>
+);
 }
 
-export default AddRecipe;
+
+

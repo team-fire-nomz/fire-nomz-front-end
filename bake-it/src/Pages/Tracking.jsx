@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Notes from "../Components/Notes";
 import RecipeList from '../Components/RecipeList';
+import DetailRecipe from "../Components/DetailRecipe";
 
 const Tracking = (props) => {
-  // console.log ()
+  console.log (props)
 const [recipe, setRecipe] = useState(null);
 
 
@@ -17,9 +18,9 @@ console.log(recipe);
 
 
 useEffect(() => {
-	const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes?search=<search_term>";
-	console.log(requestUrl);
-	axios.get(requestUrl,
+	const handleSubmit = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes?search=<search_term>";
+	console.log(handleSubmit);
+	axios.get(handleSubmit,
     {
 		headers: { Authorization: `Token ${props.token}` }
 	})
@@ -38,31 +39,32 @@ useEffect(() => {
 
 	return (
 	<Box>
+	<DetailRecipe />
 	{recipe && <Recipe {...props} />}
-	<RecipeList {...props} />
 	{recipe && <Box>
-		<h3>Title: {recipe.title}</h3>
-		<h3>Version: {recipe.version_number}</h3>
-		<p>{recipe.ingredients}</p>
-		<h4>RECIPE: {recipe.recipe_steps}</h4>
-		<h5>BAKED ON: {recipe.created_at}</h5>
+		<h3>Title: {props.title}</h3>
+		<h3>Version: {props.version_number}</h3>
+		<p>{props.ingredients}</p>
+		<h4>RECIPE: {props.recipe_steps}</h4>
+	<Button
+		variant="contained" 
+		type="submit" 
+		size="small"
+		>
+		SUCCESSFUL RECIPE
+	</Button>
 	</Box>}
 	<div>
 	<Notes {...props} />
 	</div>
-	<Button
-		variant="contained" 
-		type="submit" 
-		size="small">
-		ADD NOTES
-	</Button>
+	
 	</Box>
 
 );
 };
 export default Tracking;
 
-//recipe tracking page
+
 //be able to view ingredients and recipe
 //notes form to add changes they'd like to make to the next recipe
 //add successful recipe button
