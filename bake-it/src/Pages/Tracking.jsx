@@ -7,7 +7,7 @@ import Notes from "../Components/Notes";
 import RecipeList from '../Components/RecipeList';
 
 const Tracking = (props) => {
-  // console.log ()
+  console.log (props)
 const [recipe, setRecipe] = useState(null);
 
 
@@ -33,7 +33,7 @@ useEffect(() => {
 	}).catch((err) => {
 	console.log(err);
 	});
-}, [props.token]);
+}, []);
 
 
 	return (

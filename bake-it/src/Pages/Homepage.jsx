@@ -1,13 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Container, Box, Button } from "@mui/material";
-import RecipeList from '../Components/RecipeList';
+
 
 function Homepage (props){
 console.log(props)
    return (
       <Container sx={{overflow: 'scroll'}}>
-         <RecipeList {...props} />
          <Box textAlign="center">
             <Button
                size="large" 
