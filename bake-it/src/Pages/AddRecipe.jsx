@@ -11,13 +11,14 @@ const inputArr = [
     }
 ];
 const [recipe, setRecipe] = useState("");
+const [title, setTitle] = useState("");
 const [inputs, setInputs] = useState(inputArr);
 
-const handleSubmit = () => {
+const handleSubmit = (e) => {
     axios.post(
     "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
     {
-        title: "test title",
+        title: title,
         ingredients: inputs.map((item) => item.value),
         recipe_steps: recipe,
     },
@@ -49,9 +50,6 @@ const handleInputChange = (e) => {
     });
 };
 
-const handleTextAreaChange = (e) => {
-    setRecipe(e.target.value);
-};
 
 const ingredients = "";
 inputs.map((item) => ingredients.concat(item.value));
@@ -59,11 +57,24 @@ console.log(ingredients);
 
 return (
     <div>
+
+    <label htmlFor="title"/>
+        <input
+        type="text"
+        required
+        placeholder="TITLE:"
+        id="title"
+        value={title}
+        key="uniqueTitle"
+        onChange={(e) => setTitle(e.target.value)}
+        />
+    
     <button onClick={addInput}>Add Ingredient</button>
     {inputs.map((item, i) => {
         return (
         <input
             onChange={handleInputChange}
+            placeholder="INGREDIENTS:"
             value={item.value}
             id={i}
             type={item.type}
@@ -75,10 +86,11 @@ return (
         id="recipe"
         placeholder="add instructions here"
         value={recipe}
-        onChange={(event) => handleTextAreaChange(event)}
+        key="uniqueRecipe"
+        onChange={(e) => setRecipe(e.target.value)}
     />
     <button type="submit" onClick={handleSubmit}>
-        Create Recipe
+        CREATE RECIPE
     </button>
     </div>
 );

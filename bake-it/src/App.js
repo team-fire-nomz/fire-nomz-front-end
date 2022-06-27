@@ -9,6 +9,9 @@ import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 import  Feedback from "./Pages/Feedback";
 import Notes from "./Components/Notes";
+import DetailRecipe from './Components/DetailRecipe';
+import {useState} from 'react';
+
 
 function App() {
   const [token, setToken] = useLocalStorageState ('reactLibraryToken', '')
@@ -16,6 +19,7 @@ function App() {
     'reactLibraryUsername',
     ''
   )
+const [selected, setSelected] = useLocalStorageState('selected', null);
 
   const setAuth = (username, token) => {
     setToken(token)
@@ -44,7 +48,7 @@ function App() {
       
         <Routes>
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
-            <Route index element={<Homepage token={token}/>} />
+            <Route index element={<Homepage setSelected={setSelected} token={token}/>} />
             <Route path="/signin" element={
                 <SignIn
                   setAuth={setAuth}
@@ -53,6 +57,7 @@ function App() {
             <Route path="/signup" element={<Register />} />
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipes" element={<Tracking isLoggedIn={isLoggedIn} token={token} />} />
+            <Route path="/recipe/:id" element={<DetailRecipe username={username} selected={selected} isLoggedIn={isLoggedIn} token={token}  />} />
             <Route path="/recipe/:id/notes" element={<Notes isLoggedIn={isLoggedIn} token={token}  />} />
             <Route path="/recipes/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
           </Route>

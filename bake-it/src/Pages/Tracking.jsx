@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Notes from "../Components/Notes";
 import RecipeList from '../Components/RecipeList';
+import DetailRecipe from "../Components/DetailRecipe";
 
 const Tracking = (props) => {
   console.log (props)
@@ -38,25 +39,13 @@ useEffect(() => {
 
 	return (
 	<Box>
+	<DetailRecipe />
 	{recipe && <Recipe {...props} />}
-	<RecipeList {...props} />
 	{recipe && <Box>
-		<h3>Title: {recipe.title}</h3>
-		<h3>Version: {recipe.version_number}</h3>
-		<p>{recipe.ingredients}</p>
-		<h4>RECIPE: {recipe.recipe_steps}</h4>
-		<h5>BAKED ON: {recipe.created_at}</h5>
-	</Box>}
-	<div>
-	<Notes {...props} />
-	</div>
-	<Button
-		variant="contained" 
-		type="submit" 
-		size="small"
-		>
-		ADD NOTES
-	</Button>
+		<h3>Title: {props.title}</h3>
+		<h3>Version: {props.version_number}</h3>
+		<p>{props.ingredients}</p>
+		<h4>RECIPE: {props.recipe_steps}</h4>
 	<Button
 		variant="contained" 
 		type="submit" 
@@ -64,6 +53,11 @@ useEffect(() => {
 		>
 		SUCCESSFUL RECIPE
 	</Button>
+	</Box>}
+	<div>
+	<Notes {...props} />
+	</div>
+	
 	</Box>
 
 );
