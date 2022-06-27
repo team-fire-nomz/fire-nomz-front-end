@@ -13,7 +13,6 @@ const Footer = () => {
         }}
         >
         <BottomNavigationAction label='Home' icon={<HomeIcon />}/>
-        <p>Copyright &copy; 2022</p>
         <BottomNavigationAction label='Profile' icon={<PersonIcon />}/>
         </BottomNavigation>
 )

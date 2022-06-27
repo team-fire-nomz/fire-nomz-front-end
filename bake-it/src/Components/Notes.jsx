@@ -53,11 +53,11 @@ function Notes(props) {
             overflow: 'scroll',
         }}
         spacing={0}
-        padding={0.5}
+        padding={0}
         direction="column"
         alignItems="center"
         justifyContent="Center"
-        style={{ minHeight: "75vh" }}
+        style={{ minHeight: "25vh" }}
     >
         <Box
         className="HERE!" 
