@@ -58,11 +58,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 
 	return (
 		<Grid>
-		<Box
-		sx={{
-            backgroundColor: '#987581',
-            overflow: 'scroll',
-        }}>
+		<Box sx={{overflow: 'scroll',}}>
 			<Typography sx={{color: 'white'}} variant="h4" align="center">
 				Welcome fellow baker!
 			</Typography>
@@ -75,13 +71,11 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 					onClose={handleClose}
 					autoHideDuration={6000}
 					anchorOrigin={{ vertical: 'bottom',
-					horizontal: 'center' }}
-				>
+					horizontal: 'center' }}>
 					<Alert
 					onClose={handleClose}
 					severity="warning"
-					sx={{ width: '100% '}}
-				>
+					sx={{ width: '100% '}}>
 					{error}
 				</Alert>
 				</Snackbar>
@@ -104,8 +98,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 						onChange={(e) => setPassword(e.target.value)} />
 				</Box>
 				<Box textAlign="center">
-					<Button 
-					style={{color:'Pink', backgroundColor: 'Teal'}} 
+					<Button
 					size="large" 
 					variant="outlined" 
 					type="submit"
@@ -113,8 +106,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 					</Button>
 				</Box>
 				<Box textAlign="center">
-					<Button
-					style={{color:'Teal', backgroundColor: 'Pink'}} 
+					<Button 
 					component={Link}
 					to= "/signup"
 					size="small"

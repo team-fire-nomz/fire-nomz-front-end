@@ -1,31 +1,45 @@
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Stack, Button, Menu, MenuItem } from "@mui/material";
-
+import { AppBar, Toolbar, Typography, Stack, Button, MenuItem, Tooltip } from "@mui/material";
+import LoginIcon from '@mui/icons-material/Login';
+import HomeIcon from '@mui/icons-material/Home';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddchartIcon from '@mui/icons-material/Addchart';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import React from 'react';
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
     return (
 
-    <AppBar  style={{backgroundColor: 'teal'}}position='static'>
+    <AppBar position='static'>
         <Toolbar >
-            <Typography style={{color:'Pink'}} variant='h6' component='div' sx={{ flexGrow: 1 }}>
+            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
                 Bake It Till You Make It
             </Typography>
                 <Stack direction='row' spacing={1}>
-                    <Button variant='text'><Link to="/">HOME</Link></Button>
+                    <Tooltip title="Return To Home Page">
+                        <Button variant='contained' color='secondary'><Link to="/"><HomeIcon /></Link></Button>
+                    </Tooltip>
                 {!isLoggedIn ? (
-					<Button variant='text'><Link to="/signin">SIGN IN/SIGN UP</Link></Button>
+                    <Tooltip title="Log Into Your Account">
+					    <Button variant='contained' color='secondary'><Link to="/signin"><LoginIcon /></Link></Button>
+                    </Tooltip>
                 ) : (
-                    <Button variant='text'><Link to="/" onClick={handleLogout}>SIGN OUT</Link></Button>
+                    <Tooltip title="Log Out">
+                        <Button variant='contained' color='secondary'><Link to="/" onClick={handleLogout}><ExitToAppIcon /></Link></Button>
+                    </Tooltip>
                 )}
-                    <Button variant='text'><Link to="/addrecipe">NEW RECIPE</Link></Button>
-
-                    <Button variant='text'><Link to="/recipes">RECIPE TRACKING</Link></Button>
-
-                    <Button variant='text'><Link to="/feedback">FEEDBACK</Link></Button>
-
+                    <Tooltip title="Add A New Recipe">
+                        <Button variant='contained' color='secondary'><Link to="/addrecipe"><AddBoxIcon /></Link></Button>
+                    </Tooltip>
+                    <Tooltip title="Track Recipe Changes">
+                        <Button variant='contained' color='secondary'><Link to="/tracking"><AddchartIcon /></Link></Button>
+                    </Tooltip>
+                    <Tooltip title="Provide Recipe Feedback">
+                        <Button variant='contained' color='secondary'><Link to="/recipes/id/feedback"><RateReviewIcon /></Link></Button>
+                    </Tooltip>
                 </Stack>
-                
                     <MenuItem></MenuItem>
                 
         </Toolbar>

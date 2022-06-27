@@ -50,8 +50,7 @@ useEffect(() => {
 	<div>
 	<Notes {...props} />
 	</div>
-	<Button 
-		style={{color:'white', backgroundColor: 'teal'}}
+	<Button
 		variant="contained" 
 		type="submit" 
 		size="small">

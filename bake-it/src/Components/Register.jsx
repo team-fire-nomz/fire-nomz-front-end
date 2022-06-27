@@ -64,11 +64,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   }
 
   return (
-    <Grid
-    sx={{
-            backgroundColor: '#e9d79e',
-            overflow: 'scroll',
-        }}
+    <Grid sx={{overflow: 'scroll'}}
       container
       spacing={0}
       direction="column"
@@ -79,7 +75,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
       {error && (
         <div
           className="error"
-          style={{ backgroundColor: "red", color: "white", padding:'1rem',}}
+          // style={{ backgroundColor: "red", color: "white", padding:'1rem',}}
         >
           {Object.entries(error).map(
             ([errorField, errorMessage]) => `${errorField}: ${errorMessage}`
@@ -174,7 +170,6 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <Button
-            style={{color:'Pink', backgroundColor: 'Teal'}}
             type="submit"
             size="small"
             variant="contained"
@@ -185,7 +180,6 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
         </Box>
         <Box>
           <Button
-            style={{color:'Teal', backgroundColor: 'Pink'}} 
             component={Link}
             to="/signin"
             size="small"

@@ -22,14 +22,8 @@ function RecipeList(props) {
     })
   }, [searchParams, props.token]);
 
- 
   return (
-    <Container
-    sx={{
-      backgroundColor:'pink',
-      margin:'2px',
-      
-    }}>
+    <Container sx={{ margin:'2px'}}>
     <Search />
       {recipes.length > 0 ?
         recipes.map((recipe) => (
@@ -43,11 +37,9 @@ function RecipeList(props) {
             key={recipe.id}
           />
         ))
-      
       :
       <h3>NO RESULTS FOUND</h3>
       }
-    
     
     </Container>
   );

@@ -41,6 +41,79 @@ export default function AddRecipe() {
   const handleInputChange = (e) => {
     e.preventDefault();
 
+
+    return (
+    <Grid
+        container
+        sx={{
+            overflow: 'scroll',
+        }}
+        spacing={0}
+        padding={0.5}
+        direction="column"
+        alignItems="center"
+        justifyContent="Center"
+        style={{ minHeight: "75vh" }}>
+        <Box
+            boxShadow={5}
+            className="HERE!" 
+            component="form" 
+            onSubmit={submitHandler}>
+        <div>
+            <label htmlFor="title"></label>
+            <input
+            type="text"
+            required
+            placeholder="TITLE:"
+            id="title"
+            value={props.title}
+            onChange={(e) => handleChange("title", e)}/>
+        </div>
+        <div>
+            <label htmlFor="version"></label>
+            <input
+            type="text"
+            required
+            placeholder="VERSION:"
+            id="version"
+            value={props.version_number}
+            onChange={(e) => handleChange("version_number", e)}
+            />
+        </div>
+        <div>
+            <label htmlFor="ingredients"></label>
+            <textarea
+            id="description"
+            required
+            placeholder="Ingredients"
+            rows="12"
+            value={props.ingredients}
+            onChange={(e) => handleChange("ingredients", e)}
+            ></textarea>
+        </div>
+        <div>
+            <label spacing={0} htmlFor="recipe"></label>
+            <textarea
+            id="description"
+            required
+            placeholder="Recipe"
+            rows="12"
+            value={props.recipe_steps}
+            onChange={(e) => handleChange("recipe", e)}
+            ></textarea>
+        </div>
+        <div>
+            <Button
+            variant="contained" 
+            type="submit" 
+            size="small">
+            Add Recipe
+            </Button>
+        </div>
+        </Box>
+    </Grid>
+    );
+
     const index = e.target.id;
     setInputs((s) => {
       const newArr = s.slice();
