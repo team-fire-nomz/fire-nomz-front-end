@@ -7,7 +7,7 @@ function Homepage (props){
 console.log(props)
    return (
       <Container sx={{overflow: 'scroll'}}>
-         <RecipeList />
+         <RecipeList {...props} />
          <Box textAlign="center">
             <Button
                size="large" 
