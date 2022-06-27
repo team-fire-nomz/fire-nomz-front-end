@@ -7,7 +7,6 @@ const Recipe = (props) => {
     return (
         <div
         sx={{
-            backgroundColor: '#e9d79e',
             overflow: 'scroll',
         }}>
         <div>

@@ -50,7 +50,6 @@ function Notes(props) {
     <Grid
         container
         sx={{
-            backgroundColor: '#e9d79e',
             overflow: 'scroll',
         }}
         spacing={0}
@@ -98,8 +97,7 @@ function Notes(props) {
             ></textarea>
         </div>
         <div>
-            <Button 
-            style={{color:'Teal', backgroundColor: 'Pink'}}
+            <Button
             variant="contained" 
             type="submit" 
             size="small">
