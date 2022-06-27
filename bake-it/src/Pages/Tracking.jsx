@@ -29,8 +29,6 @@ useEffect(() => {
 	console.log(res);
 	setRecipe(res.data);
 
-
-
 	}).catch((err) => {
 	console.log(err);
 	});
@@ -42,10 +40,10 @@ useEffect(() => {
 	<DetailRecipe />
 	{recipe && <Recipe {...props} />}
 	{recipe && <Box>
-		<h3>Title: {props.title}</h3>
-		<h3>Version: {props.version_number}</h3>
-		<p>{props.ingredients}</p>
-		<h4>RECIPE: {props.recipe_steps}</h4>
+		<h3>Title: {recipe.title}</h3>
+		<h3>Version: {recipe.version_number}</h3>
+		<p>{recipe.ingredients}</p>
+		<h4>RECIPE: {recipe.recipe_steps}</h4>
 	<Button
 		variant="contained" 
 		type="submit" 

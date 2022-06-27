@@ -12,17 +12,11 @@ const DetailRecipe = (props) => {
         ).then(response => setRecipe(response.data))
     })
     
-    if (recipe.chef === props.username) {
-        //this is where the ui goes for a logged in user looking at their own recipe
-        return "This belongs to logged in user"
+    // if (recipe.chef === props.username) {
+    //     //this is where the ui goes for a logged in user looking at their own recipe
+    //     return "This belongs to logged in user"
         
-    }
-
-   
-
-
-
-
+    // }
 
     return (
         <Card>

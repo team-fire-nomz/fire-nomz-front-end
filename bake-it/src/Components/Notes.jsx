@@ -7,6 +7,7 @@ import { useState } from "react";
 function Notes(props) {
     const [enteredNote, setEnteredNote] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredVersion, setEnteredVersion] = useState({});
     const [isEntered, setIsEntered] = useState(false);
 
     if (!props.isLoggedIn) {
@@ -18,6 +19,7 @@ function Notes(props) {
     
     const notesData ={
         title: enteredTitle,
+        recipe_version: enteredVersion,
         note: enteredNote,
         }
         console.log("notesData", notesData)
@@ -37,6 +39,9 @@ function Notes(props) {
     const handleChange = (inputType, event) => {
     if (inputType === "title") {
         setEnteredTitle(event.target.value);
+    }
+    if (inputType === "version") {
+        setEnteredVersion(event.target.value);
     }
     if (inputType === "notes") {
         setEnteredNote(event.target.value);
@@ -81,19 +86,19 @@ function Notes(props) {
             required
             placeholder="VERSION:"
             id="version"
-            value={props.version_number}
-            onChange={(e) => handleChange("title", e)}
+            value={props.recipe_version}
+            onChange={(e) => handleChange("version", e)}
             />
         </div>
         <div>
-            <label htmlFor="ingredients"/>
+            <label htmlFor="note"/>
             <textarea
             id="description"
             required
             placeholder="Create your note"
             rows="12"
             value={props.note}
-            onChange={(e) => handleChange("ingredients", e)}
+            onChange={(e) => handleChange("notes", e)}
             ></textarea>
         </div>
         <div>
