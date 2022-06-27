@@ -1,61 +1,46 @@
-import React from "react";
-import { Grid, Button, Box } from "@mui/material";
-import axios from "axios";
-import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
-function AddRecipe(props) {
-    console.log(props)
-    const [enteredIngredients, setEnteredIngredients] = useState("");
-    const [enteredRecipe, setEnteredRecipe] = useState("");
-    const [enteredTitle, setEnteredTitle] = useState("");
-    const [enteredVersion, setEnteredVersion] = useState("");
-    const [isEntered, setIsEntered] = useState(false);
+const TOKEN = "a68f1256491b96b650346807fb88c3f201eca5f1";
 
-    if (!props.isLoggedIn) {
-    return <Navigate to="/signin" replace={true} />;
+export default function AddRecipe() {
+  const inputArr = [
+    {
+      type: "text",
+      id: 1,
+      value: ""
     }
-    const submitHandler = (event) => {
-        console.log("adding recipe");
-    event.preventDefault();
-    
-    const recipeData ={
-        title: enteredTitle,
-        version_number: enteredVersion,
-        ingredients: enteredIngredients,
-        recipe_steps: enteredRecipe,
-        }
-        console.log("recipeData", recipeData)
-    axios
-        .post(
-        "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
-        recipeData,
+  ];
+  const [recipe, setRecipe] = useState("");
+  const [inputs, setInputs] = useState(inputArr);
+
+  const handleSubmit = () => {
+    axios.post(
+      "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
+      {
+        title: "test title",
+        ingredients: inputs.map((item) => item.value),
+        recipe: recipe
+      },
+      { headers: { Authorization: `Token ${TOKEN}` } }
+    );
+  };
+
+  const addInput = () => {
+    setInputs((s) => {
+      return [
+        ...s,
         {
-        headers: { Authorization: `Token ${props.token}` },
-        })
-        .then((res) => {
-        console.log(res);
-        setIsEntered(true);
+          type: "text",
+          value: ""
+        }
+      ];
+    });
+  };
 
-        })
-    }
-    const handleChange = (inputType, event) => {
-    if (inputType === "title") {
-        setEnteredTitle(event.target.value);
-    }
-    if (inputType === "version_number") {
-        setEnteredVersion(event.target.value);
-    }
-    if (inputType === "ingredients") {
-        setEnteredIngredients(event.target.value);
-    }
-    if (inputType === "recipe") {
-        setEnteredRecipe(event.target.value);
-    }
-    if (isEntered) {
-        return <Navigate to="/signin" />;
-    }
-    };
+  const handleInputChange = (e) => {
+    e.preventDefault();
+
 
     return (
     <Grid
@@ -128,6 +113,50 @@ function AddRecipe(props) {
         </Box>
     </Grid>
     );
+
+    const index = e.target.id;
+    setInputs((s) => {
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
+
+      return newArr;
+    });
+  };
+
+  const handleTextAreaChange = (e) => {
+    setRecipe(e.target.value);
+  };
+
+  const ingredients = "";
+  inputs.map((item) => ingredients.concat(item.value));
+  console.log(ingredients);
+
+  return (
+    <div>
+      <button onClick={addInput}>Add Ingredient</button>
+      {inputs.map((item, i) => {
+        return (
+          <input
+            onChange={handleInputChange}
+            value={item.value}
+            id={i}
+            type={item.type}
+            size="40"
+          />
+        );
+      })}
+      <textarea
+        id="recipe"
+        placeholder="add instructions here"
+        value={recipe}
+        onChange={(event) => handleTextAreaChange(event)}
+      />
+      <button type="submit" onClick={handleSubmit}>
+        Create Recipe
+      </button>
+    </div>
+  );
 }
 
-export default AddRecipe;
+
+

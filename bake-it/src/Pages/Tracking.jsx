@@ -33,7 +33,7 @@ useEffect(() => {
 	}).catch((err) => {
 	console.log(err);
 	});
-}, []);
+}, [props.token]);
 
 
 	return (
