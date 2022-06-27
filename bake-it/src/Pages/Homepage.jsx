@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Container, Box, Button } from "@mui/material";
-import RecipeList from '/src/Components/RecipeList.jsx';
+import RecipeList from '../Components/RecipeList';
 
 function Homepage (props){
 console.log(props)
@@ -9,19 +9,17 @@ console.log(props)
       <Container sx={{overflow: 'scroll'}}>
          <RecipeList />
          <Box textAlign="center">
-            <Button 
-               style={{color:'Pink', backgroundColor: 'Teal'}} 
+            <Button
                size="large" 
                variant="outlined" 
                type="submit"
                component={Link}
-            to= "/signin"
+               to= "/signin"
                >Sign in
             </Button>
          </Box>
          <Box textAlign="center">
             <Button
-            style={{color:'Teal', backgroundColor: 'Pink'}} 
             component={Link}
             to= "/signup"
             size="small"

@@ -8,6 +8,7 @@ import Tracking from "./Pages/Tracking";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
 import  Feedback from "./Pages/Feedback";
+import Notes from "./Components/Notes";
 
 function App() {
   const [token, setToken] = useLocalStorageState ('reactLibraryToken', '')
