@@ -1,24 +1,27 @@
 import React from 'react';
-import { Grid, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Box, Typography } from '@mui/material';
+import { Grid, Button, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Box, Typography } from '@mui/material';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 
-export default function Feedback ( isLoggedIn, token, id ) {
-
+export default function Feedback ( {isLoggedIn, token, id} ) {
+console.log('token', token)
+console.log(id)
 	if (!isLoggedIn) {
 		return (
 		<Navigate to="/signin" replace={true} />)
 		}
 
-	axios
-	.post(
-	`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${id}/feedback/`,
-	{
-	headers: { Authorization: `Token ${token}` },
-	})
-	.then((res) => {
-	console.log(res);
-	})
+	const handleSubmit= () => {
+		axios
+		.post(
+		`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/1/feedback/`, {},
+		{
+		headers: { Authorization: `Token ${token}` },
+		})
+		.then((res) => {
+		console.log(res);
+		})
+	}
 
 	return (
 
@@ -118,6 +121,7 @@ export default function Feedback ( isLoggedIn, token, id ) {
 							control={<Radio />} 
 							label="Too Much" />
 						</RadioGroup>
+						<Button onClick={handleSubmit}>Submit Feedback</Button>
 				</FormControl>
 			</Box>
 			<Typography variant="h5">Thank you for your feedback!</Typography>

@@ -52,7 +52,7 @@ function App() {
                   handleLogout={handleLogout} />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
-            <Route path="/recipe/:id" element={<Tracking />} />
+            <Route path="/recipes" element={<Tracking isLoggedIn={isLoggedIn} token={token} />} />
             <Route path="/recipe/:id/notes" element={<Notes />} />
             <Route path="/recipes/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
           </Route>
