@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const TOKEN = "51cad4728f8f16eb7c953f240fd90d53d11bb1af";
 
-export default function AddRecipe() {
+export default function AddRecipe(props) {
 const inputArr = [
     {
     type: "text",
@@ -20,9 +19,9 @@ const handleSubmit = () => {
     {
         title: "test title",
         ingredients: inputs.map((item) => item.value),
-        recipe: recipe
+        recipe_steps: recipe,
     },
-    { headers: { Authorization: `Token ${TOKEN}` } }
+    { headers: { Authorization: `Token ${props.token}` } }
     );
 };
 

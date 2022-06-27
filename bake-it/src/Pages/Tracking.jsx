@@ -17,9 +17,9 @@ console.log(recipe);
 
 
 useEffect(() => {
-	const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes?search=<search_term>";
-	console.log(requestUrl);
-	axios.get(requestUrl,
+	const handleSubmit = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes?search=<search_term>";
+	console.log(handleSubmit);
+	axios.get(handleSubmit,
     {
 		headers: { Authorization: `Token ${props.token}` }
 	})
@@ -53,8 +53,16 @@ useEffect(() => {
 	<Button
 		variant="contained" 
 		type="submit" 
-		size="small">
+		size="small"
+		>
 		ADD NOTES
+	</Button>
+	<Button
+		variant="contained" 
+		type="submit" 
+		size="small"
+		>
+		SUCCESSFUL RECIPE
 	</Button>
 	</Box>
 
@@ -62,7 +70,7 @@ useEffect(() => {
 };
 export default Tracking;
 
-//recipe tracking page
+
 //be able to view ingredients and recipe
 //notes form to add changes they'd like to make to the next recipe
 //add successful recipe button
