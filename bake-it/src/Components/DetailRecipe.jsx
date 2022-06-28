@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import { Card, Typography, Button } from "@mui/material";
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 
@@ -18,20 +18,39 @@ const DetailRecipe = (props) => {
         
     }
 
-   
-
-
-
-
-
     return (
-        <Card>
-        <div>
-        <h3>Title: {recipe.title}</h3>
-        <p>{recipe.recipe_steps}</p>
-        <h4>Chef: {recipe.chef}</h4>
-        </div>
-        </Card>
+    <div>
+        {recipe.map((eachRecipe) => {
+            const RecipeChef = eachRecipe.chef
+            const RecipeTitle = eachRecipe.title
+            const RecipeIngredients = eachRecipe.ingredients
+            const RecipeSteps = eachRecipe.recipe_steps
+            const CreatedDate = eachRecipe.created_at
+            const Feedback = eachRecipe.ready_for_feedback
+            return (
+                <Card>
+                    <Typography>
+						Made by {RecipeChef}
+					</Typography>
+					<Typography>
+						Recipe Title {RecipeTitle}
+					</Typography>
+					<Typography>
+						Recipe Ingredients {RecipeIngredients}
+					</Typography>
+					<Typography>
+						Recipe Steps {RecipeSteps}
+					</Typography>
+					<Typography>
+						Created {CreatedDate}
+					</Typography>
+					<Button>
+						Feedback {Feedback}
+					</Button>
+                </Card>
+            )
+        })}
+    </div>
     )
 }
 
