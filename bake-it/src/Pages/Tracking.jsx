@@ -2,8 +2,9 @@ import { Box, Button } from "@mui/material";
 import axios from "axios";
 import Recipe from "../Components/Recipe";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import Notes from "../Components/Notes";
+import NotesList from "../Components/NotesList";
 
 
 const Tracking = (props) => {
@@ -12,18 +13,18 @@ const [recipe, setRecipe] = useState(null);
 
 let [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${searchParams}/notes/`;
-    console.log(requestUrl);
-    axios.get(requestUrl,
-    {
-      headers: { Authorization: `Token ${props.token}` }
-    })
-    .then((res) => {
-      console.log(res);
-      setRecipe(res.data);
-    })
-  }, [searchParams, props.token]);
+//   useEffect(() => {
+//     const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${searchParams}/notes/`;
+//     console.log(requestUrl);
+//     axios.get(requestUrl,
+//     {
+//       headers: { Authorization: `Token ${props.token}` }
+//     })
+//     .then((res) => {
+//       console.log(res);
+//       setRecipe(res.data);
+//     })
+//   }, [searchParams, props.token]);
 
 
 
@@ -48,8 +49,11 @@ useEffect(() => {
 
 	return (
 	<Box>
+	<NotesList {...props} />
 	{recipe && <Recipe {...props} />}
-	
+	<button type="submit" component={Link} to="/recipe/:id/tracking">
+        FEEDBACK FORM
+    </button>
 	<Notes {...props} />
 	</Box>
 
