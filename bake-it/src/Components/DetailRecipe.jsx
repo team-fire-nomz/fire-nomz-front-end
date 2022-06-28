@@ -1,5 +1,5 @@
 
-import { Card, Typography, Button } from "@mui/material";
+import { Card, Button } from "@mui/material";
 import {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
