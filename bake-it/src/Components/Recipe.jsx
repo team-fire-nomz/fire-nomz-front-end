@@ -11,7 +11,6 @@ console.log(props.id)
         }}>
         <div>
         <Link onClick={()=> props.setSelected(props.id)} to={`/recipe/${props.id}`}>{props.title}</Link>
-        <h5>Baked on: {props.created_at}</h5>
         </div>
         </div>
     )
