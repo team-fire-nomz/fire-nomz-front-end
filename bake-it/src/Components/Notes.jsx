@@ -8,7 +8,7 @@ function Notes(props) {
     console.log(props)
     const [enteredNote, setEnteredNote] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
-    const [enteredVersion, setEnteredVersion] = useState({});
+    const [enteredVersion, setEnteredVersion] = useState("");
     const [isEntered, setIsEntered] = useState(false);
 
     if (!props.isLoggedIn) {
@@ -106,7 +106,8 @@ function Notes(props) {
             <Button
             variant="contained" 
             type="submit" 
-            size="small">
+            size="small"
+            onClick={submitHandler}>
             Add Note
             </Button>
         </div>

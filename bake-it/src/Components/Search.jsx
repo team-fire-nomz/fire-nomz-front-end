@@ -27,7 +27,7 @@ const Search = (props) => {
         type="text"
         value={props.searchQuery}
         id="header-search"
-        placeholder="Search Recipe"
+        placeholder="Search"
         name="search"
         onChange={handleChange}
       />

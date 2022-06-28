@@ -33,9 +33,6 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                     <Tooltip title="Add A New Recipe">
                         <Button variant='contained' color='secondary'><Link to="/addrecipe"><AddBoxIcon /></Link></Button>
                     </Tooltip>
-                    <Tooltip title="Track Recipe Changes">
-                        <Button variant='contained' color='secondary'><Link to="/recipe/id/tracking"><AddchartIcon /></Link></Button>
-                    </Tooltip>
                     <Tooltip title="Provide Recipe Feedback">
                         <Button variant='contained' color='secondary'><Link to="/recipes/id/feedback"><RateReviewIcon /></Link></Button>
                     </Tooltip>

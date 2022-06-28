@@ -1,11 +1,12 @@
 import Recipe from "./Recipe";
+import Notes from "./Notes";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Container} from "@mui/material";
 
 function NotesList(props) {
-  const [recipes, setRecipes] = useState([]);
+  const [notes, setNotes] = useState(null);
   
 
   useEffect(() => {
@@ -17,24 +18,21 @@ function NotesList(props) {
     })
     .then((res) => {
       console.log(res);
-      setRecipes(res.data);
+      setNotes(res.data);
     })
   }, []);
 
   return (
     <Container sx={{ margin:'2px'}}>
-    <Search />
-      {recipes.length > 0 ?
-        recipes.map((recipe) => (
-          <Recipe
+      {notes.length > 0 ?
+        notes.map((note) => (
+          <Notes
             setSelected={props.setSelected}
-            id={recipe.id}
-            title={recipe.title}
-            ingredients={recipe.ingredients}
-            recipe={recipe.recipe_steps}
-            chef={recipe.chef}
-            created_at={recipe.created_at}
-            key={recipe.id}
+            id={note.id}
+            title={note.title}
+            version_number={note.recipe_version}
+            note={note.note}
+            key={note.id}
           />
         ))
       :

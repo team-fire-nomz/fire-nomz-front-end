@@ -18,6 +18,7 @@ function RecipeList(props) {
     .then((res) => {
       console.log(res);
       setRecipes(res.data);
+      
     })
   }, [results, props.token]);
 
