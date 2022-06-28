@@ -19,6 +19,7 @@ function RecipeList(props) {
     .then((res) => {
       console.log(res);
       setRecipes(res.data);
+      
     })
   }, [searchParams, props.token]);
 
