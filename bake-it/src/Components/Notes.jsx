@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function Notes(props) {
+    console.log(props)
     const [enteredNote, setEnteredNote] = useState("");
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredVersion, setEnteredVersion] = useState({});
@@ -65,7 +66,7 @@ function Notes(props) {
         style={{ minHeight: "25vh" }}
     >
         <Box
-        className="HERE!" 
+        className="FORM!" 
         component="form" 
         onSubmit={submitHandler}>
         <div>

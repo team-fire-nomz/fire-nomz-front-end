@@ -2,19 +2,29 @@ import { Box, Button } from "@mui/material";
 import axios from "axios";
 import Recipe from "../Components/Recipe";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import Notes from "../Components/Notes";
-import RecipeList from '../Components/RecipeList';
-import DetailRecipe from "../Components/DetailRecipe";
+
 
 const Tracking = (props) => {
   console.log (props)
 const [recipe, setRecipe] = useState(null);
 
+let [searchParams, setSearchParams] = useSearchParams();
 
-let params = useParams();
-console.log(params);
-console.log(recipe);
+  useEffect(() => {
+    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${searchParams}/notes/`;
+    console.log(requestUrl);
+    axios.get(requestUrl,
+    {
+      headers: { Authorization: `Token ${props.token}` }
+    })
+    .then((res) => {
+      console.log(res);
+      setRecipe(res.data);
+    })
+  }, [searchParams, props.token]);
+
 
 
 useEffect(() => {
@@ -35,27 +45,12 @@ useEffect(() => {
 }, [props.token]);
 
 
+
 	return (
 	<Box>
-	<DetailRecipe />
 	{recipe && <Recipe {...props} />}
-	{recipe && <Box>
-		<h3>Title: {recipe.title}</h3>
-		<h3>Version: {recipe.version_number}</h3>
-		<p>{recipe.ingredients}</p>
-		<h4>RECIPE: {recipe.recipe_steps}</h4>
-	<Button
-		variant="contained" 
-		type="submit" 
-		size="small"
-		>
-		SUCCESSFUL RECIPE
-	</Button>
-	</Box>}
-	<div>
-	<Notes {...props} />
-	</div>
 	
+	<Notes {...props} />
 	</Box>
 
 );

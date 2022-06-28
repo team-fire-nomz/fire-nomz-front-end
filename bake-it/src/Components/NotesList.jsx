@@ -1,16 +1,15 @@
 import Recipe from "./Recipe";
 import Search from "./Search";
-import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Container} from "@mui/material";
 
-function RecipeList(props) {
+function NotesList(props) {
   const [recipes, setRecipes] = useState([]);
-  let [searchParams, setSearchParams] = useSearchParams();
+  
 
   useEffect(() => {
-    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes?/${searchParams}`;
+    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.id}/notes/`;
     console.log(requestUrl);
     axios.get(requestUrl,
     {
@@ -20,7 +19,7 @@ function RecipeList(props) {
       console.log(res);
       setRecipes(res.data);
     })
-  }, [searchParams, props.token]);
+  }, []);
 
   return (
     <Container sx={{ margin:'2px'}}>
@@ -46,5 +45,4 @@ function RecipeList(props) {
   );
 }
 
-export default RecipeList;
-
+export default NotesList;

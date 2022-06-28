@@ -11,6 +11,8 @@ function RecipeDetail () {
 			setAllRecipes(res.data)
 		})
 
+		`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${id}/notes/`
+
 	return (
 	<div>
 		{allRecipes.map((eachRecipe) => {
