@@ -1,6 +1,4 @@
-import Recipe from "./Recipe";
 import Notes from "./Notes";
-import Search from "./Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Container} from "@mui/material";

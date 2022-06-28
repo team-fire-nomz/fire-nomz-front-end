@@ -2,6 +2,7 @@
 import { Card, Button } from "@mui/material";
 import {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
+import NotesList from "./NotesList"
 import axios from 'axios';
 
 const DetailRecipe = (props) => {
@@ -18,11 +19,7 @@ const DetailRecipe = (props) => {
     //     { headers: { Authorization: `Token ${props.token}` } }
     //     ).then(response => setRecipe(response.data))
     // })
-    // if (recipe.chef === props.username) {
-    //     //this is where the ui goes for a logged in user looking at their own recipe
-    //     return 
-    
-    // }
+    // 
 
 
     return (
@@ -43,9 +40,10 @@ const DetailRecipe = (props) => {
             >
             ADD A NOTE
             </Button>
+        
         </Card>
   
     )
 }
 
-export default DetailRecipe;
+export default DetailRecipe;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
