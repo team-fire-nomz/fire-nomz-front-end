@@ -49,7 +49,7 @@ function Notes(props) {
     }
     }
     if (isEntered) {
-        return <Navigate to="/" />;
+        return <Navigate to="/recipe/:id" />;
       }
 
     return (

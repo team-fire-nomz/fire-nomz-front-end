@@ -49,9 +49,8 @@ useEffect(() => {
 
 	return (
 	<Box>
-	<NotesList {...props} />
 	{recipe && <Recipe {...props} />}
-	<button type="submit" component={Link} to="/recipe/:id/tracking">
+	<button type="submit" component={Link} to="/recipe/:id/feedback">
         FEEDBACK FORM
     </button>
 	<Notes {...props} />
