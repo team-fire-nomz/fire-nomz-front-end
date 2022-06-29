@@ -18,7 +18,7 @@ function NotesList(props) {
       console.log(res);
       setNotes(res.data);
     })
-  }, []);
+  }, [props.id, props.token]);
 
   return (
     <Container sx={{ margin:'2px'}}>

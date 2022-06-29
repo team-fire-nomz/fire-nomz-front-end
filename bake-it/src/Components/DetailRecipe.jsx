@@ -39,9 +39,16 @@ const DetailRecipe = (props) => {
             >
             ADD A NOTE
             </Button>
-        
+            <Button
+                component={Link}
+                to="/recipe/:id/feedback"
+                variant="contained" 
+                type="submit" 
+                size="small"
+            >
+            PROVIDE FEEDBACK
+            </Button>
         </Card>
-  
     )
 }
 

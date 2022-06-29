@@ -2,7 +2,7 @@ import Recipe from "./Recipe";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {Container} from "@mui/material";
+import {Container, Grid} from "@mui/material";
 
 function RecipeList(props) {
   const [recipes, setRecipes] = useState([]);
@@ -30,7 +30,8 @@ function RecipeList(props) {
 //       return results
 //     })
   return (
-    <Container sx={{ margin:'2px'}}>
+    <Container sx={{ margin:'2px' }}>
+    <Grid container justifyContent="center" textalign="center" direction="column">
     <Search setResults={setResults}/>
     {results && results.map((result) => (
           <Recipe
@@ -60,7 +61,7 @@ function RecipeList(props) {
       :
       <h3>NO RESULTS FOUND</h3>
       }
-    
+    </Grid>
     </Container>
   );
 }

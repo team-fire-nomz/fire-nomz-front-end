@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import {Grid} from '@mui/material';
 
 export default function AddRecipe(props) {
 const inputArr = [
@@ -55,9 +55,10 @@ const ingredients = "";
 inputs.map((item) => ingredients.concat(item.value));
 console.log(ingredients);
 
+
 return (
     <div>
-
+    <Grid container direction="column" justifyContent="center" alignItems="center">
     <label htmlFor="title"/>
         <input
         type="text"
@@ -69,7 +70,9 @@ return (
         onChange={(e) => setTitle(e.target.value)}
         />
     
-    <button onClick={addInput}>Add Ingredient</button>
+    <button onClick={addInput}>
+        Add Ingredient
+    </button>
     {inputs.map((item, i) => {
         return (
         <input
@@ -92,9 +95,7 @@ return (
     <button type="submit" onClick={handleSubmit}>
         CREATE RECIPE
     </button>
+    </Grid>
     </div>
 );
 }
-
-
-
