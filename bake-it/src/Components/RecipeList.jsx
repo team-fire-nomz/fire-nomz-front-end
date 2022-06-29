@@ -9,7 +9,7 @@ function RecipeList(props) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes`;
+    const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes`;
     console.log(requestUrl);
     axios.get(requestUrl,
     {

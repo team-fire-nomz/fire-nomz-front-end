@@ -12,7 +12,7 @@ const DetailRecipe = (props) => {
         axios.get(`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
         { headers: { Authorization: `Token ${props.token}` } }
         ).then(response => setRecipe(response.data))
-    })
+    }, [])
     // useEffect(() => {   
     //     axios.get(`https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/notes/`,
     //     { headers: { Authorization: `Token ${props.token}` } }
