@@ -1,6 +1,4 @@
-import Recipe from "./Recipe";
 import Notes from "./Notes";
-import Search from "./Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Container} from "@mui/material";
@@ -20,7 +18,7 @@ function NotesList(props) {
       console.log(res);
       setNotes(res.data);
     })
-  }, []);
+  }, [props.id, props.token]);
 
   return (
     <Container sx={{ margin:'2px'}}>
