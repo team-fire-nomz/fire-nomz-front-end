@@ -33,6 +33,7 @@ function Notes(props) {
       .then((res) => {
         console.log(res);
         props.onNoteSubmit();
+        window.location = `/recipe/${props.id}`;
       });
   };
   const handleChange = (inputType, event) => {
