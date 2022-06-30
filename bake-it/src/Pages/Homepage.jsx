@@ -1,51 +1,50 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button, CardContent } from "@mui/material";
 import MyRecipeList from "../Components/MyRecipeList";
 
+function Homepage(props) {
+  console.log(props);
 
-function Homepage (props){
-   console.log(props)
-
-   return (
+    return (
       <div>
       {!props.isLoggedIn ? (
       <Container sx={{overflow: 'scroll'}}>
-         <CardContent>
-         <Box textAlign="center">
+        <CardContent>
+          <Box textAlign="center">
             <Button
-               size="large" 
-               variant="outlined" 
-               type="submit"
-               component={Link}
-               to= "/signin"
-               >Sign in
+                size="large" 
+                variant="outlined" 
+                type="submit"
+                component={Link}
+                to= "/signin"
+                >Sign in
             </Button>
-         </Box>
-         </CardContent>
-         <CardContent>
-         <Box textAlign="center">
+          </Box>
+        </CardContent>
+        <CardContent>
+          <Box textAlign="center">
             <Button
-            component={Link}
-            to= "/signup"
-            size="small"
-            variant="contained"
+              component={Link}
+              to="/signup"
+              size="small"
+              variant="contained"
             >
-            WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
+              WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
             </Button>
-         </Box>
-         </CardContent>
-         <RecipeList {...props} />
+          </Box>
+        </CardContent>
+          <RecipeList {...props} />
       </Container>
       ):(
       <Container>
-         <Box>
+          <Box>
             <MyRecipeList {...props} />
-         </Box>
+          </Box>
       </Container>
       )}
-   </div>
+    </div>
 )}
 
 export default Homepage 

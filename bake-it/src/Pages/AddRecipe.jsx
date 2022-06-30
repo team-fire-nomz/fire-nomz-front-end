@@ -1,62 +1,72 @@
 import { useState } from "react";
 import axios from "axios";
 import {Grid, CardContent} from '@mui/material';
+import { Navigate } from "react-router-dom";
 
 export default function AddRecipe(props) {
-const inputArr = [
+  const inputArr = [
     {
-    type: "text",
-    id: 1,
-    value: ""
-    }
-];
-const [recipe, setRecipe] = useState("");
-const [title, setTitle] = useState("");
-const [inputs, setInputs] = useState(inputArr);
-
-const handleSubmit = () => {
-    axios.post(
-    "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
-    {
-        title: title,
-        ingredients: inputs.map((item) => item.value),
-        recipe_steps: recipe,
+      type: "text",
+      id: 1,
+      value: "",
     },
-    { headers: { Authorization: `Token ${props.token}` } }
-    );
-};
+  ];
+  const [recipe, setRecipe] = useState("");
+  const [isEntered, setIsEntered] = useState(false);
+  const [title, setTitle] = useState("");
+  const [inputs, setInputs] = useState(inputArr);
 
-const addInput = () => {
+  const handleSubmit = (e) => {
+    axios
+      .post(
+        "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
+        {
+          title: title,
+          ingredients: inputs.map((item) => item.value),
+          recipe_steps: recipe,
+        },
+        { headers: { Authorization: `Token ${props.token}` } }
+      )
+      .then((res) => {
+        console.log(res);
+        // use react-dom to navigate to homepage
+        window.location = "/";
+      });
+  };
+
+  const addInput = () => {
     setInputs((s) => {
-    return [
+      return [
         ...s,
         {
-        type: "text",
-        value: ""
-        }
-    ];
+          type: "text",
+          value: "",
+        },
+      ];
     });
-};
+  };
 
-const handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     e.preventDefault();
 
     const index = e.target.id;
     setInputs((s) => {
-    const newArr = s.slice();
-    newArr[index].value = e.target.value;
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
 
-    return newArr;
+      return newArr;
     });
-};
+  };
 
+  const ingredients = "";
+  inputs.map((item) => ingredients.concat(item.value));
+  console.log(ingredients);
 
-const ingredients = "";
-inputs.map((item) => ingredients.concat(item.value));
-console.log(ingredients);
+  if (isEntered) {
+    return "Your recipe has been submitted.";
+  }
 
-
-return (
+  return (
     <div>
     <Grid container direction="column" justifyContent="center" alignItems="center">
     <CardContent>
@@ -106,5 +116,5 @@ return (
     </CardContent>
     </Grid>
     </div>
-);
+  );
 }

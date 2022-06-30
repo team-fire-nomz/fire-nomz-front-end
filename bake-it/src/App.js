@@ -45,7 +45,7 @@ const [selected, setSelected] = useLocalStorageState('selected', null);
       
         <Routes>
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
-            <Route index element={<Homepage setSelected={setSelected} token={token}/>} />
+            <Route index element={<Homepage isLoggedIn={isLoggedIn} setSelected={setSelected} token={token}/>} />
             <Route path="/signin" element={
             <SignIn
                   setAuth={setAuth}
