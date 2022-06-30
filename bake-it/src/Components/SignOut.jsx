@@ -17,7 +17,7 @@ export const Logout = ({ setAuth, setToken, setUsername, isLoggedIn }) => {
     <Box>
         <Typography variant="h4" align="center">
         Are you sure you want to sign out?
-	    </Typography>
+	      </Typography>
       <Box testAlign="center">
         <Button onClick={() => setLogout()}>Yes, Sign me out</Button>
       </Box>

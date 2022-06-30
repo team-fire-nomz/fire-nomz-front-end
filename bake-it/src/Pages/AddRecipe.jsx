@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { Grid } from "@mui/material";
+import {Grid, CardContent} from '@mui/material';
 
 export default function AddRecipe(props) {
   const inputArr = [
@@ -68,48 +67,53 @@ export default function AddRecipe(props) {
 
   return (
     <div>
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <label htmlFor="title" />
-        <input
-          type="text"
-          required
-          placeholder="TITLE:"
-          id="title"
-          value={title}
-          key="uniqueTitle"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <button onClick={addInput}>Add Ingredient</button>
-        {inputs.map((item, i) => {
-          return (
-            <input 
-              key={i}
-              onChange={handleInputChange}
-              placeholder="INGREDIENTS:"
-              value={item.value}
-              id={i}
-              type={item.type}
-              size="40"
+    <Grid container direction="column" justifyContent="center" alignItems="center">
+    <CardContent>
+        <label htmlFor="title"/>
+            <input
+            type="text"
+            required
+            placeholder="TITLE:"
+            id="title"
+            value={title}
+            key="uniqueTitle"
+            onChange={(e) => setTitle(e.target.value)}
             />
-          );
-        })}
-        <textarea
-          id="recipe"
-          placeholder="add instructions here"
-          value={recipe}
-          key="uniqueRecipe"
-          onChange={(e) => setRecipe(e.target.value)}
-        />
-        <button type="submit" onClick={handleSubmit}>
-          CREATE RECIPE
+    </CardContent>
+    <CardContent>
+        <button onClick={addInput}>
+            Add Ingredient
         </button>
-      </Grid>
+    </CardContent>
+    <CardContent>
+        {inputs.map((item, i) => {
+            return (
+            <input
+                onChange={handleInputChange}
+                placeholder="INGREDIENTS:"
+                value={item.value}
+                id={i}
+                type={item.type}
+                size="40"
+            />
+            );
+        })}
+    </CardContent>
+    <CardContent>
+        <textarea
+            id="recipe"
+            placeholder="add instructions here"
+            value={recipe}
+            key="uniqueRecipe"
+            onChange={(e) => setRecipe(e.target.value)}
+        />
+    </CardContent>
+    <CardContent>
+        <button type="submit" onClick={handleSubmit}>
+            CREATE RECIPE
+        </button>
+    </CardContent>
+    </Grid>
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
+<<<<<<< HEAD
+import { Container, Box, Button, CardContent } from "@mui/material";
+=======
 import { Container, Box, Button, Typography } from "@mui/material";
+>>>>>>> 87a39d87463ccabbda867fffe35159e7fd9a6603
 
 function Homepage(props) {
   console.log(props);
@@ -47,4 +51,4 @@ function Homepage(props) {
   );
 }
 
-export default Homepage;
+export default Homepage 

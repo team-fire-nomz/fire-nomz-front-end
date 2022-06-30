@@ -9,7 +9,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 })
 
-export default function SignIn({ setAuth, isLoggedIn }) {
+function SignIn({ setAuth, isLoggedIn }) {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
@@ -17,7 +17,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 
 	const handleClose = (reason) => {
 		if (reason === 'clickaway') {
-		    return
+			return
 		}
 		setError('')
 		setOpen(false)
@@ -25,7 +25,6 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 
 	const handleLogin = (event) => {
 		event.preventDefault()
-		console.log(event)
 		setError('')
 		axios
 			.post(
@@ -37,10 +36,12 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 			)
 			.then((res) => {
 				console.log(res.data);
+				console.log(res.data.auth_token)
 				console.log("setAuth", setAuth);
 				setAuth(username, res.data.auth_token)
 			})
 			.catch((e) => {
+				console.log(e)
 				e.message === 'Request failed with status code 400'
 				? setError(
 					'Your username or password is incorrect. Please try again.'
@@ -80,7 +81,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 			<Box component="form" onSubmit={handleLogin} align="center">
 				<Box textAlign="center">
 					<TextField
-					    style={{ backgroundColor: 'white'}} 
+						style={{ backgroundColor: 'white'}} 
 						label="username"
 						value={username}
 						margin="normal"
@@ -88,7 +89,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 				</Box>
 				<Box textAlign="center">
                     <TextField
-					    style={{ backgroundColor: 'white'}} 
+						style={{ backgroundColor: 'white'}} 
                         label="password"
 						type="password"
 						value={password}
@@ -109,7 +110,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 					size="small"
 					variant="contained"
 					>
-					WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
+					New to "Bake It Til You Make It"? Sign Up Here!
 					</Button>
 			</Box>
 			</Box>
@@ -117,3 +118,5 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 		</Grid>
 	)
 }
+
+export default SignIn
