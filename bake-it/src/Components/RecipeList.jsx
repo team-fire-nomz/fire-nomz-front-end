@@ -7,9 +7,11 @@ function RecipeList(props) {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/recipes";
+    if(props.isLoggedIn) {
+      const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/recipes`
     console.log(requestUrl);
-    axios.get(requestUrl,
+    axios
+    .get(requestUrl,
     {
       headers: { Authorization: `Token ${props.token}` }
     })
@@ -17,7 +19,17 @@ function RecipeList(props) {
       console.log(res);
       setRecipes(res.data);
     })
-  }, [props.token]);
+    } else {
+      const requestUrl = `https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes`
+    console.log(requestUrl);
+    axios
+    .get(requestUrl)
+    .then((res) => {
+      console.log(res);
+      setRecipes(res.data);
+    })
+    }
+  }, [props.token, props.isLoggedIn]);
 
   return (
     <Container sx={{ margin:'2px' }}>

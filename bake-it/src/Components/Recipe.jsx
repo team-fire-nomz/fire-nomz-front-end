@@ -8,7 +8,7 @@ console.log(props.id)
         <CardContent variant="outlined" >
             <Link onClick={()=> props.setSelected(props.id)} to={`/recipe/${props.id}`}>{props.title}</Link>
             <Typography sx={{ fontSize: 14 }} >
-                Ingredients: {props.ingredients}
+                Ingredients: {props.ingredients.map}
             </Typography>
             <Typography sx= {{ fontSize: 14}}>
                 Recipe Steps: {props.recipe_steps}
