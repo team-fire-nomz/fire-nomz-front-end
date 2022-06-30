@@ -60,9 +60,6 @@ function SignIn({ setAuth, isLoggedIn }) {
 	return (
 		<Grid>
 		<Box sx={{overflow: 'scroll',}}>
-			<Typography sx={{color: 'white'}} variant="h4" align="center">
-				Welcome fellow baker!
-			</Typography>
 			<Typography sx={{color: 'white'}} align="center">
 				Please sign in to continue.
 			</Typography>

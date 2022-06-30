@@ -6,15 +6,10 @@ import axios from "axios";
 
 const DetailRecipe = (props) => {
   console.log(props);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [recipe, setRecipe] = useState({});
   const [notes, setNotes] = useState(null);
 
   console.log(notes);
-
-  const handleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   console.log(recipe, "recipe");
 
