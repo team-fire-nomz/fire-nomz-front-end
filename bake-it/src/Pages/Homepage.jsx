@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
-import { Container, Box, Button, CardContent, Typography } from "@mui/material";
+import { Container, Box, Button, Typography } from "@mui/material";
 import BG1 from "./BG1.jpeg";
-
 
 function Homepage(props) {
   console.log(props);
