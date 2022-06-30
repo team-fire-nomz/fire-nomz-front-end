@@ -40,8 +40,6 @@ function RecipeList(props) {
             setSelected={props.setSelected}
             id={recipe.id}
             title={recipe.title}
-            ingredients={recipe.ingredients}
-            recipe={recipe.recipe_steps}
             chef={recipe.chef}
             created_at={recipe.created_at}
             key={recipe.id}
