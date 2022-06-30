@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Stack, Button, MenuItem, Tooltip } from "@mui/material";
+import { AppBar, Toolbar, Typography, Stack, Button, Tooltip } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import RateReviewIcon from '@mui/icons-material/RateReview';
 import React from 'react';
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
@@ -20,6 +19,9 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                     <Tooltip title="Return To Home Page">
                         <Button variant='contained' color='secondary'><Link to="/"><HomeIcon /></Link></Button>
                     </Tooltip>
+                    <Tooltip title="Add A New Recipe">
+                        <Button variant='contained' color='secondary'><Link to="/addrecipe"><AddBoxIcon /></Link></Button>
+                    </Tooltip>
                 {!isLoggedIn ? (
                     <Tooltip title="Log Into Your Account">
 					    <Button variant='contained' color='secondary'><Link to="/signin"><LoginIcon /></Link></Button>
@@ -29,11 +31,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                         <Button variant='contained' color='secondary'><Link to="/" onClick={handleLogout}><ExitToAppIcon /></Link></Button>
                     </Tooltip>
                 )}
-                    <Tooltip title="Add A New Recipe">
-                        <Button variant='contained' color='secondary'><Link to="/addrecipe"><AddBoxIcon /></Link></Button>
-                    </Tooltip>
                 </Stack>
-                    <MenuItem></MenuItem>
                 
         </Toolbar>
     </AppBar>

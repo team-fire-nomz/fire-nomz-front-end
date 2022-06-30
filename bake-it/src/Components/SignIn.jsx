@@ -112,7 +112,7 @@ export default function SignIn({ setAuth, isLoggedIn }) {
 					size="small"
 					variant="contained"
 					>
-					WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
+					New to "Bake It Til You Make It"? Sign Up Here!
 					</Button>
 			</Box>
 			</Box>

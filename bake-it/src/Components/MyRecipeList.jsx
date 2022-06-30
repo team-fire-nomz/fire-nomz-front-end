@@ -1,31 +1,32 @@
 import Recipe from "./Recipe";
+import Search from "./Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {Container, Grid} from "@mui/material";
 
-function RecipeList(props) {
-  const [recipes, setRecipes] = useState([]);
-  const [results, setResults] = useState([]);
+function MyRecipeList(props) {
+    const [recipes, setRecipes] = useState([]);
+    const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes";
+    useEffect(() => {
+    const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/recipes";
     console.log(requestUrl);
     axios.get(requestUrl,
     {
-      headers: { Authorization: `Token ${props.token}` }
+        headers: { Authorization: `Token ${props.token}` }
     })
     .then((res) => {
-      console.log(res);
-      setRecipes(res.data);
-      
+        console.log(res);
+        setRecipes(res.data);
     })
-  }, [results, props.token]);
+    }, [results, props.token]);
 
-  return (
+    return (
     <Container sx={{ margin:'2px' }}>
     <Grid container justifyContent="center" textalign="center" direction="column">
+    <Search setResults={setResults}/>
     {results && results.map((result) => (
-          <Recipe
+        <Recipe
             setSelected={props.setSelected}
             id={result.id}
             title={result.title}
@@ -34,11 +35,11 @@ function RecipeList(props) {
             chef={result.chef}
             created_at={result.created_at}
             key={result.id}
-          />
+        />
         ))}
-      {recipes.length > 0 ?
+        {recipes.length > 0 ?
         recipes.map((recipe) => (
-          <Recipe
+        <Recipe
             setSelected={props.setSelected}
             id={recipe.id}
             title={recipe.title}
@@ -46,10 +47,8 @@ function RecipeList(props) {
             recipe={recipe.recipe_steps}
             chef={recipe.chef}
             created_at={recipe.created_at}
-            key={recipe.id}
-          />
-        ))
-      :
+            key={recipe.id}/>
+        )):
       <h3>NO RESULTS FOUND</h3>
       }
     </Grid>
@@ -57,5 +56,4 @@ function RecipeList(props) {
   );
 }
 
-export default RecipeList;
-
+export default MyRecipeList;

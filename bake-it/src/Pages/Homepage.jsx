@@ -1,14 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import RecipeList from "../Components/RecipeList";
-import { Container, Box, Button } from "@mui/material";
+import { Container, Box, Button, CardContent } from "@mui/material";
+import MyRecipeList from "../Components/MyRecipeList";
 
 
 function Homepage (props){
-console.log(props)
+   console.log(props)
 
    return (
+      <div>
+      {!props.isLoggedIn ? (
       <Container sx={{overflow: 'scroll'}}>
+         <CardContent>
          <Box textAlign="center">
             <Button
                size="large" 
@@ -19,6 +23,8 @@ console.log(props)
                >Sign in
             </Button>
          </Box>
+         </CardContent>
+         <CardContent>
          <Box textAlign="center">
             <Button
             component={Link}
@@ -29,8 +35,17 @@ console.log(props)
             WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
             </Button>
          </Box>
+         </CardContent>
          <RecipeList {...props} />
       </Container>
+      ):(
+      <Container>
+         <Box>
+            <MyRecipeList {...props} />
+         </Box>
+      </Container>
+      )}
+   </div>
 )}
 
-export default Homepage;
+export default Homepage 

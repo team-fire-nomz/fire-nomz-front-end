@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import {Grid} from '@mui/material';
+import {Grid, CardContent} from '@mui/material';
 
 export default function AddRecipe(props) {
 const inputArr = [
@@ -14,7 +14,7 @@ const [recipe, setRecipe] = useState("");
 const [title, setTitle] = useState("");
 const [inputs, setInputs] = useState(inputArr);
 
-const handleSubmit = (e) => {
+const handleSubmit = () => {
     axios.post(
     "https://bake-it-till-you-make-it.herokuapp.com/api/recipes/",
     {
@@ -59,42 +59,51 @@ console.log(ingredients);
 return (
     <div>
     <Grid container direction="column" justifyContent="center" alignItems="center">
-    <label htmlFor="title"/>
-        <input
-        type="text"
-        required
-        placeholder="TITLE:"
-        id="title"
-        value={title}
-        key="uniqueTitle"
-        onChange={(e) => setTitle(e.target.value)}
+    <CardContent>
+        <label htmlFor="title"/>
+            <input
+            type="text"
+            required
+            placeholder="TITLE:"
+            id="title"
+            value={title}
+            key="uniqueTitle"
+            onChange={(e) => setTitle(e.target.value)}
+            />
+    </CardContent>
+    <CardContent>
+        <button onClick={addInput}>
+            Add Ingredient
+        </button>
+    </CardContent>
+    <CardContent>
+        {inputs.map((item, i) => {
+            return (
+            <input
+                onChange={handleInputChange}
+                placeholder="INGREDIENTS:"
+                value={item.value}
+                id={i}
+                type={item.type}
+                size="40"
+            />
+            );
+        })}
+    </CardContent>
+    <CardContent>
+        <textarea
+            id="recipe"
+            placeholder="add instructions here"
+            value={recipe}
+            key="uniqueRecipe"
+            onChange={(e) => setRecipe(e.target.value)}
         />
-    
-    <button onClick={addInput}>
-        Add Ingredient
-    </button>
-    {inputs.map((item, i) => {
-        return (
-        <input
-            onChange={handleInputChange}
-            placeholder="INGREDIENTS:"
-            value={item.value}
-            id={i}
-            type={item.type}
-            size="40"
-        />
-        );
-    })}
-    <textarea
-        id="recipe"
-        placeholder="add instructions here"
-        value={recipe}
-        key="uniqueRecipe"
-        onChange={(e) => setRecipe(e.target.value)}
-    />
-    <button type="submit" onClick={handleSubmit}>
-        CREATE RECIPE
-    </button>
+    </CardContent>
+    <CardContent>
+        <button type="submit" onClick={handleSubmit}>
+            CREATE RECIPE
+        </button>
+    </CardContent>
     </Grid>
     </div>
 );
