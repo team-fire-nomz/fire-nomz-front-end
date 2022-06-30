@@ -15,7 +15,18 @@ const DetailRecipe = (props) => {
   const handleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+
   console.log(recipe, "recipe");
+
+  const getNotes = () => {
+    axios
+      .get(
+        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/notes/`,
+        { headers: { Authorization: `Token ${props.token}` } }
+      )
+      .then((response) => setNotes(response.data));
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -27,13 +38,7 @@ const DetailRecipe = (props) => {
 
   useEffect(() => {
     console.log(props.selected);
-
-    axios
-      .get(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/notes/`,
-        { headers: { Authorization: `Token ${props.token}` } }
-      )
-      .then((response) => setNotes(response.data));
+    getNotes();
   }, []);
 
   return (
@@ -47,10 +52,12 @@ const DetailRecipe = (props) => {
       </div>
       <ul>
         {notes &&
-          notes.map((note) => {
-            return <li>{note.note} - {note.created_at} </li>
-            
-
+          notes.map((note, noteIndex) => {
+            return (
+              <li key={noteIndex}>
+                {note.note} - {note.created_at}{" "}
+              </li>
+            );
           })}
       </ul>
       <Button
@@ -62,7 +69,7 @@ const DetailRecipe = (props) => {
       >
         PROVIDE FEEDBACK
       </Button>
-      <Notes {...props} />
+      <Notes {...props} onNoteSubmit={getNotes} />
     </Card>
   );
 };
