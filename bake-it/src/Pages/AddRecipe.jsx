@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 import {Grid} from '@mui/material';
 
 export default function AddRecipe(props) {
+  
 const inputArr = [
     {
     type: "text",
@@ -11,6 +13,7 @@ const inputArr = [
     }
 ];
 const [recipe, setRecipe] = useState("");
+const [isEntered, setIsEntered] = useState(false);
 const [title, setTitle] = useState("");
 const [inputs, setInputs] = useState(inputArr);
 
@@ -23,7 +26,7 @@ const handleSubmit = (e) => {
         recipe_steps: recipe,
     },
     { headers: { Authorization: `Token ${props.token}` } }
-    );
+    ) 
 };
 
 const addInput = () => {
@@ -40,11 +43,13 @@ const addInput = () => {
 
 const handleInputChange = (e) => {
     e.preventDefault();
+    
 
     const index = e.target.id;
     setInputs((s) => {
     const newArr = s.slice();
     newArr[index].value = e.target.value;
+    
 
     return newArr;
     });
@@ -55,6 +60,9 @@ const ingredients = "";
 inputs.map((item) => ingredients.concat(item.value));
 console.log(ingredients);
 
+if (isEntered) {
+    return "Your recipe has been submitted."
+  }
 
 return (
     <div>

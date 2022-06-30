@@ -1,6 +1,5 @@
 import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
 
 function Layout(props) {
 
@@ -12,7 +11,6 @@ function Layout(props) {
         	token={props.token}
         />
         <main><Outlet /></main>
-        <Footer />
     </div>
     );
 }

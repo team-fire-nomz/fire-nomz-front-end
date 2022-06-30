@@ -26,7 +26,7 @@ function Notes(props) {
         console.log("notesData", notesData)
     axios
         .post(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.id}/notes/`,
+        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/notes/`,
         notesData,
         {
         headers: { Authorization: `Token ${props.token}` },
