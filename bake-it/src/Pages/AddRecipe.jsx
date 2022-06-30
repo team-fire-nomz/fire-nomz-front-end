@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import {Grid, CardContent} from '@mui/material';
-import { Navigate } from "react-router-dom";
 
 export default function AddRecipe(props) {
   const inputArr = [

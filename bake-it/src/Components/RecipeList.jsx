@@ -5,10 +5,9 @@ import {Container, Grid} from "@mui/material";
 
 function RecipeList(props) {
   const [recipes, setRecipes] = useState([]);
-  const [results, setResults] = useState([]);
 
   useEffect(() => {
-    const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/all_recipes";
+    const requestUrl = "https://bake-it-till-you-make-it.herokuapp.com/api/recipes";
     console.log(requestUrl);
     axios.get(requestUrl,
     {
@@ -17,25 +16,12 @@ function RecipeList(props) {
     .then((res) => {
       console.log(res);
       setRecipes(res.data);
-      
     })
-  }, [results, props.token]);
+  }, [props.token]);
 
   return (
     <Container sx={{ margin:'2px' }}>
     <Grid container justifyContent="center" textalign="center" direction="column">
-    {results && results.map((result) => (
-          <Recipe
-            setSelected={props.setSelected}
-            id={result.id}
-            title={result.title}
-            ingredients={result.ingredients}
-            recipe={result.recipe_steps}
-            chef={result.chef}
-            created_at={result.created_at}
-            key={result.id}
-          />
-        ))}
       {recipes.length > 0 ?
         recipes.map((recipe) => (
           <Recipe

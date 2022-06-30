@@ -10,6 +10,7 @@ import  Feedback from "./Pages/Feedback";
 import Notes from "./Components/Notes";
 import DetailRecipe from './Components/DetailRecipe';
 
+
 function App() {
   const [token, setToken] = useLocalStorageState ('reactLibraryToken', '')
   const [username, setUsername] = useLocalStorageState(
@@ -36,7 +37,7 @@ const [selected, setSelected] = useLocalStorageState('selected', null);
       )
       .then((res) => {
         setAuth('', '')
-      })
+      });
   }
 
   return (
@@ -47,10 +48,10 @@ const [selected, setSelected] = useLocalStorageState('selected', null);
           <Route path="/" element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} token={token} />}>
             <Route index element={<Homepage isLoggedIn={isLoggedIn} setSelected={setSelected} token={token}/>} />
             <Route path="/signin" element={
-            <SignIn
+                <SignIn
                   setAuth={setAuth}
                   isLoggedIn={isLoggedIn}
-                  handleLogout={handleLogout} /> } />
+                  handleLogout={handleLogout} />} />
             <Route path="/signup" element={<Register />} />
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<DetailRecipe username={username} selected={selected} isLoggedIn={isLoggedIn} token={token}  />} />
