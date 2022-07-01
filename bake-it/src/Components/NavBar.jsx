@@ -30,7 +30,9 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
                     </Tooltip>
                 ) : (
                     <Tooltip title="Log Out">
-                        <Button variant='contained' color='secondary'><Link to="/" onClick={handleLogout}><ExitToAppIcon /></Link></Button>
+                        <Button variant='contained' color='secondary'>
+                            <Link to="/" onClick={handleLogout}><ExitToAppIcon /></Link>
+                        </Button>
                     </Tooltip>
                 )}
                 </Stack>
