@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button, Typography } from "@mui/material";
-
 import BG2 from "./BG2.jpeg";
 
 
@@ -11,7 +10,7 @@ function Homepage(props) {
   console.log(props);
 
   return (
-    <Container sx={{ height: '90vh', backgroundImage: `url(${BG2})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ position: 'center', height: '90vh', backgroundImage: `url(${BG2})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
       {!props.isLoggedIn && (
         <>
 		
