@@ -10,7 +10,6 @@ export default function AddRecipe(props) {
       value: "",
     },
   ];
-  const [recipe, setRecipe] = useState("");
   const [isEntered, setIsEntered] = useState(false);
   const [title, setTitle] = useState("");
   const [inputs, setInputs] = useState(inputArr);
@@ -22,7 +21,7 @@ export default function AddRecipe(props) {
         {
           title: title,
           ingredients: inputs.map((item) => item.value),
-          recipe_steps: recipe,
+          recipe_steps: inputs.map((item) => item.value),
         },
         { headers: { Authorization: `Token ${props.token}` } }
       )
@@ -57,9 +56,25 @@ export default function AddRecipe(props) {
     });
   };
 
+  const handleRecipeStepsChange = (e) => {
+    e.preventDefault();
+
+    const index = e.target.id;
+    setInputs((s) => {
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
+
+      return newArr;
+    });
+  };
+
   const ingredients = "";
   inputs.map((item) => ingredients.concat(item.value));
   console.log(ingredients);
+
+  const recipeSteps = "";
+  inputs.map((item) => recipeSteps.concat(item.value));
+  console.log(recipeSteps);
 
   if (isEntered) {
     return "Your recipe has been submitted.";
@@ -100,13 +115,23 @@ export default function AddRecipe(props) {
         })}
     </CardContent>
     <CardContent>
-        <textarea
-            id="recipe"
-            placeholder="add instructions here"
-            value={recipe}
-            key="uniqueRecipe"
-            onChange={(e) => setRecipe(e.target.value)}
-        />
+        <button onClick={addInput}>
+            Add Recipe Steps
+        </button>
+    </CardContent>
+    <CardContent>
+        {inputs.map((item, i) => {
+          return (
+          <input
+              onChange={handleRecipeStepsChange}
+              placeholder="RECIPE STEPS:"
+              value={item.value}
+              id={i}
+              type={item.type}
+              size="40"
+          />
+          );
+      })}
     </CardContent>
     <CardContent>
         <button type="submit" onClick={handleSubmit}>

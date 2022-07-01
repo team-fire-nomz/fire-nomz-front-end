@@ -5,8 +5,8 @@ const Recipe = (props) => {
 console.log(props.id)
     return (
         <div sx={{ overflow: 'scroll'}}>
-        <CardContent variant="outlined" >
-            <Button variant="contained" sx={{ color: 'secondary', display:'inline'}} size="large" >
+        <CardContent>
+            <Button variant="contained" sx={{ color: 'secondary', display:'inline'}} size="large">
                 <Box>
                     <Typography sx={{ fontSize: 18}}>
                         <Link onClick={()=> props.setSelected(props.id)} to={`/recipe/${props.id}`}>{props.title}</Link>
