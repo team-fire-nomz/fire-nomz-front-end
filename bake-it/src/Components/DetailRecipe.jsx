@@ -2,12 +2,14 @@ import { Card, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
+import Edit from "./Edit";
 import axios from "axios";
 
 const DetailRecipe = (props) => {
   console.log(props);
   const [recipe, setRecipe] = useState({});
   const [notes, setNotes] = useState(null);
+  const [ingredients, setIngredients] = useState(null);
 
   console.log(notes);
 
@@ -40,8 +42,8 @@ const DetailRecipe = (props) => {
     <Card>
       <div>
         <h3>Title: {recipe.title}/</h3>
-        <p>{recipe.ingredients}</p>
-        <p>{recipe.recipe_steps}</p>
+        <ul>{recipe.ingredients}</ul>
+        <ul>{recipe.recipe_steps}</ul>
         <h4>Chef: {recipe.chef}</h4>
         <h4>Baked on: {recipe.created_at}</h4>
       </div>
@@ -55,6 +57,7 @@ const DetailRecipe = (props) => {
             );
           })}
       </ul>
+      <Edit {...props}/>
       <Button
         component={Link}
         to="/recipe/:id/feedback"
