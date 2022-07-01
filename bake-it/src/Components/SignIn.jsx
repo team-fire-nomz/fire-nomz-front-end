@@ -111,7 +111,7 @@ function SignIn({ setAuth, isLoggedIn }) {
 					size="small"
 					variant="contained"
 					>
-					New to "Bake It Til You Make It"? Sign Up Here!
+					New to "Bake It Till You Make It"? Sign Up Here!
 					</Button>
 			</Box>
 			</Box>
