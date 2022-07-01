@@ -1,131 +1,118 @@
-    import { useState, useEffect } from "react";
-    import { Grid, CardContent } from "@mui/material";
-    import axios from "axios";
+import { useState, useRef, useEffect } from 'react'
+import { Grid, CardContent } from '@mui/material'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
-    export default function Edit(props) {
-    const inputArr = [
-    {
-        type: "text",
-        id: 1,
-        value: "",
-    },
-    ];
-    const [recipe, setRecipe] = useState("");
-    const [isEntered, setIsEntered] = useState(false);
-    const [title, setTitle] = useState("");
-    const [ingredients, setIngredients] = useState("");
-    const [inputs, setInputs] = useState(inputArr);
+export default function EditForm({ props }) {
+  const { recipeId } = useParams()
+  const [recipe, setRecipe] = useState('Some steps go here')
+  const newRecipe = useRef('')
+  const [isEntered, setIsEntered] = useState(false)
+  const [title, setTitle] = useState('A Good Recipe')
+  const newTitle = useRef('')
+  const [ingredients, setIngredients] = useState(['cheese', 'pizza'])
+  // const newIngredient = useRef()
+  // const [newIngredientList, setNewIngredientList] = useState([])
 
-    const handleSubmit = (e) => {
-    axios
-        .patch(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
-        {
-            title: title,
-            ingredients: inputs.map((item) => item.value),
-            recipe_steps: recipe,
-        },
-        { headers: { Authorization: `Token ${props.token}` } }
-        )
-        .then((res) => {
-        console.log(res);
-        window.location = `/recipe/${props.id}`;
-        // use react-dom to navigate to homepage
-        });
-    };
-    useEffect(() => {
-    axios
-        .get(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
-        { headers: { Authorization: `Token ${props.token}` } }
-        )
-        .then((response) => {
-        setRecipe(response.data.recipe_steps);
-        setTitle(response.data.title);
-        setIngredients(response.data.ingredients);
-        });
-    }, []);
-
-    const addInput = () => {
-    setInputs((s) => {
-        return [
-        ...s,
-        {
-            type: "text",
-            value: "",
-        },
-        ];
-    });
-    };
-
-    const handleInputChange = (e) => {
-    e.preventDefault();
-
-    const index = e.target.id;
-    setInputs((s) => {
-        const newArr = s.slice();
-        newArr[index].value = e.target.value;
-
-        return newArr;
-    });
-    };
-
-
-    if (isEntered) {
-    return "Your recipe has been edited.";
+  console.log({ recipeId })
+  const handleSubmit = (e) => {
+    const newRecipeData = {}
+    e.preventDefault()
+    if (newTitle.current.value) {
+      newRecipeData['title'] = newTitle.current.value
+    }
+    if (newRecipe.current.value) {
+      newRecipeData['recipe'] = newRecipe.current.value
     }
 
-    return (
-    <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-    >
-        <CardContent>
-        <label htmlFor="title" />
-        <input
-            type="text"
-            required
-            placeholder="TITLE:"
-            id="title"
-            value={title}
-            key={title}
-            onChange={(e) => setTitle(e.target.value)}
-        />
-        </CardContent>
-        <CardContent>
-        <button onClick={addInput}>Add ingredient</button>
-        </CardContent>
-        <CardContent>
-        {inputs.map((item, i) => {
-            return (
+    axios
+      .patch(
+        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${recipeId}/`,
+        newRecipeData,
+        { headers: { Authorization: `Token ${props.token}` } }
+      )
+      .then((res) => {
+        console.log(res)
+        // window.location = `/recipe/${props.id}`
+        // use react-dom to navigate to homepage
+      })
+  }
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${recipeId}/`,
+  //       { headers: { Authorization: `Token ${props.token}` } }
+  //     )
+  //     .then((response) => {
+  //       setRecipe(response.data.recipe_steps)
+  //       setTitle(response.data.title)
+  //       setIngredients(response.data.ingredients)
+  //     })
+  // }, [])
+
+  const handleIngredients = (e) => {
+    console.log(e.target)
+  }
+
+  if (isEntered) {
+    return 'Your recipe has been edited.'
+  }
+
+  return (
+    <>
+      <section className="recipe">
+        <h2>{title}</h2>
+        <p>{recipe}</p>
+        <ul>
+          {ingredients.map((ingredient) => (
+            <li>ingredient</li>
+          ))}
+        </ul>
+      </section>
+      <section className="edit-form">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="title" />
             <input
-                onChange={handleInputChange}
-                placeholder="ingredients:"
-                value={ingredients}
-                id={i}
-                type={item.type}
-                size="40"
-                key={ingredients}
+              type="text"
+              required
+              placeholder="TITLE:"
+              id="title"
+              // value={title}
+              key={title}
+              ref={newTitle}
+              // onChange={(e) => setTitle(e.target.value)}
             />
-            );
-        })}
-        </CardContent>
-        <CardContent>
-        <textarea
+          </div>
+          {/* <button onClick={handleInputChange}>Add ingredient</button> */}
+          {ingredients.length > 0 &&
+            ingredients.map((ingredient, i) => {
+              return (
+                <div className="ingredient">
+                  <input
+                    onChange={handleIngredients}
+                    placeholder="ingredients:"
+                    // value={ingredient}
+                    id={i}
+                    size="40"
+                    key={ingredient}
+                  />
+                </div>
+              )
+            })}
+          <textarea
             id="recipe"
             placeholder="add instructions here"
-            value={recipe}
+            // value={recipe}
             key={recipe}
-            onChange={(e) => setRecipe(e.target.value)}
-        />
-        </CardContent>
-        <CardContent>
-        <button type="submit" onClick={handleSubmit}>
+            ref={newRecipe}
+            // onChange={(e) => setRecipe(e.target.value)}
+          />
+          <button type="submit" onClick={handleSubmit}>
             Edit recipe
-        </button>
-        </CardContent>
-    </Grid>
-    );
-    }
+          </button>
+        </form>
+      </section>
+    </>
+  )
+}

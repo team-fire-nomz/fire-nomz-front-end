@@ -1,19 +1,20 @@
-import { Card, Button } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Notes from "./Notes";
-import Edit from "./Edit";
-import axios from "axios";
+import { Card, Button } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import Notes from './Notes'
+import EditForm from './Edit'
+import axios from 'axios'
 
 const DetailRecipe = (props) => {
-  console.log(props);
-  const [recipe, setRecipe] = useState({});
-  const [notes, setNotes] = useState(null);
-  const [ingredients, setIngredients] = useState(null);
+  console.log(props)
+  console.log('DetailRecipe')
+  const [recipe, setRecipe] = useState({})
+  const [notes, setNotes] = useState(null)
+  const [ingredients, setIngredients] = useState([])
 
-  console.log(notes);
+  console.log(notes)
 
-  console.log(recipe, "recipe");
+  console.log(recipe, 'recipe')
 
   const getNotes = () => {
     axios
@@ -21,8 +22,8 @@ const DetailRecipe = (props) => {
         `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/notes/`,
         { headers: { Authorization: `Token ${props.token}` } }
       )
-      .then((response) => setNotes(response.data));
-  };
+      .then((response) => setNotes(response.data))
+  }
 
   useEffect(() => {
     axios
@@ -30,13 +31,13 @@ const DetailRecipe = (props) => {
         `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
         { headers: { Authorization: `Token ${props.token}` } }
       )
-      .then((response) => setRecipe(response.data));
-  }, []);
+      .then((response) => setRecipe(response.data))
+  }, [])
 
   useEffect(() => {
-    console.log(props.selected);
-    getNotes();
-  }, []);
+    console.log(props.selected)
+    getNotes()
+  }, [])
 
   return (
     <Card>
@@ -52,12 +53,12 @@ const DetailRecipe = (props) => {
           notes.map((note, noteIndex) => {
             return (
               <li key={noteIndex}>
-                {note.note} - {note.created_at}{" "}
+                {note.note} - {note.created_at}{' '}
               </li>
-            );
+            )
           })}
       </ul>
-      <Edit {...props}/>
+      <Link to={`/recipe/${props.selected}/edit`}>Edit this recipe</Link>
       <Button
         component={Link}
         to="/recipe/:id/feedback"
@@ -69,7 +70,7 @@ const DetailRecipe = (props) => {
       </Button>
       <Notes {...props} onNoteSubmit={getNotes} />
     </Card>
-  );
-};
+  )
+}
 
-export default DetailRecipe;
+export default DetailRecipe
