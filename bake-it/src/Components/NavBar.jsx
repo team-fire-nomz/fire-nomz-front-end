@@ -8,6 +8,8 @@ import React from 'react';
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
+    if (isLoggedIn)
+
     return (
 
     <AppBar position='static'>
