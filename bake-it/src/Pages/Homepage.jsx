@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button, Typography } from "@mui/material";
+
 import BG2 from "./BG2.jpeg";
+
 
 
 function Homepage(props) {
