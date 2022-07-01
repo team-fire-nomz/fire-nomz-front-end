@@ -18,7 +18,7 @@
 
     const handleSubmit = (e) => {
     axios
-        .post(
+        .patch(
         `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
         {
             title: title,
@@ -29,6 +29,7 @@
         )
         .then((res) => {
         console.log(res);
+        window.location = `/recipe/${props.id}`;
         // use react-dom to navigate to homepage
         });
     };
@@ -71,7 +72,7 @@
 
 
     if (isEntered) {
-    return "Your recipe has been submitted.";
+    return "Your recipe has been edited.";
     }
 
     return (
