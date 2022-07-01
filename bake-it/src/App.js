@@ -6,8 +6,9 @@ import Homepage from "./Pages/Homepage";
 import AddRecipe from "./Pages/AddRecipe";
 import useLocalStorageState from 'use-local-storage-state';
 import axios from 'axios';
-import  Feedback from "./Pages/Feedback";
+import Feedback from "./Pages/Feedback";
 import Notes from "./Components/Notes";
+import Edit from "./Components/Edit"
 import DetailRecipe from './Components/DetailRecipe';
 
 
@@ -56,7 +57,8 @@ const [selected, setSelected] = useLocalStorageState('selected', null);
             <Route path="/addrecipe" element={<AddRecipe isLoggedIn={isLoggedIn} token={token}/>} />
             <Route path="/recipe/:id" element={<DetailRecipe username={username} selected={selected} isLoggedIn={isLoggedIn} token={token}  />} />
             <Route path="/recipe/:id/notes" element={<Notes isLoggedIn={isLoggedIn} token={token}  />} />
-            <Route path="/recipes/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/recipe/:id/edit" element={<Edit isLoggedIn={isLoggedIn} token={token}  />} />
+            <Route path="/recipe/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
           </Route>
         </Routes>
       

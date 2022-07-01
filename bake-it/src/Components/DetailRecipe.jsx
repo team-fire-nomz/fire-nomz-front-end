@@ -8,6 +8,7 @@ const DetailRecipe = (props) => {
   console.log(props);
   const [recipe, setRecipe] = useState({});
   const [notes, setNotes] = useState(null);
+  const [ingredients, setIngredients] = useState(null);
 
   console.log(notes);
 
@@ -39,6 +40,7 @@ const DetailRecipe = (props) => {
   return (
     <Card>
       <div>
+
         <Container>
           <Typography variant="h6">Recipe Title:</Typography>
             <CardContent variant="p">{recipe.title}</CardContent>
@@ -64,7 +66,16 @@ const DetailRecipe = (props) => {
       </ul>
       <Button
         component={Link}
-        to="/recipe/:id/feedback"
+        to={`/recipe/${props.selected}/edit`}
+        variant="contained"
+        type="submit"
+        size="small"
+      >
+        Edit Recipe
+      </Button>
+      <Button
+        component={Link}
+        to={`/recipe/${props.selected}/feedback`}
         variant="contained"
         type="submit"
         size="small"
