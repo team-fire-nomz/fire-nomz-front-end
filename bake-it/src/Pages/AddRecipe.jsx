@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import {Grid, CardContent} from '@mui/material';
+import {Grid, CardContent, Container} from '@mui/material';
+import BG1 from "./BG1.jpeg";
 
 export default function AddRecipe(props) {
   const inputArr = [
@@ -81,7 +82,7 @@ export default function AddRecipe(props) {
   }
 
   return (
-    <div>
+    <Container sx={{ height: '90vh', backgroundImage: `url(${BG1})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
     <Grid container direction="column" justifyContent="center" alignItems="center">
     <CardContent>
         <label htmlFor="title"/>
@@ -139,6 +140,6 @@ export default function AddRecipe(props) {
         </button>
     </CardContent>
     </Grid>
-    </div>
+    </Container>
   );
 }
