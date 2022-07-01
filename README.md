@@ -1,7 +1,7 @@
 
 # Welcome!
 
-This application "Bake it till you make it", is a multi-tenant application designed with Bakers in mind. Logged-in users can add recipes. Users without an account are prompted to join our baking community.  The application utilizes React Router and was custom styled with sweetness in mind. The Bake it API was created by developer Manny Dador.
+This application "Bake it till you make it", is a multi-tenant application designed with Bakers in mind. Logged-in users can add recipes. Users without an account are prompted to join our baking community.  The application utilizes React Router and was styled with simple sweetness in mind. The Bake it API was created by developer Manny Dador.
 
 ### Features
 
