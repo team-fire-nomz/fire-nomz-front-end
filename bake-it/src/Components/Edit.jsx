@@ -1,5 +1,5 @@
     import { useState, useEffect } from "react";
-    import { Grid, CardContent } from "@mui/material";
+    import { Button, Box, Grid, CardContent } from "@mui/material";
     import axios from "axios";
 
     export default function Edit(props) {
@@ -95,7 +95,16 @@
         />
         </CardContent>
         <CardContent>
-        <button onClick={addInput}>Add ingredient</button>
+            <Box textAlign="center">
+                <Button 
+                size="small"
+                variant="contained"
+                type="submit" 
+                onClick={addInput}
+                >
+                Add ingredients
+                </Button>
+            </Box>    
         </CardContent>
         <CardContent>
         {inputs.map((item, i) => {
@@ -122,9 +131,16 @@
         />
         </CardContent>
         <CardContent>
-        <button type="submit" onClick={handleSubmit}>
-            Edit recipe
-        </button>
+            <Box textAlign="center">
+                <Button 
+                size="small"
+                variant="contained"
+                type="submit" 
+                onClick={handleSubmit}
+                >
+                Edit recipe
+                </Button>
+            </Box>    
         </CardContent>
     </Grid>
     );

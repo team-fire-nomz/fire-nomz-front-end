@@ -46,7 +46,7 @@ function RecipeList(props) {
           />
         ))
       :
-      <h3>NO RESULTS FOUND</h3>
+      <h3>Sorry, no results found</h3>
       }
     </Grid>
     </Container>

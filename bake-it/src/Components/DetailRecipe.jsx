@@ -71,7 +71,7 @@ const DetailRecipe = (props) => {
         type="submit"
         size="small"
       >
-        Edit Recipe
+        Edit recipe
       </Button>
       <Button
         component={Link}
@@ -80,7 +80,7 @@ const DetailRecipe = (props) => {
         type="submit"
         size="small"
       >
-        PROVIDE FEEDBACK
+        Provide feedback
       </Button>
       <Notes {...props} onNoteSubmit={getNotes} />
     </Card>
