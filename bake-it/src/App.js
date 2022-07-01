@@ -58,7 +58,7 @@ const [selected, setSelected] = useLocalStorageState('selected', null);
             <Route path="/recipe/:id" element={<DetailRecipe username={username} selected={selected} isLoggedIn={isLoggedIn} token={token}  />} />
             <Route path="/recipe/:id/notes" element={<Notes isLoggedIn={isLoggedIn} token={token}  />} />
             <Route path="/recipe/:id/edit" element={<Edit isLoggedIn={isLoggedIn} token={token}  />} />
-            <Route path="/recipes/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
+            <Route path="/recipe/:id/feedback" element={<Feedback isLoggedIn={isLoggedIn} token={token}/>} />
           </Route>
         </Routes>
       

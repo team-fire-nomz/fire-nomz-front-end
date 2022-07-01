@@ -29,7 +29,7 @@
         )
         .then((res) => {
         console.log(res);
-        window.location = `/recipe/${props.id}`;
+       
         // use react-dom to navigate to homepage
         });
     };

@@ -2,7 +2,6 @@ import { Card, Button, CardContent, Container, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
-import Edit from "./Edit";
 import axios from "axios";
 
 const DetailRecipe = (props) => {
@@ -65,10 +64,18 @@ const DetailRecipe = (props) => {
             );
           })}
       </ul>
-      <Edit {...props}/>
       <Button
         component={Link}
-        to="/recipe/:id/feedback"
+        to={`/recipe/${props.selected}/edit`}
+        variant="contained"
+        type="submit"
+        size="small"
+      >
+        Edit Recipe
+      </Button>
+      <Button
+        component={Link}
+        to={`/recipe/${props.selected}/feedback`}
         variant="contained"
         type="submit"
         size="small"
