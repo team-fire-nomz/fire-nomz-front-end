@@ -185,7 +185,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             size="small"
             variant="contained"
           >
-            HAVE AN ACCOUNT? PLEASE SIGN IN.
+            Have an account? Please sign in.
           </Button>
         </Box>
       </Box>
