@@ -82,8 +82,17 @@ export default function AddRecipe(props) {
   }
 
   return (
-    <Container sx={{ position: 'center', height: '90vh', backgroundImage: `url(${BG1})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
-    <Grid container direction="column" justifyContent="center" alignItems="center">
+    <Container sx={{ 
+      position: 'center', 
+      height: '90vh', 
+      backgroundImage: `url(${BG1})`, 
+      backgroundRepeat: 'no-repeat', 
+      overflow: "scroll" }}>
+    <Grid 
+      container 
+      direction="column" 
+      justifyContent="center" 
+      alignItems="center">
     <CardContent>
         <label htmlFor="title"/>
             <input
