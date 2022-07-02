@@ -82,7 +82,7 @@ export default function AddRecipe(props) {
   }
 
   return (
-    <Container sx={{ position: 'center', height: '90vh', backgroundImage: `url(${BG1})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG1})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
     <Grid container direction="column" justifyContent="center" alignItems="center">
     <CardContent>
         <label htmlFor="title"/>
@@ -114,7 +114,7 @@ export default function AddRecipe(props) {
             return (
             <input
                 onChange={handleInputChange}
-                placeholder="INGREDIENTS:"
+                placeholder="Ingredient:"
                 value={item.value}
                 id={i}
                 type={item.type}
@@ -140,7 +140,7 @@ export default function AddRecipe(props) {
           return (
           <input
               onChange={handleRecipeStepsChange}
-              placeholder="RECIPE STEPS:"
+              placeholder="Recipe steps:"
               value={item.value}
               id={i}
               type={item.type}

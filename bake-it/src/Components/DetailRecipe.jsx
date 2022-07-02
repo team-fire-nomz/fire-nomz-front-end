@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
 import axios from "axios";
+import BG4 from "../Pages/BG4.jpeg"
 
 const DetailRecipe = (props) => {
   console.log(props);
@@ -38,6 +39,7 @@ const DetailRecipe = (props) => {
   }, []);
 
   return (
+    <Container sx={{ height: '90vh', backgroundImage: `url(${BG4})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
     <Card>
       <div>
 
@@ -84,6 +86,7 @@ const DetailRecipe = (props) => {
       </Button>
       <Notes {...props} onNoteSubmit={getNotes} />
     </Card>
+    </Container>
   );
 };
 
