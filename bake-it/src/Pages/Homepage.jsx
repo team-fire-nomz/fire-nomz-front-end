@@ -10,7 +10,7 @@ function Homepage(props) {
   console.log(props);
 
   return (
-    <Container sx={{ position: 'center', height: '90vh', backgroundImage: `url(${BG2})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG2})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
       {!props.isLoggedIn && (
         <>
 		
