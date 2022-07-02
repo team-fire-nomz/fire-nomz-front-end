@@ -1,4 +1,4 @@
-import { Card, Button, CardContent, Typography } from "@mui/material";
+import { Container, Card, Button, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
@@ -38,8 +38,8 @@ const DetailRecipe = (props) => {
   }, []);
 
   return (
-    <Container sx={{ height: '90vh', backgroundImage: `url(${BG4})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
-    <Card>
+    <Container >
+    <Card sx={{ height: '90vh', backgroundImage: `url(${BG4})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
       <div>
         <Card sx={{
           display: 'inline-block', 
