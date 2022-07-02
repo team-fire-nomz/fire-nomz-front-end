@@ -1,4 +1,4 @@
-import { Card, Button, CardContent, Container, Typography } from "@mui/material";
+import { Card, Button, CardContent, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
@@ -8,7 +8,6 @@ const DetailRecipe = (props) => {
   console.log(props);
   const [recipe, setRecipe] = useState({});
   const [notes, setNotes] = useState(null);
-  const [ingredients, setIngredients] = useState(null);
 
   console.log(notes);
 
@@ -40,19 +39,94 @@ const DetailRecipe = (props) => {
   return (
     <Card>
       <div>
-
-        <Container>
-          <Typography variant="h6">Recipe Title:</Typography>
-            <CardContent variant="p">{recipe.title}</CardContent>
-          <Typography variant="h6">Ingredients:</Typography>
-            <CardContent variant="p">{recipe.ingredients}</CardContent>
-          <Typography variant="h6">Recipe Steps:</Typography>
-            <CardContent variant="p">{recipe.recipe_steps}</CardContent>
-          <Typography variant="h6">Baked By:</Typography>
-            <CardContent variant="p">{recipe.chef}</CardContent>
-          <Typography variant="h6">Made On:</Typography>
-            <CardContent>{recipe.created_at}</CardContent>
-        </Container>
+        <Card sx={{
+          display: 'inline-block', 
+          minWidth: 275, 
+          bgcolor: 'primary',
+          boxShadow: 5,
+          border: 1,
+          borderRadius: 2,
+          margin: 10,
+          }}>
+          <Typography sx={{fontSize: 15}}>
+            Are you here to give the baker feedback?
+          </Typography>
+          <Button
+            component={Link}
+            to={`/recipe/${props.selected}/feedback`}
+            variant="contained"
+            type="submit"
+            size="small"
+          >
+            click here
+          </Button>
+        </Card>
+        <Card sx={{
+          display: 'inline-block', 
+          minWidth: 275, 
+          bgcolor: 'primary',
+          boxShadow: 5,
+          border: 1,
+          borderRadius: 2,
+          margin: 10
+          }}>
+          <CardContent>
+            <Typography variant="p" sx={{ fontSize: 25 }}>
+              Recipe Title:
+            </Typography>
+            <br />
+            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
+              {recipe.title}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="p" sx={{ fontSize: 25 }}>
+              Ingredients:
+            </Typography>
+            <br />
+            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
+              {recipe.ingredients}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="p" sx={{ fontSize: 25 }}>
+              Recipe Steps:
+            </Typography>
+            <br />
+            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
+              {recipe.recipe_steps}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="p" sx={{ fontSize: 25 }}>
+              Baked By:
+            </Typography>
+            <br />
+            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
+              {recipe.chef}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography variant="p" sx={{ fontSize: 25 }}>
+              Made On:
+            </Typography>
+            <br />
+            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
+              {recipe.created_at}
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Button
+              component={Link}
+              to={`/recipe/${props.selected}/edit`}
+              variant="contained"
+              type="submit"
+              size="small"
+            >
+              Edit Recipe
+            </Button>
+          </CardContent>
+        </Card>
       </div>
       <ul>
         {notes &&
@@ -64,25 +138,17 @@ const DetailRecipe = (props) => {
             );
           })}
       </ul>
-      <Button
-        component={Link}
-        to={`/recipe/${props.selected}/edit`}
-        variant="contained"
-        type="submit"
-        size="small"
-      >
-        Edit recipe
-      </Button>
-      <Button
-        component={Link}
-        to={`/recipe/${props.selected}/feedback`}
-        variant="contained"
-        type="submit"
-        size="small"
-      >
-        Provide feedback
-      </Button>
-      <Notes {...props} onNoteSubmit={getNotes} />
+      <Card sx={{
+          display: 'inline-block', 
+          minWidth: 275, 
+          bgcolor: 'background.paper',
+          boxShadow: 5,
+          border: 1,
+          borderRadius: 2,
+          margin: 10
+          }}>
+        <Notes {...props} onNoteSubmit={getNotes} />
+      </Card>
     </Card>
   );
 };
