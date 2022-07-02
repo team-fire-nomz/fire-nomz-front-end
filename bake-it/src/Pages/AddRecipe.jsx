@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import {Grid, CardContent, Container} from '@mui/material';
+import {Box, Button, Grid, CardContent, Container} from '@mui/material';
 import BG1 from "./BG1.jpeg";
 
 export default function AddRecipe(props) {
@@ -106,16 +106,24 @@ export default function AddRecipe(props) {
             />
     </CardContent>
     <CardContent>
-        <button onClick={addInput}>
-            Add Ingredient
-        </button>
+    <Box textAlign="center">
+        <Button 
+        to= "/signup"
+        size="small"
+        variant="contained"
+        type="submit" 
+        onClick={addInput}
+        >
+        Add ingredient
+        </Button>
+    </Box>    
     </CardContent>
     <CardContent>
         {inputs.map((item, i) => {
             return (
             <input
                 onChange={handleInputChange}
-                placeholder="INGREDIENTS:"
+                placeholder="Ingredient:"
                 value={item.value}
                 id={i}
                 type={item.type}
@@ -125,16 +133,23 @@ export default function AddRecipe(props) {
         })}
     </CardContent>
     <CardContent>
-        <button onClick={addInput}>
-            Add Recipe Steps
-        </button>
+    <Box textAlign="center">
+        <Button 
+        size="small"
+        variant="contained"
+        type="submit" 
+        onClick={addInput}
+        >
+        Add recipe steps
+        </Button>
+    </Box>    
     </CardContent>
     <CardContent>
         {inputs.map((item, i) => {
           return (
           <input
               onChange={handleRecipeStepsChange}
-              placeholder="RECIPE STEPS:"
+              placeholder="Recipe steps:"
               value={item.value}
               id={i}
               type={item.type}
@@ -144,9 +159,16 @@ export default function AddRecipe(props) {
       })}
     </CardContent>
     <CardContent>
-        <button type="submit" onClick={handleSubmit}>
-            CREATE RECIPE
-        </button>
+    <Box textAlign="center">
+        <Button 
+        size="small"
+        variant="contained"
+        type="submit" 
+        onClick={handleSubmit}
+        >
+        Create recipe
+        </Button>
+    </Box>    
     </CardContent>
     </Grid>
     </Container>

@@ -1,8 +1,9 @@
-import { Box, Grid, TextField, Button } from "@mui/material";
+import { Card, Box, Grid, Typography, TextField, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
+import BG6 from "../Pages/BG6.jpg";
 
 
 const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
@@ -64,14 +65,19 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
   }
 
   return (
-    <Grid sx={{overflow: 'scroll'}}
+    <Grid sx={{
+			backgroundImage:  `url(${BG6})`,
+			backgroundSize: 'cover',
+			backgroundPosition: 'center',
+			height: '90vh',
+			backgroundRepeat: 'no-repeat',
+			overflow: "scroll"}}
       container
       spacing={0}
       direction="column"
       alignItems="center"
       justifyContent="Center"
-      style={{ minHeight: "75vh" }}
-    >
+      style={{ minHeight: "75vh" }}>
       {error && (
         <div
           className="error"
@@ -82,7 +88,18 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
           )}
         </div>
       )}
-
+      <Card sx={{
+          display: 'inline-block', 
+          minWidth: 275, 
+          bgcolor: 'primary',
+          boxShadow: 5,
+          border: 1,
+          borderRadius: 2,
+          margin: 10,
+          }}>
+          <Typography sx={{color: 'black'}} align="center">
+				  Please register to continue.
+			    </Typography>
       <Box
         textAlign="center"
         component="form"
@@ -185,10 +202,11 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             size="small"
             variant="contained"
           >
-            HAVE AN ACCOUNT? PLEASE SIGN IN.
+            Have an account? Please sign in.
           </Button>
         </Box>
       </Box>
+      </Card>
     </Grid>
   );
 };

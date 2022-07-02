@@ -89,7 +89,7 @@ import { useState } from "react";
             size="small"
             onClick={submitHandler}
             >
-            Add Note
+            Add note
             </Button>
         </div>
         </Box>

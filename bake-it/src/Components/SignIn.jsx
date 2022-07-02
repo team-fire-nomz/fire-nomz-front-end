@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { Grid, Snackbar, TextField, Typography, Button, Box } from '@mui/material';
+import { Card, Grid, Snackbar, TextField, Typography, Button, Box } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 import { useState } from 'react';
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import BG5 from "../Pages/BG5.jpeg"
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -59,9 +60,24 @@ function SignIn({ setAuth, isLoggedIn }) {
 
 	return (
 		
-		<Grid>
+		<Grid sx={{
+			backgroundImage:  `url(${BG5})`,
+			backgroundSize: 'cover',
+			backgroundPosition: 'center',
+			height: '90vh',
+			backgroundRepeat: 'no-repeat',
+			overflow: "scroll"}}>
+		<Card sx={{
+			display: 'inline-block', 
+			minWidth: 275, 
+			bgcolor: 'primary',
+			boxShadow: 5,
+			border: 1,
+			borderRadius: 2,
+			margin: 10,
+			}}>
 		<Box sx={{overflow: 'scroll',}}>
-			<Typography sx={{color: 'white'}} align="center">
+			<Typography sx={{color: 'black'}} align="center">
 				Please sign in to continue.
 			</Typography>
 			{error && (
@@ -111,12 +127,14 @@ function SignIn({ setAuth, isLoggedIn }) {
 					size="small"
 					variant="contained"
 					>
-					New to "Bake It Til You Make It"? Sign Up Here!
+					New to "Bake It Till You Make It"? Sign Up Here!
 					</Button>
 			</Box>
 			</Box>
 		</Box>
+		</Card>
 		</Grid>
+
 	)
 }
 

@@ -1,6 +1,7 @@
     import { useState, useEffect } from "react";
-    import { Grid, CardContent } from "@mui/material";
+    import { Container, Button, Box, Grid, CardContent } from "@mui/material";
     import axios from "axios";
+    import BG3 from "../Pages/BG3.jpeg";
 
     export default function Edit(props) {
     const inputArr = [
@@ -13,7 +14,7 @@
     const [recipe, setRecipe] = useState("");
     const [isEntered, setIsEntered] = useState(false);
     const [title, setTitle] = useState("");
-    const [ingredients, setIngredients] = useState("");
+    const [ingredient, setIngredient] = useState("");
     const [inputs, setInputs] = useState(inputArr);
 
     const handleSubmit = (e) => {
@@ -22,7 +23,7 @@
         `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
         {
             title: title,
-            ingredients: inputs.map((item) => item.value),
+            ingredient: inputs.map((item) => item.value),
             recipe_steps: recipe,
         },
         { headers: { Authorization: `Token ${props.token}` } }
@@ -42,9 +43,10 @@
         .then((response) => {
         setRecipe(response.data.recipe_steps);
         setTitle(response.data.title);
-        setIngredients(response.data.ingredients);
+        setIngredient(response.data.ingredients);
         });
     }, []);
+
 
     const addInput = () => {
     setInputs((s) => {
@@ -63,6 +65,18 @@
 
     const index = e.target.id;
     setInputs((s) => {
+      const newArr = s.slice();
+      newArr[index].value = e.target.value;
+
+      return newArr;
+    });
+  };
+
+    const handleRecipeStepsChange = (e) => {
+        e.preventDefault();
+
+    const index = e.target.id;
+    setInputs((s) => {
         const newArr = s.slice();
         newArr[index].value = e.target.value;
 
@@ -70,12 +84,20 @@
     });
     };
 
+    const ingredients = "";
+    inputs.map((item) => ingredients.concat(item.value));
+    console.log(ingredients);
+
+    const recipeSteps = "";
+    inputs.map((item) => recipeSteps.concat(item.value));
+    console.log(recipeSteps);
 
     if (isEntered) {
     return "Your recipe has been edited.";
     }
 
     return (
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG3})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
     <Grid
         container
         direction="column"
@@ -87,23 +109,31 @@
         <input
             type="text"
             required
-            placeholder="TITLE:"
+            placeholder="Title:"
             id="title"
             value={title}
-            key={title}
             onChange={(e) => setTitle(e.target.value)}
         />
         </CardContent>
         <CardContent>
-        <button onClick={addInput}>Add ingredient</button>
+            <Box textAlign="center">
+                <Button 
+                size="small"
+                variant="contained"
+                type="submit" 
+                onClick={addInput}
+                >
+                Add ingredients
+                </Button>
+            </Box>    
         </CardContent>
         <CardContent>
         {inputs.map((item, i) => {
             return (
             <input
                 onChange={handleInputChange}
-                placeholder="ingredients:"
-                value={ingredients}
+                placeholder="Ingredient:"
+                value={[ingredients]}
                 id={i}
                 type={item.type}
                 size="40"
@@ -112,20 +142,43 @@
             );
         })}
         </CardContent>
+            <Box textAlign="center">
+                <Button 
+                size="small"
+                variant="contained"
+                type="submit" 
+                onClick={addInput}
+                >
+                Add recipe steps
+                </Button>
+            </Box>    
         <CardContent>
-        <textarea
-            id="recipe"
-            placeholder="add instructions here"
-            value={recipe}
-            key={recipe}
-            onChange={(e) => setRecipe(e.target.value)}
-        />
-        </CardContent>
+        {inputs.map((item, i) => {
+          return (
+          <input
+              onChange={handleRecipeStepsChange}
+              placeholder="Recipe steps:"
+              value={item.value}
+              id={i}
+              type={item.type}
+              size="40"
+          />
+          );
+      })}
+    </CardContent>
         <CardContent>
-        <button type="submit" onClick={handleSubmit}>
-            Edit recipe
-        </button>
+            <Box textAlign="center">
+                <Button 
+                size="small"
+                variant="contained"
+                type="submit" 
+                onClick={handleSubmit}
+                >
+                Edit recipe
+                </Button>
+            </Box>    
         </CardContent>
     </Grid>
+    </Container>
     );
     }
