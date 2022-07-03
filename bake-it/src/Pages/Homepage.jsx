@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button, Typography } from "@mui/material";
-import BG2 from "./BG2.jpeg";
+import BG7 from "./BG7.jpg";
 
 
 
@@ -10,15 +10,14 @@ function Homepage(props) {
   console.log(props);
 
   return (
-    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG2})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG7})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
       {!props.isLoggedIn && (
         <>
-		
 			<Typography sx={{ color: 'white'}} variant="h4" align="center">
-				Welcome fellow baker!
+				Welcome Baker!
 			</Typography>
 			<Typography sx={{color: 'white'}} align="center">
-				Please sign in to continue.
+				Please sign in.
 			</Typography>
           <Box textAlign="center">
             <Button

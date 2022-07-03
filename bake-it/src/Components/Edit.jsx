@@ -1,4 +1,5 @@
     import { useState, useEffect } from "react";
+    import {useParams} from 'react-router-dom';
     import { Container, Button, Box, Grid, CardContent } from "@mui/material";
     import axios from "axios";
     import BG3 from "../Pages/BG3.jpeg";
@@ -16,28 +17,30 @@
     const [title, setTitle] = useState("");
     const [ingredient, setIngredient] = useState("");
     const [inputs, setInputs] = useState(inputArr);
+    const {recipeId} = useParams();
 
     const handleSubmit = (e) => {
     axios
         .patch(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
+        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${recipeId}/`,
         {
             title: title,
             ingredient: inputs.map((item) => item.value),
-            recipe_steps: recipe,
+            recipe_steps: inputs.map((item) => item.value)
         },
         { headers: { Authorization: `Token ${props.token}` } }
         )
         .then((res) => {
         console.log(res);
-       
+        window.location = `/recipe/{recipeId}`;
+
         // use react-dom to navigate to homepage
         });
     };
     useEffect(() => {
     axios
         .get(
-        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/`,
+        `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${recipeId}/`,
         { headers: { Authorization: `Token ${props.token}` } }
         )
         .then((response) => {
@@ -97,7 +100,13 @@
     }
 
     return (
-    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG3})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ 
+        backgroundSize: 'cover',
+        backgroundPosition: 'center', 
+        height: '90vh', 
+        backgroundImage: `url(${BG3})`, 
+        backgroundRepeat: 'no-repeat', 
+        overflow: "scroll" }}>
     <Grid
         container
         direction="column"
@@ -133,7 +142,7 @@
             <input
                 onChange={handleInputChange}
                 placeholder="Ingredient:"
-                value={[ingredients]}
+                value={item.value}
                 id={i}
                 type={item.type}
                 size="40"
@@ -162,6 +171,7 @@
               id={i}
               type={item.type}
               size="40"
+              key={recipe}
           />
           );
       })}
