@@ -98,6 +98,7 @@ function SignIn({ setAuth, isLoggedIn }) {
 			<Box component="form" onSubmit={handleLogin} align="center">
 				<Box textAlign="center">
 					<TextField
+						sx={{boxShadow: 5}}
 						style={{ backgroundColor: 'white'}} 
 						label="username"
 						value={username}
@@ -106,22 +107,34 @@ function SignIn({ setAuth, isLoggedIn }) {
 				</Box>
 				<Box textAlign="center">
                     <TextField
+						sx={{boxShadow: 5}}
 						style={{ backgroundColor: 'white'}} 
                         label="password"
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)} />
 				</Box>
+				<br />
 				<Box textAlign="center">
 					<Button
+					sx={{ boxShadow: 5}}
 					size="large" 
 					variant="outlined" 
 					type="submit"
 					>Sign in
 					</Button>
 				</Box>
+				<br />
 				<Box textAlign="center">
-					<Button 
+					<Button sx={{
+						display: 'inline-block', 
+						minWidth: 275, 
+						bgcolor: 'primary',
+						boxShadow: 5,
+						border: 1,
+						borderRadius: 2,
+						margin: 2,
+						}}
 					component={Link}
 					to= "/signup"
 					size="small"

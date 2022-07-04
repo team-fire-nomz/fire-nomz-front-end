@@ -20,6 +20,7 @@ function Homepage(props) {
 			<Typography sx={{color: 'white'}} align="center">
 				Please sign in to continue.
 			</Typography>
+      <br />
           <Box textAlign="center">
             <Button
               size="large"
@@ -31,6 +32,7 @@ function Homepage(props) {
               Sign in
             </Button>
           </Box>
+          <br />
           <Box textAlign="center">
             <Button
               component={Link}

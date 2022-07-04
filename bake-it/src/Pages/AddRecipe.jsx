@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import {Box, Button, Grid, CardContent, Container} from '@mui/material';
+import {Box, Button, Grid, CardContent, Container, Card} from '@mui/material';
 import BG1 from "./BG1.jpeg";
 
 export default function AddRecipe(props) {
@@ -88,89 +88,99 @@ export default function AddRecipe(props) {
       backgroundImage: `url(${BG1})`, 
       backgroundRepeat: 'no-repeat', 
       overflow: "scroll" }}>
-    <Grid 
-      container 
-      direction="column" 
-      justifyContent="center" 
-      alignItems="center">
-    <CardContent>
-        <label htmlFor="title"/>
-            <input
-            type="text"
-            required
-            placeholder="TITLE:"
-            id="title"
-            value={title}
-            key="uniqueTitle"
-            onChange={(e) => setTitle(e.target.value)}
-            />
-    </CardContent>
-    <CardContent>
-    <Box textAlign="center">
-        <Button 
-        to= "/signup"
-        size="small"
-        variant="contained"
-        type="submit" 
-        onClick={addInput}
-        >
-        Add ingredient
-        </Button>
-    </Box>    
-    </CardContent>
-    <CardContent>
-        {inputs.map((item, i) => {
-            return (
-            <input
-                onChange={handleInputChange}
-                placeholder="Ingredient:"
-                value={item.value}
-                id={i}
-                type={item.type}
-                size="40"
-            />
-            );
-        })}
-    </CardContent>
-    <CardContent>
-    <Box textAlign="center">
-        <Button 
-        size="small"
-        variant="contained"
-        type="submit" 
-        onClick={addInput}
-        >
-        Add recipe steps
-        </Button>
-    </Box>    
-    </CardContent>
-    <CardContent>
-        {inputs.map((item, i) => {
-          return (
-          <input
-              onChange={handleRecipeStepsChange}
-              placeholder="Recipe steps:"
-              value={item.value}
-              id={i}
-              type={item.type}
-              size="40"
-          />
-          );
-      })}
-    </CardContent>
-    <CardContent>
-    <Box textAlign="center">
-        <Button 
-        size="small"
-        variant="contained"
-        type="submit" 
-        onClick={handleSubmit}
-        >
-        Create recipe
-        </Button>
-    </Box>    
-    </CardContent>
-    </Grid>
+      <Card sx={{
+          display: 'inline-block', 
+          minWidth: 275, 
+          bgcolor: 'primary',
+          boxShadow: 5,
+          border: 1,
+          borderRadius: 2,
+          margin: 5,
+          }}>
+      <Grid 
+        container 
+        direction="column" 
+        justifyContent="center" 
+        alignItems="center">
+        <CardContent>
+            <label htmlFor="title"/>
+                <input
+                type="text"
+                required
+                placeholder="TITLE:"
+                id="title"
+                value={title}
+                key="uniqueTitle"
+                onChange={(e) => setTitle(e.target.value)}
+                />
+        </CardContent>
+        <CardContent>
+        <Box textAlign="center">
+            <Button 
+            to= "/signup"
+            size="small"
+            variant="contained"
+            type="submit" 
+            onClick={addInput}
+            >
+            Add ingredient
+            </Button>
+        </Box>    
+        </CardContent>
+        <CardContent>
+            {inputs.map((item, i) => {
+                return (
+                <input
+                    onChange={handleInputChange}
+                    placeholder="Ingredient:"
+                    value={item.value}
+                    id={i}
+                    type={item.type}
+                    size="40"
+                />
+                );
+            })}
+        </CardContent>
+        <CardContent>
+        <Box textAlign="center">
+            <Button 
+            size="small"
+            variant="contained"
+            type="submit" 
+            onClick={addInput}
+            >
+            Add recipe steps
+            </Button>
+        </Box>    
+        </CardContent>
+        <CardContent>
+            {inputs.map((item, i) => {
+              return (
+              <input
+                  onChange={handleRecipeStepsChange}
+                  placeholder="Recipe steps:"
+                  value={item.value}
+                  id={i}
+                  type={item.type}
+                  size="40"
+              />
+              );
+          })}
+        </CardContent>
+        <CardContent>
+        <Box textAlign="center">
+            <Button 
+            size="small"
+            variant="contained"
+            type="submit" 
+            onClick={handleSubmit}
+            >
+            Create recipe
+            </Button>
+        </Box>    
+        </CardContent>
+      </Grid>
+      </Card>
     </Container>
   );
 }
