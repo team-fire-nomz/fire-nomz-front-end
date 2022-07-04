@@ -32,6 +32,7 @@ export default function AddRecipe(props) {
       )
       .then((res) => {
         console.log(res);
+        
         // use react-dom to navigate to homepage
         window.location = "/";
       })
