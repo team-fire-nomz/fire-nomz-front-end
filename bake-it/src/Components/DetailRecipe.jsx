@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
 import axios from "axios";
-import BG4 from "../Pages/BG4.jpeg"
+import RecipeDetailBGImage from "../Pages/RecipeDetailBGImage.jpeg"
 
 const DetailRecipe = (props) => {
   console.log(props);
@@ -39,7 +39,7 @@ const DetailRecipe = (props) => {
 
   return (
     <Container >
-    <Card sx={{ height: '90vh', backgroundImage: `url(${BG4})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Card sx={{ height: '90vh', backgroundImage: `url(${RecipeDetailBGImage})`, overflow: "scroll" }}>
       <div>
         <Card sx={{
           display: 'inline-block', 

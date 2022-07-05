@@ -4,7 +4,7 @@ import MuiAlert from '@mui/material/Alert';
 import { useState } from 'react';
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import BG5 from "../Pages/BG5.jpeg"
+import SignInBGImage from "../Pages/SignInBGImage.jpeg"
 
 const Alert = React.forwardRef(function Alert(props, ref) {
 	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -61,7 +61,7 @@ function SignIn({ setAuth, isLoggedIn }) {
 	return (
 		
 		<Grid sx={{
-			backgroundImage:  `url(${BG5})`,
+			backgroundImage:  `url(${SignInBGImage})`,
 			backgroundSize: 'cover',
 			backgroundPosition: 'center',
 			height: '90vh',

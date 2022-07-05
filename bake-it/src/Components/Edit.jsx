@@ -48,7 +48,7 @@
         setTitle(response.data.title);
         setIngredient(response.data.ingredients);
         });
-    }, []);
+    }, [props.token, recipeId]);
 
 
     const addInput = () => {
@@ -68,12 +68,12 @@
 
     const index = e.target.id;
     setInputs((s) => {
-      const newArr = s.slice();
-      newArr[index].value = e.target.value;
+        const newArr = s.slice();
+        newArr[index].value = e.target.value;
 
-      return newArr;
+        return newArr;
     });
-  };
+    };
 
     const handleRecipeStepsChange = (e) => {
         e.preventDefault();
