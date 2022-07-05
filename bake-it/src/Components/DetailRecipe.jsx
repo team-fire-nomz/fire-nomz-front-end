@@ -39,7 +39,7 @@ const DetailRecipe = (props) => {
 
   return (
     <Container >
-    <Card sx={{ height: '90vh', backgroundImage: `url(${RecipeDetailBGImage})`, overflow: "scroll" }}>
+    <Card sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${RecipeDetailBGImage})`, overflow: "scroll" }}>
       <div>
         <Card sx={{
           display: 'inline-block', 
