@@ -40,7 +40,7 @@ const DetailRecipe = (props) => {
   return (
     <Container >
     <Card sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${RecipeDetailBGImage})`, overflow: "scroll" }}>
-      <div>
+      <div >
         <Card sx={{
           display: 'inline-block', 
           minWidth: 275, 
@@ -48,7 +48,8 @@ const DetailRecipe = (props) => {
           boxShadow: 5,
           border: 1,
           borderRadius: 2,
-          margin: 10
+          margin: 10,
+          my: 2
           }}>
           <CardContent>
             <Typography variant="p" sx={{ fontSize: 25 }}>
@@ -112,7 +113,8 @@ const DetailRecipe = (props) => {
           border: 1,
           borderRadius: 2,
           margin: 10,
-          padding: 2
+          padding: 2,
+          my: 0
           }}>
         <Typography variant="h6">Baker's Notes</Typography>
       <ul>
