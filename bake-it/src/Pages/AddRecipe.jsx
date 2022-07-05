@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import {Box, Button, Grid, CardContent, Container} from '@mui/material';
-import AddRecipeBGImage from "./AddRecipeBGImage.jpeg";
+import SignInBGImage from "./SignInBGImage.jpeg";
 
 export default function AddRecipe(props) {
   const [isEntered, setIsEntered] = useState(false);
@@ -101,7 +101,7 @@ export default function AddRecipe(props) {
   }
 
   return (
-    <Container sx={{ backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${AddRecipeBGImage})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${SignInBGImage})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
     <Grid container direction="column" justifyContent="center" alignItems="center">
     <CardContent>
         <label htmlFor="title"/>
