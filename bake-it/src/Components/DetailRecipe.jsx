@@ -1,9 +1,9 @@
-import { Container, Card, Button, CardContent, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Card, Button, CardContent, Typography, Container } from "@mui/material";
+import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Notes from "./Notes";
 import axios from "axios";
-import BG4 from "../Pages/BG4.jpeg"
+import RecipeDetailBGImage from "../Pages/RecipeDetailBGImage.jpeg"
 
 const DetailRecipe = (props) => {
   console.log(props);
@@ -14,14 +14,14 @@ const DetailRecipe = (props) => {
 
   console.log(recipe, "recipe");
 
-  const getNotes = () => {
+  const getNotes = useCallback(() => {
     axios
       .get(
         `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${props.selected}/notes/`,
         { headers: { Authorization: `Token ${props.token}` } }
       )
       .then((response) => setNotes(response.data));
-  };
+  }, [props.selected, props.token]);
 
   useEffect(() => {
     axios
@@ -30,16 +30,16 @@ const DetailRecipe = (props) => {
         { headers: { Authorization: `Token ${props.token}` } }
       )
       .then((response) => setRecipe(response.data));
-  }, []);
+  }, [props.selected, props.token]);
 
   useEffect(() => {
     console.log(props.selected);
     getNotes();
-  }, []);
+  }, [getNotes, props.selected]);
 
   return (
     <Container >
-    <Card sx={{ height: '90vh', backgroundImage: `url(${BG4})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Card sx={{ height: '90vh', backgroundImage: `url(${RecipeDetailBGImage})`, overflow: "scroll" }}>
       <div>
         <Card sx={{
           display: 'inline-block', 
@@ -130,6 +130,16 @@ const DetailRecipe = (props) => {
           </CardContent>
         </Card>
       </div>
+      <Card sx={{
+          display: 'inline-block', 
+          minWidth: 275, 
+          bgcolor: 'primary',
+          boxShadow: 5,
+          border: 1,
+          borderRadius: 2,
+          margin: 10,
+          }}>
+        <Typography variant="h6">Baker's Notes</Typography>
       <ul>
         {notes &&
           notes.map((note, noteIndex) => {
@@ -140,6 +150,7 @@ const DetailRecipe = (props) => {
             );
           })}
       </ul>
+      </Card>
       <Card sx={{
           display: 'inline-block', 
           minWidth: 275, 

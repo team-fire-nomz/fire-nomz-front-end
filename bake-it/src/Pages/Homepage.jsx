@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button, Typography } from "@mui/material";
-import BG7 from "./BG7.jpg";
+import SignInBGImage from "./SignInBGImage.jpeg";
 
 
 
@@ -10,7 +10,7 @@ function Homepage(props) {
   console.log(props);
 
   return (
-    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${BG7})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${SignInBGImage})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
       {!props.isLoggedIn && (
         <>
 			<Typography sx={{ color: 'white'}} variant="h4" align="center">
@@ -19,6 +19,7 @@ function Homepage(props) {
 			<Typography sx={{color: 'white'}} align="center">
 				Please sign in.
 			</Typography>
+      <br />
           <Box textAlign="center">
             <Button
               size="large"
@@ -30,6 +31,7 @@ function Homepage(props) {
               Sign in
             </Button>
           </Box>
+          <br />
           <Box textAlign="center">
             <Button
               component={Link}

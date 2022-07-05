@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid, Button, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Box, Typography } from '@mui/material';
+import { Grid, Button, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Box, Typography, Container } from '@mui/material';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
+import FeedbackBGImage from "../Pages/FeedbackBGImage.jpeg"
 
 export default function Feedback ( {isLoggedIn, token, id} ) {
 console.log('token', token)
@@ -25,8 +26,16 @@ console.log(id)
 
 	return (
 
-		<Grid>
-			<Typography variant="h5">Please provide feedback for the baker!</Typography>
+		<Container sx={{ height: '90vh', backgroundImage: `url(${FeedbackBGImage})`, overflow: "scroll" }}>
+		<Typography variant="h5">Please provide feedback for the baker!</Typography>
+		<Grid sx={{          
+			display: 'inline-block', 
+			minWidth: 275, 
+			bgcolor: 'white',
+			boxShadow: 5,
+			border: 1,
+			borderRadius: 2,
+			margin: 10,}}>
 			<Box>
 				<FormControl>
 					<FormLabel id="saltiness-group-button">
@@ -124,7 +133,8 @@ console.log(id)
 						<Button variant="contained" onClick={handleSubmit}>Submit Feedback</Button>
 				</FormControl>
 			</Box>
-			<Typography variant="h5">Thank you for your feedback!</Typography>
 		</Grid>
+		<Typography variant="h5">Thank you for your feedback!</Typography>
+		</Container>
 	)
 };
