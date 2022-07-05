@@ -2,7 +2,7 @@
     import {useParams} from 'react-router-dom';
     import { Container, Button, Box, Grid, CardContent } from "@mui/material";
     import axios from "axios";
-    import BG3 from "../Pages/BG3.jpeg";
+    import RecipeDetailBGImage from "../Pages/RecipeDetailBGImage.jpeg";
 
     export default function Edit(props) {
     const [isEntered, setIsEntered] = useState(false);
@@ -119,7 +119,7 @@
         backgroundSize: 'cover',
         backgroundPosition: 'center', 
         height: '90vh', 
-        backgroundImage: `url(${BG3})`, 
+        backgroundImage: `url(${RecipeDetailBGImage})`, 
         backgroundRepeat: 'no-repeat', 
         overflow: "scroll" }}>
     <Grid

@@ -3,7 +3,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
-import BG6 from "../Pages/BG6.jpg";
+import SignInBGImage from "../Pages/SignInBGImage.jpeg";
 
 
 const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
@@ -66,7 +66,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
 
   return (
     <Grid sx={{
-			backgroundImage:  `url(${BG6})`,
+			backgroundImage:  `url(${SignInBGImage})`,
 			backgroundSize: 'cover',
 			backgroundPosition: 'center',
 			height: '90vh',
