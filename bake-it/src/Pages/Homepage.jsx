@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RecipeList from "../Components/RecipeList";
 import { Container, Box, Button, Typography } from "@mui/material";
-import SignInBGImage from "./SignInBGImage.jpeg";
+import AddRecipeBGImage from "./AddRecipeBGImage.jpeg";
 
 
 
@@ -10,7 +10,7 @@ function Homepage(props) {
   console.log(props);
 
   return (
-    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${SignInBGImage})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${AddRecipeBGImage})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
       {!props.isLoggedIn && (
         <>
 			<Typography sx={{ color: 'white'}} variant="h4" align="center">

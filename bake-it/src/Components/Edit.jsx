@@ -2,7 +2,7 @@
     import {useParams} from 'react-router-dom';
     import { Container, Button, Box, Grid, CardContent } from "@mui/material";
     import axios from "axios";
-    import RecipeDetailBGImage from "../Pages/RecipeDetailBGImage.jpeg";
+    import SignInBGImage from "../Pages/SignInBGImage.jpeg";
 
     export default function Edit(props) {
     const [isEntered, setIsEntered] = useState(false);
@@ -27,7 +27,7 @@
         `https://bake-it-till-you-make-it.herokuapp.com/api/recipes/${recipeId}/`,
         {
             title: title,
-            ingredient: ingredientsInputs.map((item) => item.value),
+            ingredients: ingredientsInputs.map((item) => item.value),
             recipe_steps: recipeInputs.map((item) => item.value)
         },
         { headers: { Authorization: `Token ${props.token}` } }
@@ -119,7 +119,7 @@
         backgroundSize: 'cover',
         backgroundPosition: 'center', 
         height: '90vh', 
-        backgroundImage: `url(${RecipeDetailBGImage})`, 
+        backgroundImage: `url(${SignInBGImage})`, 
         backgroundRepeat: 'no-repeat', 
         overflow: "scroll" }}>
     <Grid

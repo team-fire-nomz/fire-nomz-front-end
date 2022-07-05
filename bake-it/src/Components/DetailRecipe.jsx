@@ -48,33 +48,11 @@ const DetailRecipe = (props) => {
           boxShadow: 5,
           border: 1,
           borderRadius: 2,
-          margin: 10,
-          }}>
-          <Typography sx={{fontSize: 15}}>
-            Are you here to give the baker feedback?
-          </Typography>
-          <Button
-            component={Link}
-            to={`/recipe/${props.selected}/feedback`}
-            variant="contained"
-            type="submit"
-            size="small"
-          >
-            click here
-          </Button>
-        </Card>
-        <Card sx={{
-          display: 'inline-block', 
-          minWidth: 275, 
-          bgcolor: 'primary',
-          boxShadow: 5,
-          border: 1,
-          borderRadius: 2,
           margin: 10
           }}>
           <CardContent>
             <Typography variant="p" sx={{ fontSize: 25 }}>
-              Recipe Title:
+              Recipe Title
             </Typography>
             <br />
             <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
@@ -83,25 +61,21 @@ const DetailRecipe = (props) => {
           </CardContent>
           <CardContent>
             <Typography variant="p" sx={{ fontSize: 25 }}>
-              Ingredients:
+              Ingredients
             </Typography>
             <br />
-            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
-              {recipe.ingredients}
-            </Typography>
+              {recipe.ingredients && recipe.ingredients.map(ingredient => <div><Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">{ingredient}</Typography></div> )}
           </CardContent>
           <CardContent>
             <Typography variant="p" sx={{ fontSize: 25 }}>
-              Recipe Steps:
+              Recipe Steps
             </Typography>
             <br />
-            <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
-              {recipe.recipe_steps}
-            </Typography>
+              {recipe.recipe_steps && recipe.recipe_steps.map(recipe =><div><Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">{recipe}</Typography></div>)}
           </CardContent>
           <CardContent>
             <Typography variant="p" sx={{ fontSize: 25 }}>
-              Baked By:
+              Baked By
             </Typography>
             <br />
             <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
@@ -110,7 +84,7 @@ const DetailRecipe = (props) => {
           </CardContent>
           <CardContent>
             <Typography variant="p" sx={{ fontSize: 25 }}>
-              Made On:
+              Made On
             </Typography>
             <br />
             <Typography variant="body" sx={{ mb: 1.5 }} color="text.primary">
@@ -138,6 +112,7 @@ const DetailRecipe = (props) => {
           border: 1,
           borderRadius: 2,
           margin: 10,
+          padding: 2
           }}>
         <Typography variant="h6">Baker's Notes</Typography>
       <ul>
@@ -151,17 +126,7 @@ const DetailRecipe = (props) => {
           })}
       </ul>
       </Card>
-      <Card sx={{
-          display: 'inline-block', 
-          minWidth: 275, 
-          bgcolor: 'background.paper',
-          boxShadow: 5,
-          border: 1,
-          borderRadius: 2,
-          margin: 10
-          }}>
         <Notes {...props} onNoteSubmit={getNotes} />
-      </Card>
     </Card>
     </Container>
   );
