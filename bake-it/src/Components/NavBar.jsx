@@ -15,7 +15,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
     <AppBar position='static'>
         <Toolbar >
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-                Bake It Till You Make It
+                Bake It Til You Make It
             </Typography>
                 <Stack direction='row' spacing={1}>
                     <Tooltip title="Return To Home Page">
