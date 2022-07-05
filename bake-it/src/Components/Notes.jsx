@@ -49,14 +49,15 @@ import { useState } from "react";
     return (
     <Grid
         container
-        sx={{
+        sx={{    
         overflow: "scroll",
         }}
         spacing={0}
         padding={0}
         direction="column"
-        alignItems="center"
-        justifyContent="Center"
+        alignItems="left"
+        margin={10}
+        my={2}
         style={{ minHeight: "25vh" }}
     >
         <Box className="FORM!" component="form" onSubmit={submitHandler}>
@@ -65,7 +66,8 @@ import { useState } from "react";
             <input
             type="text"
             required
-            placeholder="TITLE:"
+            size='50'
+            placeholder="TITLE"
             id="title"
             value={props.title}
             onChange={(e) => handleChange("title", e)}
@@ -77,7 +79,8 @@ import { useState } from "react";
             id="description"
             required
             placeholder="Create your note"
-            rows="12"
+            rows="4"
+            style={{width:'50%'}}
             value={props.note}
             onChange={(e) => handleChange("notes", e)}
             ></textarea>
