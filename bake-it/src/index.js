@@ -21,19 +21,19 @@ const theme = createTheme({
       },
     },
     primary: {
-      main: '#D5896F',
+      main: '#f2d398',
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#ffffff',
-      light: '#f3e5f5',
+      main: '#faf3dd',
+      light: '#ffffff',
     },
     background: {
-      default: '#FFDDA1',
+      default: '#faf3dd',
       paper: '#FFFFFF',
     },
     text: {
-      primary: '#540804',
+      primary: '#36393b',
       secondary: '#031D44',
       disabled: '#FFFFFF',
     },

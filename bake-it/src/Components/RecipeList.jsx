@@ -33,7 +33,12 @@ function RecipeList(props) {
 
   return (
     <Container sx={{ margin:'2px' }}>
-    <Grid container justifyContent="center" textalign="center" direction="column">
+    <Grid 
+      container 
+      sx={{display: 'inline-block'}}
+      justifyContent="center" 
+      textalign="center" 
+      direction="column">
       {recipes.length > 0 ?
         recipes.map((recipe) => (
           <Recipe
