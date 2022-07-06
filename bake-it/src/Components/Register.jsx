@@ -69,7 +69,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
 			backgroundImage:  `url(${SignInBGImage})`,
 			backgroundSize: 'cover',
 			backgroundPosition: 'center',
-			height: '90vh',
+			height: '100vh',
 			backgroundRepeat: 'no-repeat',
 			overflow: "scroll"}}
       container
@@ -91,11 +91,13 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
       <Card sx={{
           display: 'inline-block', 
           minWidth: 275, 
-          bgcolor: 'primary',
+          bgcolor: '#fbf8ed',
           boxShadow: 5,
           border: 1,
           borderRadius: 2,
-          margin: 10,
+          margin: 5,
+          padding: 5,
+          overflow: 'scroll'
           }}>
           <Typography sx={{color: 'black'}} align="center">
 				  Please register to continue.
@@ -195,6 +197,7 @@ const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess }) => {
             Send
           </Button>
         </Box>
+        <br />
         <Box>
           <Button
             component={Link}

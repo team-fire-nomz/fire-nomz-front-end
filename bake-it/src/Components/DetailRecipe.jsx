@@ -44,7 +44,7 @@ const DetailRecipe = (props) => {
         <Card sx={{
           display: 'inline-block', 
           minWidth: 275, 
-          bgcolor: 'primary',
+          bgcolor: '#fbf8ed',
           boxShadow: 5,
           border: 1,
           borderRadius: 2,
@@ -108,7 +108,7 @@ const DetailRecipe = (props) => {
       <Card sx={{
           display: 'inline-block', 
           minWidth: 275, 
-          bgcolor: 'primary',
+          bgcolor: '#fbf8ed',
           boxShadow: 5,
           border: 1,
           borderRadius: 2,

@@ -50,7 +50,7 @@ import { useState } from "react";
     <Grid
         container
         sx={{    
-        overflow: "scroll",
+        overflow: "scroll"
         }}
         spacing={0}
         padding={0}

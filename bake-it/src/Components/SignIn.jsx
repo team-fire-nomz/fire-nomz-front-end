@@ -64,17 +64,17 @@ function SignIn({ setAuth, isLoggedIn }) {
 			backgroundImage:  `url(${SignInBGImage})`,
 			backgroundSize: 'cover',
 			backgroundPosition: 'center',
-			height: '90vh',
+			height: '100vh',
 			backgroundRepeat: 'no-repeat',
 			overflow: "scroll"}}>
 		<Card sx={{
 			display: 'inline-block', 
 			minWidth: 275, 
-			bgcolor: 'primary',
+			bgcolor: '#fbf8ed',
 			boxShadow: 5,
 			border: 1,
 			borderRadius: 2,
-			margin: 10,
+			margin: 10
 			}}>
 		<Box sx={{overflow: 'scroll',}}>
 			<Typography sx={{color: 'black'}} align="center">
@@ -99,7 +99,7 @@ function SignIn({ setAuth, isLoggedIn }) {
 				<Box textAlign="center">
 					<TextField
 						sx={{boxShadow: 5}}
-						style={{ backgroundColor: 'white'}} 
+						style={{ backgroundColor: '#fbf8ed'}} 
 						label="username"
 						value={username}
 						margin="normal"
@@ -108,7 +108,7 @@ function SignIn({ setAuth, isLoggedIn }) {
 				<Box textAlign="center">
                     <TextField
 						sx={{boxShadow: 5}}
-						style={{ backgroundColor: 'white'}} 
+						style={{ backgroundColor: '#fbf8ed'}} 
                         label="password"
 						type="password"
 						value={password}
@@ -117,7 +117,11 @@ function SignIn({ setAuth, isLoggedIn }) {
 				<br />
 				<Box textAlign="center">
 					<Button
-					sx={{ boxShadow: 5}}
+					sx={{ boxShadow: 5,
+					bgcolor: '#f2d398',
+					border: 1,
+					borderRadius: 2,
+					color: 'white'}}
 					size="large" 
 					variant="outlined" 
 					type="submit"

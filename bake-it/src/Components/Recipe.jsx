@@ -6,7 +6,14 @@ console.log(props.id)
     return (
         <div sx={{ overflow: 'scroll'}}>
         <CardContent>
-            <Button variant="contained" sx={{ color: 'secondary', display:'inline'}} size="large">
+            <Button 
+            variant="contained" 
+            sx={{ color: 'secondary',
+                bgcolor: 'primary',
+                border: 1,
+				borderRadius: 2,
+                display:'inline'}} 
+            size="large">
                 <Box>
                     <Typography sx={{ fontSize: 18}}>
                         <Link onClick={()=> props.setSelected(props.id)} to={`/recipe/${props.id}`}>{props.title}</Link>
