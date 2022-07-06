@@ -50,7 +50,7 @@ import { useState } from "react";
     <Grid
         container
         sx={{    
-        overflow: "scroll",
+        overflow: "scroll"
         }}
         spacing={0}
         padding={0}
@@ -66,7 +66,7 @@ import { useState } from "react";
             <input
             type="text"
             required
-            size='50'
+            style={{width: '50%'}}
             placeholder="TITLE"
             id="title"
             value={props.title}

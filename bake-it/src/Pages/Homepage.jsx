@@ -10,7 +10,13 @@ function Homepage(props) {
   console.log(props);
 
   return (
-    <Container sx={{ backgroundSize: 'cover', backgroundPosition: 'center', height: '90vh', backgroundImage: `url(${AddRecipeBGImage})`, backgroundRepeat: 'no-repeat', overflow: "scroll" }}>
+    <Container sx={{ 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
+      height: '90vh', 
+      backgroundImage: `url(${AddRecipeBGImage})`, 
+      backgroundRepeat: 'no-repeat', 
+      overflow: "scroll" }}>
       {!props.isLoggedIn && (
         <>
 			<Typography sx={{ color: 'white'}} variant="h4" align="center">
@@ -27,6 +33,7 @@ function Homepage(props) {
               type="submit"
               component={Link}
               to="/signin"
+              sx={{ border: 1, borderRadius: 2}}
             >
               Sign in
             </Button>
@@ -38,6 +45,7 @@ function Homepage(props) {
               to="/signup"
               size="small"
               variant="contained"
+              sx={{ border: 1, borderRadius: 2}}
             >
               WANT TO JOIN OTHER BAKERS? PLEASE SIGN UP.
             </Button>
