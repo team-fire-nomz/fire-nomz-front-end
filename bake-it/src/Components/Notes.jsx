@@ -66,7 +66,7 @@ import { useState } from "react";
             <input
             type="text"
             required
-            size='40'
+            style={{width:'50%'}}
             placeholder="TITLE"
             id="title"
             value={props.title}
